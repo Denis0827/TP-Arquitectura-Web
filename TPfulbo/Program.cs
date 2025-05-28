@@ -15,6 +15,11 @@ builder.Services.AddSwaggerGen();
 // Configurar inyección de dependencias
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserManager>();
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+builder.Services.AddScoped<ICoachRepository, CoachRepository>();
+builder.Services.AddScoped<ITeamRepository, TeamRepository>();
+builder.Services.AddScoped<IMatchRepository, MatchRepository>();
+builder.Services.AddScoped<IAssistanceRepository, AssistanceRepository>();
 
 var app = builder.Build();
 

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TPfulbo.Models;
 
@@ -6,39 +8,38 @@ namespace TPfulbo.Validators
 {
     public class UserValidator
     {
-        public (bool isValid, string message) ValidateUserData(User user, IEnumerable<User> existingUsers)
+        public (bool isValid, string message) ValidateUserData(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña, IEnumerable<User> existingUsers)
         {
-            // Validar campos vacíos
-            if (string.IsNullOrWhiteSpace(user.Nombre))
+            if (string.IsNullOrWhiteSpace(nombre))
                 return (false, "El nombre no puede estar vacío");
-            
-            if (string.IsNullOrWhiteSpace(user.Apellido))
+
+            if (string.IsNullOrWhiteSpace(apellido))
                 return (false, "El apellido no puede estar vacío");
-            
-            if (string.IsNullOrWhiteSpace(user.Mail))
-                return (false, "El email no puede estar vacío");
-            
-            if (string.IsNullOrWhiteSpace(user.Telefono))
+
+            if (fechaNacimiento > DateTime.Now)
+                return (false, "La fecha de nacimiento no puede ser futura");
+
+            if (string.IsNullOrWhiteSpace(mail))
+                return (false, "El mail no puede estar vacío");
+
+            if (!IsValidEmail(mail))
+                return (false, "El formato del mail no es válido");
+
+            if (string.IsNullOrWhiteSpace(telefono))
                 return (false, "El teléfono no puede estar vacío");
-            
-            if (string.IsNullOrWhiteSpace(user.Contraseña))
-                return (false, "La contraseña no puede estar vacía");
 
-            // Validar formato de email
-            if (!IsValidEmail(user.Mail))
-                return (false, "El formato del email no es válido");
-
-            // Validar que el email sea único
-            if (existingUsers.Any(u => u.Mail.Equals(user.Mail, StringComparison.OrdinalIgnoreCase)))
-                return (false, "El email ya está registrado");
-
-            // Validar formato de teléfono (solo números y caracteres básicos)
-            if (!IsValidPhone(user.Telefono))
+            if (!IsValidPhone(telefono))
                 return (false, "El formato del teléfono no es válido");
 
-            // Validar contraseña
-            if (!IsValidPassword(user.Contraseña))
+            if (string.IsNullOrWhiteSpace(contraseña))
+                return (false, "La contraseña no puede estar vacía");
+
+            if (!IsValidPassword(contraseña))
                 return (false, "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número");
+
+            // Verificar si el mail ya está en uso (solo si se proporciona la lista de usuarios)
+            if (existingUsers != null && existingUsers.Any(u => u.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase)))
+                return (false, "El mail ya está en uso");
 
             return (true, "Datos válidos");
         }
