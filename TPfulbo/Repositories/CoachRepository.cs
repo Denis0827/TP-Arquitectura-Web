@@ -46,12 +46,7 @@ namespace TPfulbo.Repositories
 
         public async Task<Coach> GetCoachById(int id)
         {
-            return await Task.FromResult(_coaches.FirstOrDefault(c => c.IdCoach == id));
-        }
-
-        public async Task<Coach> GetCoachByUserId(int userId)
-        {
-            return await Task.FromResult(_coaches.FirstOrDefault(c => c.IdUser == userId));
+            return await Task.FromResult(_coaches.FirstOrDefault(c => c.IdUser == id));
         }
 
         public async Task<Coach> GetCoachByEmail(string email)
@@ -59,17 +54,10 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_coaches.FirstOrDefault(c => c.Mail.Equals(email, StringComparison.OrdinalIgnoreCase)));
         }
 
-        public async Task<Coach> CreateCoach(int idUser, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
+        public async Task<Coach> CreateCoach(int playerId, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
         {
-            // Verificar si ya existe un coach con ese idUser
-            if (_coaches.Any(c => c.IdUser == idUser))
-                throw new InvalidOperationException($"Ya existe un coach para el usuario {idUser}");
-
-            int newId = _coaches.Count > 0 ? _coaches.Max(c => c.IdCoach) + 1 : 1;
-            var newCoach = new Coach(newId, nombre, apellido, fechaNacimiento, mail, telefono, contraseña)
-            {
-                IdCoach = newId
-            };
+            int newId = _coaches.Count > 0 ? _coaches.Max(c => c.IdUser) + 1 : 1;
+            var newCoach = new Coach(playerId, nombre, apellido, fechaNacimiento, mail, telefono, contraseña);
 
             _coaches.Add(newCoach);
             SaveCoaches();
@@ -78,19 +66,7 @@ namespace TPfulbo.Repositories
 
         public async Task<bool> DeleteCoach(int id)
         {
-            var coach = _coaches.FirstOrDefault(c => c.IdCoach == id);
-            if (coach != null)
-            {
-                _coaches.Remove(coach);
-                SaveCoaches();
-                return await Task.FromResult(true);
-            }
-            return await Task.FromResult(false);
-        }
-
-        public async Task<bool> DeleteCoachByUserId(int userId)
-        {
-            var coach = _coaches.FirstOrDefault(c => c.IdUser == userId);
+            var coach = _coaches.FirstOrDefault(c => c.IdUser== id);
             if (coach != null)
             {
                 _coaches.Remove(coach);

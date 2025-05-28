@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "IdUser": 2,
+    "Nombre": "Guido",
+    "Apellido": "Salem",
+    "FechaNacimiento": "1999-10-13T00:00:00",
+    "Mail": "guido.salem2@email.com",
+    "Telefono": "11-1234-5678",
+    "Contrase\u00F1a": "Password123"
+  }
+]

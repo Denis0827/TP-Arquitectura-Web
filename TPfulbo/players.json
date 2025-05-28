@@ -1,11 +1,10 @@
 [
   {
-    "IdPlayer": 1,
-    "IdUser": 0,
-    "Nombre": "Juan",
-    "Apellido": "P\u00E9rez",
-    "FechaNacimiento": "1990-05-15T00:00:00",
-    "Mail": "juan.perez@email.com",
+    "IdUser": 1,
+    "Nombre": "Juancho",
+    "Apellido": "Perez",
+    "FechaNacimiento": "1990-01-01T00:00:00",
+    "Mail": "juancho.perez@email.com",
     "Telefono": "11-1234-5678",
     "Contrase\u00F1a": "Password123"
   }

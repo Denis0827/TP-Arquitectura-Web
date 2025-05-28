@@ -13,7 +13,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configurar inyección de dependencias
-builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<UserManager>();
 builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 builder.Services.AddScoped<ICoachRepository, CoachRepository>();

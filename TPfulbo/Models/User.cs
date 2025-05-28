@@ -54,6 +54,11 @@ namespace TPfulbo.Models
             set { _contraseña = value; }
         }
 
+        // Constructor sin parámetros para deserialización JSON
+        public User()
+        {
+        }
+
         // Constructor con parámetros
         public User(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
         {

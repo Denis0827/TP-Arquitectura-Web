@@ -10,112 +10,84 @@ namespace TPfulbo.Managers
 {
     public class UserManager
     {
-        private readonly IUserRepository _userRepository;
         private readonly IPlayerRepository _playerRepository;
         private readonly ICoachRepository _coachRepository;
         private readonly UserValidator _validator;
 
         public UserManager(
-            IUserRepository userRepository, 
             IPlayerRepository playerRepository,
             ICoachRepository coachRepository)
         {
-            _userRepository = userRepository;
             _playerRepository = playerRepository;
             _coachRepository = coachRepository;
             _validator = new UserValidator();
         }
 
-        public async Task<(bool success, string message, User user)> CreateUser(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
+        public async Task<(bool success, string message, Player player)> CreatePlayer(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
         {
-            var existingUsers = await _userRepository.GetAllUsers();            
+            var existingPlayers = await _playerRepository.GetAllPlayers();            
             // Validar datos del usuario
-            var (isValid, message) = _validator.ValidateUserData(nombre, apellido, fechaNacimiento, mail, telefono, contraseña, existingUsers);
+            var (isValid, message) = _validator.ValidateUserData(nombre, apellido, fechaNacimiento, mail, telefono, contraseña, existingPlayers.Select(p => new User(p.Nombre, p.Apellido, p.FechaNacimiento, p.Mail, p.Telefono, p.Contraseña)));
             if (!isValid)
             {
                 return (false, message, null);
             }
 
-            // Crear el usuario (el repositorio asigna el IdUser)
-            var user = await _userRepository.CreateUser(nombre, apellido, fechaNacimiento, mail, telefono, contraseña);
+            // Crear el jugador directamente
+            var player = await _playerRepository.CreatePlayer(nombre, apellido, fechaNacimiento, mail, telefono, contraseña);
 
-            return (true, "Usuario creado exitosamente", user);
+            return (true, "Jugador creado exitosamente", player);
         }
 
-        public async Task<(bool success, string message)> CreatePlayer(int userId)
+        public async Task<(bool success, string message)> CreateCoach(int playerId)
         {
-            var user = await _userRepository.GetUserById(userId);
-            if (user == null)
+            var player = await _playerRepository.GetPlayerById(playerId);
+            if (player == null)
             {
-                return (false, "Usuario no encontrado");
+                return (false, "Jugador no encontrado");
             }
 
-            // Verificar si ya existe un jugador o coach para este usuario
-            var existingPlayer = await _playerRepository.GetPlayerByUserId(userId);
-            if (existingPlayer != null)
-            {
-                return (false, "Este usuario ya tiene un perfil de jugador");
-            }
-
-            var existingCoach = await _coachRepository.GetCoachByUserId(userId);
+            // Verificar si ya existe un coach para este usuario
+            var existingCoach = await _coachRepository.GetCoachById(player.IdUser);
             if (existingCoach != null)
             {
                 return (false, "Este usuario ya tiene un perfil de coach");
             }
 
-            // Crear el jugador
-            var player = await _playerRepository.CreatePlayer(userId, user.Nombre, user.Apellido, user.FechaNacimiento, user.Mail, user.Telefono, user.Contraseña);
-            return (true, "Jugador creado exitosamente");
-        }
+            // Crear el coach manteniendo el mismo IdUser
+            var coach = await _coachRepository.CreateCoach(player.IdUser, player.Nombre, player.Apellido, player.FechaNacimiento, player.Mail, player.Telefono, player.Contraseña);
+            
+            // Eliminar el player ya que ahora es coach
+            await _playerRepository.DeletePlayer(playerId);
 
-        public async Task<(bool success, string message)> CreateCoach(int userId)
-        {
-            var user = await _userRepository.GetUserById(userId);
-            if (user == null)
-            {
-                return (false, "Usuario no encontrado");
-            }
-
-            // Verificar si ya existe un jugador o coach para este usuario
-            var existingPlayer = await _playerRepository.GetPlayerByUserId(userId);
-            if (existingPlayer != null)
-            {
-                return (false, "Este usuario ya tiene un perfil de jugador");
-            }
-
-            var existingCoach = await _coachRepository.GetCoachByUserId(userId);
-            if (existingCoach != null)
-            {
-                return (false, "Este usuario ya tiene un perfil de coach");
-            }
-
-            // Crear el coach
-            var coach = await _coachRepository.CreateCoach(userId, user.Nombre, user.Apellido, user.FechaNacimiento, user.Mail, user.Telefono, user.Contraseña);
             return (true, "Coach creado exitosamente");
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<(bool success, string message, string userType, int userId)> Login(string mail, string contraseña)
         {
-            return await _userRepository.GetAllUsers();
-        }
+            // Primero buscar en los jugadores
+            var players = await _playerRepository.GetAllPlayers();
+            var player = players.FirstOrDefault(p => 
+                p.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase) && 
+                p.Contraseña == contraseña);
 
-        public async Task<User> GetUserById(int id)
-        {
-            return await _userRepository.GetUserById(id);
-        }
+            if (player != null)
+            {
+                return (true, "Login exitoso", "Player", player.IdUser);
+            }
 
-        public async Task<User> GetUserByEmail(string email)
-        {
-            return await _userRepository.GetUserByEmail(email);
-        }
+            // Si no es jugador, buscar en los coaches
+            var coaches = await _coachRepository.GetAllCoaches();
+            var coach = coaches.FirstOrDefault(c => 
+                c.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase) && 
+                c.Contraseña == contraseña);
 
-        public async Task<bool> DeleteUser(int id)
-        {
-            // Primero eliminamos el jugador o coach asociado si existe
-            await _playerRepository.DeletePlayer(id);
-            await _coachRepository.DeleteCoach(id);
-            // Luego eliminamos el usuario
-            return await _userRepository.DeleteUser(id);
+            if (coach != null)
+            {
+                return (true, "Login exitoso", "Coach", coach.IdUser);
+            }
+
+            return (false, "Credenciales inválidas", null, 0);
         }
 
         public async Task<IEnumerable<Coach>> GetAllCoaches()
@@ -126,11 +98,6 @@ namespace TPfulbo.Managers
         public async Task<Coach> GetCoachById(int idCoach)
         {
             return await _coachRepository.GetCoachById(idCoach);
-        }
-
-        public async Task<Coach> GetCoachByUserId(int idUser)
-        {
-            return await _coachRepository.GetCoachByUserId(idUser);
         }
 
         public async Task<bool> DeleteCoach(int idCoach)
@@ -148,14 +115,11 @@ namespace TPfulbo.Managers
             return await _playerRepository.GetPlayerById(idPlayer);
         }
 
-        public async Task<Player> GetPlayerByUserId(int idUser)
-        {
-            return await _playerRepository.GetPlayerByUserId(idUser);
-        }
-
         public async Task<bool> DeletePlayer(int idPlayer)
         {
             return await _playerRepository.DeletePlayer(idPlayer);
         }
+
+        
     }
 } 
