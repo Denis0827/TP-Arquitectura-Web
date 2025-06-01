@@ -62,6 +62,20 @@ namespace TPfulbo.Controllers
             return Ok(matches);
         }
 
+        [HttpGet("coaches/{idCoach}")]
+        public async Task<ActionResult<IEnumerable<Match>>> GetMatchesByCoach(int idCoach)
+        {
+            var matches = await _matchManager.GetMatchesByCoach(idCoach);
+            return Ok(matches);
+        }
+
+        [HttpGet("players/{idPlayer}")]
+        public async Task<ActionResult<IEnumerable<Match>>> GetMatchesByPlayer(int idPlayer)
+        {
+            var matches = await _matchManager.GetMatchesByPlayer(idPlayer);
+            return Ok(matches);
+        }
+
         [HttpDelete("{idMatch}")]
         public async Task<IActionResult> DeleteMatch(int idMatch)
         {

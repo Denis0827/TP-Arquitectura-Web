@@ -1,1 +1,1 @@
-[]
+[{"IdMatch":1,"IdCoach":1,"IdField":1,"IdDate":4,"IdCategory":1,"IdTeamA":1,"IdTeamB":2},{"IdMatch":2,"IdCoach":1,"IdField":1,"IdDate":5,"IdCategory":1,"IdTeamA":3,"IdTeamB":4},{"IdMatch":3,"IdCoach":1,"IdField":1,"IdDate":1,"IdCategory":2,"IdTeamA":5,"IdTeamB":6},{"IdMatch":4,"IdCoach":1,"IdField":1,"IdDate":1,"IdCategory":2,"IdTeamA":7,"IdTeamB":8}]

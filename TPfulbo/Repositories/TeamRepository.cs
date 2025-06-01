@@ -11,12 +11,12 @@ namespace TPfulbo.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        private readonly string _jsonFilePath;
+        private readonly string _jsonFilePath = "Data/teams.json";
         private List<Team> _teams;
 
         public TeamRepository()
         {
-            _jsonFilePath = Path.Combine("Data", "teams.json");
+            _teams = new List<Team>();
             LoadTeams();
         }
 
@@ -50,10 +50,15 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_teams.FirstOrDefault(t => t.IdTeam == idTeam));
         }
 
-        public async Task<Team> CreateTeam(List<int> playerIds)
+        public async Task<IEnumerable<Team>> GetTeamsByPlayer(int idPlayer)
+        {
+            return await Task.FromResult(_teams.Where(t => t.IdPlayers.Contains(idPlayer)));
+        }
+
+        public async Task<Team> CreateTeam(List<int> idPlayers)
         {
             int newId = _teams.Count > 0 ? _teams.Max(t => t.IdTeam) + 1 : 1;
-            var newTeam = new Team(playerIds)
+            var newTeam = new Team(idPlayers)
             {
                 IdTeam = newId
             };

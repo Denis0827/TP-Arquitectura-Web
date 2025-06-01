@@ -4,7 +4,6 @@ namespace TPfulbo.Models
 {
     public class Coach : User
     {
-
         // Constructor sin parámetros para deserialización JSON
         public Coach() : base("", "", DateTime.Now, "", "", "")
         {

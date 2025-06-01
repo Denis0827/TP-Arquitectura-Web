@@ -13,10 +13,12 @@ namespace TPfulbo.Repositories
     {
         private readonly string _jsonFilePath;
         private List<Match> _matches;
+        private readonly ITeamRepository _teamRepository;
 
-        public MatchRepository()
+        public MatchRepository(ITeamRepository teamRepository)
         {
             _jsonFilePath = Path.Combine("Data", "matches.json");
+            _teamRepository = teamRepository;
             LoadMatches();
         }
 
@@ -55,10 +57,35 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_matches.Where(m => m.IdCategory == idCategory));
         }
 
+        public async Task<IEnumerable<Match>> GetMatchesByCoach(int idCoach)
+        {
+            return await Task.FromResult(_matches.Where(m => m.IdCoach == idCoach));
+        }
+
+        public async Task<IEnumerable<Match>> GetMatchesByPlayer(int idPlayer)
+        {
+            var matches = new List<Match>();
+            foreach (var match in _matches)
+            {
+                var teamA = await _teamRepository.GetTeamById(match.IdTeamA);
+                var teamB = await _teamRepository.GetTeamById(match.IdTeamB);
+
+                if (teamA != null && teamA.IdPlayers.Contains(idPlayer) ||
+                    teamB != null && teamB.IdPlayers.Contains(idPlayer))
+                {
+                    matches.Add(match);
+                }
+            }
+            return matches;
+        }
+
         public async Task<Match> CreateMatch(int idCoach, int idField, int idDate, int idCategory, int idTeamA, int idTeamB)
         {
-            var match = new Match(idCoach, idField, idDate, idCategory, idTeamA, idTeamB);
-            match.IdMatch = _matches.Count > 0 ? _matches.Max(m => m.IdMatch) + 1 : 1;
+            var match = new Match (idCoach, idField, idDate, idCategory, idTeamA, idTeamB)
+            {
+                IdMatch = _matches.Count > 0 ? _matches.Max(m => m.IdMatch) + 1 : 1
+            };
+
             _matches.Add(match);
             SaveMatches();
             return await Task.FromResult(match);

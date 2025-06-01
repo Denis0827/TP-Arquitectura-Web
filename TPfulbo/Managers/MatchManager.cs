@@ -39,6 +39,16 @@ namespace TPfulbo.Managers
             return await _matchRepository.GetMatchesByCategory(idCategory);
         }
 
+        public async Task<IEnumerable<Match>> GetMatchesByCoach(int idCoach)
+        {
+            return await _matchRepository.GetMatchesByCoach(idCoach);
+        }
+
+        public async Task<IEnumerable<Match>> GetMatchesByPlayer(int idPlayer)
+        {
+            return await _matchRepository.GetMatchesByPlayer(idPlayer);
+        }
+
         public async Task<(bool success, string message, Match match)> CreateMatch(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
         {
             // Validar todos los datos
