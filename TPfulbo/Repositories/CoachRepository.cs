@@ -11,11 +11,12 @@ namespace TPfulbo.Repositories
 {
     public class CoachRepository : ICoachRepository
     {
-        private readonly string _jsonFilePath = "coaches.json";
+        private readonly string _jsonFilePath;
         private List<Coach> _coaches;
 
         public CoachRepository()
         {
+            _jsonFilePath = Path.Combine("Data", "coaches.json");
             LoadCoaches();
         }
 

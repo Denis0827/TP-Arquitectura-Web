@@ -4,21 +4,37 @@ using Microsoft.Extensions.Hosting;
 using TPfulbo.Managers;
 using TPfulbo.Repositories;
 using TPfulbo.Repositories.Interfaces;
+using TPfulbo.Controllers;
+using TPfulbo.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configurar inyección de dependencias
-builder.Services.AddScoped<UserManager>();
-builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
-builder.Services.AddScoped<ICoachRepository, CoachRepository>();
-builder.Services.AddScoped<ITeamRepository, TeamRepository>();
-builder.Services.AddScoped<IMatchRepository, MatchRepository>();
-builder.Services.AddScoped<IAssistanceRepository, AssistanceRepository>();
+// Repositories
+builder.Services.AddSingleton<IPlayerRepository, PlayerRepository>();
+builder.Services.AddSingleton<ICoachRepository, CoachRepository>();
+builder.Services.AddSingleton<IFieldRepository, FieldRepository>();
+builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+builder.Services.AddSingleton<ITeamRepository, TeamRepository>();
+builder.Services.AddSingleton<IConfirmDateRepository, ConfirmDateRepository>();
+builder.Services.AddSingleton<IMatchRepository, MatchRepository>();
+
+// Validators
+builder.Services.AddSingleton<MatchValidator>();
+builder.Services.AddSingleton<ConfirmDateValidator>();
+builder.Services.AddSingleton<UserValidator>();
+
+// Managers
+builder.Services.AddSingleton<UserManager>();
+builder.Services.AddSingleton<TeamManager>();
+builder.Services.AddSingleton<ConfirmDateManager>();
+builder.Services.AddSingleton<MatchManager>();
 
 var app = builder.Build();
 

@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TPfulbo.Managers;
+using TPfulbo.Models;
+using TPfulbo.Controllers.Requests;
 
 namespace TPfulbo.Controllers
 {
@@ -16,73 +19,56 @@ namespace TPfulbo.Controllers
             _matchManager = matchManager;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateMatch([FromBody] dynamic request)
+        [HttpPost("coaches/{idCoach}/createMatch")]
+        public async Task<IActionResult> CreateMatch(int idCoach, [FromBody] CreateMatchRequest request)
         {
             var (success, message, match) = await _matchManager.CreateMatch(
-                (int)request.idCancha,
-                (int)request.idCategory,
-                (DateTime)request.fecha,
-                (TimeSpan)request.hora,
-                (int)request.idTeamA,
-                (int)request.idTeamB
+                idCoach,
+                request.IdField,
+                request.IdConfirmDate,
+                request.IdCategory,
+                request.IdPlayersTeamA,
+                request.IdPlayersTeamB
             );
+
             if (!success)
+            {
                 return BadRequest(message);
-            return Ok(match);
+            }
+
+            return Ok(new { message, matchId = match.IdMatch });
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllMatches()
+        public async Task<ActionResult<IEnumerable<Match>>> GetAllMatches()
         {
             var matches = await _matchManager.GetAllMatches();
             return Ok(matches);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetMatchById(int id)
+        [HttpGet("{idMatch}")]
+        public async Task<ActionResult<Match>> GetMatchById(int idMatch)
         {
-            var match = await _matchManager.GetMatchById(id);
+            var match = await _matchManager.GetMatchById(idMatch);
             if (match == null)
                 return NotFound("Partido no encontrado");
             return Ok(match);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMatch(int id)
-        {
-            var success = await _matchManager.DeleteMatch(id);
-            if (!success)
-                return NotFound("Partido no encontrado");
-            return Ok("Partido eliminado exitosamente");
-        }
-
-        [HttpGet("team/{idTeam}")]
-        public async Task<IActionResult> GetMatchesByTeamId(int idTeam)
-        {
-            var matches = await _matchManager.GetMatchesByTeamId(idTeam);
-            return Ok(matches);
-        }
-
-        [HttpGet("fecha/{fecha}")]
-        public async Task<IActionResult> GetMatchesByFecha(DateTime fecha)
-        {
-            var matches = await _matchManager.GetMatchesByFecha(fecha);
-            return Ok(matches);
-        }
-
-        [HttpGet("cancha/{idCancha}")]
-        public async Task<IActionResult> GetMatchesByCanchaId(int idCancha)
-        {
-            var matches = await _matchManager.GetMatchesByCanchaId(idCancha);
-            return Ok(matches);
-        }
-
         [HttpGet("category/{idCategory}")]
-        public async Task<IActionResult> GetMatchesByCategory(int idCategory)
+        public async Task<ActionResult<IEnumerable<Match>>> GetMatchesByCategory(int idCategory)
         {
             var matches = await _matchManager.GetMatchesByCategory(idCategory);
             return Ok(matches);
+        }
+
+        [HttpDelete("{idMatch}")]
+        public async Task<IActionResult> DeleteMatch(int idMatch)
+        {
+            var (success, message) = await _matchManager.DeleteMatch(idMatch);
+            if (!success)
+                return NotFound("Partido no encontrado");
+            return Ok("Partido eliminado exitosamente");
         }
     }
 } 

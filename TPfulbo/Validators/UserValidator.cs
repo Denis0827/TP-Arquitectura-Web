@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TPfulbo.Models;
 
 namespace TPfulbo.Validators
@@ -43,6 +44,12 @@ namespace TPfulbo.Validators
             if (string.IsNullOrWhiteSpace(telefono))
             {
                 return (false, "El teléfono no puede estar vacío");
+            }
+
+            string phonePattern = @"^\d{2}-\d{4}-\d{4}$";
+            if (!Regex.IsMatch(telefono, phonePattern))
+            {
+                return (false, "El formato del teléfono debe ser XX-XXXX-XXXX");
             }
 
             if (string.IsNullOrWhiteSpace(contraseña))

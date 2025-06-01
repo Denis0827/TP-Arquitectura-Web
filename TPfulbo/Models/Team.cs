@@ -5,20 +5,13 @@ namespace TPfulbo.Models
 {
     public class Team
     {
-        private int _id;
-        private string _nombre;
+        private int _idTeam;
         private List<int> _idPlayers;
 
-        public int Id
+        public int IdTeam
         {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public string Nombre
-        {
-            get { return _nombre; }
-            set { _nombre = value; }
+            get { return _idTeam; }
+            set { _idTeam = value; }
         }
 
         public List<int> IdPlayers
@@ -27,10 +20,10 @@ namespace TPfulbo.Models
             set { _idPlayers = value; }
         }
 
-        public Team(string nombre)
+        public Team(List<int> idPlayers)
         {
-            _nombre = nombre;
-            _idPlayers = new List<int>();
+            _idPlayers = idPlayers;
         }
+
     }
 } 

@@ -1,47 +1,45 @@
 using System;
-using System.Collections.Generic;
 
 namespace TPfulbo.Models
 {
     public class Match
     {
-        private int _id;
-        private int _idCancha;
+        private int _idMatch;
+        private int _idCoach;
+        private int _idField;
+        private int _idDate;
         private int _idCategory;
-        private DateTime _fecha;
-        private TimeSpan _hora;
         private int _idTeamA;
         private int _idTeamB;
-        private List<int> _idAssistance;
 
-        public int Id
+        public int IdMatch
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _idMatch; }
+            set { _idMatch = value; }
         }
 
-        public int IdCancha
+        public int IdCoach
         {
-            get { return _idCancha; }
-            set { _idCancha = value; }
+            get { return _idCoach; }
+            set { _idCoach = value; }
+        }
+
+        public int IdField
+        {
+            get { return _idField; }
+            set { _idField = value; }
+        }
+
+        public int IdDate
+        {
+            get { return _idDate; }
+            set { _idDate = value; }
         }
 
         public int IdCategory
         {
             get { return _idCategory; }
             set { _idCategory = value; }
-        }
-
-        public DateTime Fecha
-        {
-            get { return _fecha; }
-            set { _fecha = value; }
-        }
-
-        public TimeSpan Hora
-        {
-            get { return _hora; }
-            set { _hora = value; }
         }
 
         public int IdTeamA
@@ -56,21 +54,14 @@ namespace TPfulbo.Models
             set { _idTeamB = value; }
         }
 
-        public List<int> IdAssistance
+        public Match(int idCoach, int idField, int idDate, int idCategory, int idTeamA, int idTeamB)
         {
-            get { return _idAssistance; }
-            set { _idAssistance = value; }
-        }
-
-        public Match(int idCancha, int idCategory, DateTime fecha, TimeSpan hora, int idTeamA, int idTeamB)
-        {
-            _idCancha = idCancha;
+            _idCoach = idCoach;
+            _idField = idField;
+            _idDate = idDate;
             _idCategory = idCategory;
-            _fecha = fecha;
-            _hora = hora;
             _idTeamA = idTeamA;
             _idTeamB = idTeamB;
-            _idAssistance = new List<int>();
         }
     }
 } 

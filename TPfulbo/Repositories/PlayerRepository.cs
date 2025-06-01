@@ -11,11 +11,12 @@ namespace TPfulbo.Repositories
 {
     public class PlayerRepository : IPlayerRepository
     {
-        private readonly string _jsonFilePath = "players.json";
+        private readonly string _jsonFilePath;
         private List<Player> _players;
 
         public PlayerRepository()
         {
+            _jsonFilePath = Path.Combine("Data", "players.json");
             LoadPlayers();
         }
 

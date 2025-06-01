@@ -1,6 +1,7 @@
 using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TPfulbo.Models;
 using TPfulbo.Repositories.Interfaces;
 
@@ -8,32 +9,57 @@ namespace TPfulbo.Validators
 {
     public class MatchValidator
     {
-        private readonly ITeamRepository _teamRepository;
+        private readonly IFieldRepository _fieldRepository;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly IPlayerRepository _playerRepository;
+        private readonly IConfirmDateRepository _confirmDateRepository;
 
-        public MatchValidator(ITeamRepository teamRepository)
+        public MatchValidator(
+            IFieldRepository fieldRepository,
+            ICategoryRepository categoryRepository,
+            IPlayerRepository playerRepository,
+            IConfirmDateRepository confirmDateRepository)
         {
-            _teamRepository = teamRepository;
+            _fieldRepository = fieldRepository;
+            _categoryRepository = categoryRepository;
+            _playerRepository = playerRepository;
+            _confirmDateRepository = confirmDateRepository;
         }
 
-        public async Task<(bool isValid, string message)> ValidateMatchCreation(int idTeamA, int idTeamB, DateTime fecha, TimeSpan hora)
+        public async Task<(bool isValid, string message)> ValidateMatchData(int idField, int idDate, int idCategory, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
         {
-            if (idTeamA == idTeamB)
-                return (false, "Un partido no puede tener el mismo equipo en ambos lados");
+            // Validar que el campo existe
+            var field = await _fieldRepository.GetFieldById(idField);
+            if (field == null)
+                return (false, "El campo seleccionado no existe");
 
-            var teamA = await _teamRepository.GetTeamById(idTeamA);
-            var teamB = await _teamRepository.GetTeamById(idTeamB);
-            if (teamA == null || teamB == null)
-                return (false, "Uno o ambos equipos no existen");
+            // Validar que la categoría existe
+            var category = await _categoryRepository.GetCategoryById(idCategory);
+            if (category == null)
+                return (false, "La categoría seleccionada no existe");
 
-            if (fecha.Date < DateTime.Today)
-                return (false, "La fecha del partido no puede ser en el pasado");
+            // Validar que la fecha existe
+            var confirmDate = await _confirmDateRepository.GetDateById(idDate);
+            if (confirmDate == null)
+                return (false, "La fecha seleccionada no existe");
 
-            int countA = teamA.IdPlayers?.Count ?? 0;
-            int countB = teamB.IdPlayers?.Count ?? 0;
-            if (countA != countB)
-                return (false, $"Ambos equipos deben tener la misma cantidad de jugadores (Equipo A: {countA}, Equipo B: {countB})");
+            // Validar que todos los jugadores existen
+            var allPlayers = idPlayersTeamA.Concat(idPlayersTeamB).ToList();
+            foreach (var idPlayer in allPlayers)
+            {
+                var player = await _playerRepository.GetPlayerById(idPlayer);
+                if (player == null)
+                    return (false, $"El jugador con ID {idPlayer} no existe");
+            }
 
-            return (true, "Validación exitosa");
+            // Validar que los jugadores están confirmados para esa fecha
+            var notConfirmedPlayers = allPlayers.Where(id => !confirmDate.IdPlayers.Contains(id)).ToList();
+            if (notConfirmedPlayers.Any())
+            {
+                return (false, $"Los siguientes jugadores no están confirmados para esta fecha: {string.Join(", ", notConfirmedPlayers)}");
+            }
+
+            return (true, string.Empty);
         }
     }
 } 

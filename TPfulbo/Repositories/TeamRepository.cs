@@ -11,11 +11,12 @@ namespace TPfulbo.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        private readonly string _jsonFilePath = "teams.json";
+        private readonly string _jsonFilePath;
         private List<Team> _teams;
 
         public TeamRepository()
         {
+            _jsonFilePath = Path.Combine("Data", "teams.json");
             LoadTeams();
         }
 
@@ -44,18 +45,17 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_teams);
         }
 
-        public async Task<Team> GetTeamById(int id)
+        public async Task<Team> GetTeamById(int idTeam)
         {
-            return await Task.FromResult(_teams.FirstOrDefault(t => t.Id == id));
+            return await Task.FromResult(_teams.FirstOrDefault(t => t.IdTeam == idTeam));
         }
 
-        public async Task<Team> CreateTeam(string nombre, List<int> idPlayers)
+        public async Task<Team> CreateTeam(List<int> playerIds)
         {
-            int newId = _teams.Count > 0 ? _teams.Max(t => t.Id) + 1 : 1;
-            var newTeam = new Team(nombre)
+            int newId = _teams.Count > 0 ? _teams.Max(t => t.IdTeam) + 1 : 1;
+            var newTeam = new Team(playerIds)
             {
-                Id = newId,
-                IdPlayers = idPlayers ?? new List<int>()
+                IdTeam = newId
             };
 
             _teams.Add(newTeam);
@@ -63,9 +63,9 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(newTeam);
         }
 
-        public async Task<bool> DeleteTeam(int id)
+        public async Task<bool> DeleteTeam(int idTeam)
         {
-            var team = _teams.FirstOrDefault(t => t.Id == id);
+            var team = _teams.FirstOrDefault(t => t.IdTeam == idTeam);
             if (team != null)
             {
                 _teams.Remove(team);
@@ -73,11 +73,6 @@ namespace TPfulbo.Repositories
                 return await Task.FromResult(true);
             }
             return await Task.FromResult(false);
-        }
-
-        public async Task<IEnumerable<Team>> GetTeamsByPlayerId(int playerId)
-        {
-            return await Task.FromResult(_teams.Where(t => t.IdPlayers != null && t.IdPlayers.Contains(playerId)));
         }
     }
 } 

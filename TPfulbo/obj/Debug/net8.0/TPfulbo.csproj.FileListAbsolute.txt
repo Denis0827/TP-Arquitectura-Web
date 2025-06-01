@@ -81,8 +81,6 @@ C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/players.json
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/appsettings.Development.json
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/appsettings.json
-/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/coaches.json
-/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/players.json
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo.deps.json
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo.runtimeconfig.json
@@ -104,3 +102,10 @@ C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/players.json
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.Up2Date
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/coaches.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/dates.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/players.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/categories.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/fields.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/teams.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/matches.json
