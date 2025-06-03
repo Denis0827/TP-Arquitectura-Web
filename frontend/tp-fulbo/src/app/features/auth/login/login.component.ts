@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
@@ -44,10 +44,15 @@ export class LoginComponent implements OnInit {
 
     console.log('Login attempt:', this.loginForm.value);
 
-    this.authService.login(this.loginForm.value)
+    const credentials = {
+      Mail: this.loginForm.value.email,
+      Contraseña: this.loginForm.value.password
+    };
+
+    this.authService.login(credentials)
       .subscribe({
         next: () => {
-          this.router.navigate(['/']);
+          this.http.get<User[]>('http://localhost:5088/user/login');
         },
         error: (err) => {
           console.error('Login error:', err);
