@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
@@ -45,14 +47,16 @@ export class LoginComponent implements OnInit {
     console.log('Login attempt:', this.loginForm.value);
 
     const credentials = {
-      Mail: this.loginForm.value.email,
+      Mail: this.loginForm.value.username,
       Contraseña: this.loginForm.value.password
     };
 
-    this.authService.login(credentials)
+    this.http.post('http://localhost:5088/api/user/login', credentials)
       .subscribe({
-        next: () => {
-          this.http.get<User[]>('http://localhost:5088/user/login');
+        next: (response) => {
+          console.log('Login successful:', response);
+          window.location.href = 'https://www.google.com';
+          this.loading = false;
         },
         error: (err) => {
           console.error('Login error:', err);
