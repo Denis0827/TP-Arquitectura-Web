@@ -1,0 +1,152 @@
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/appsettings.Development.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/appsettings.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/TPfulbo
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/TPfulbo.deps.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/TPfulbo.runtimeconfig.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/TPfulbo.pdb
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.AssemblyReference.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfoInputs.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfo.cs
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.CoreCompileInputs.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cs
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets.build.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets.development.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.TPfulbo.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.build.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/scopedcss/bundle/TPfulbo.styles.css
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.Up2Date
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/refint/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TPfutbol/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/appsettings.Development.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/appsettings.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/users.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/TPfulbo.exe
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/TPfulbo.deps.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/TPfulbo.runtimeconfig.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/TPfulbo.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/TPfulbo.pdb
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/Microsoft.OpenApi.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.AssemblyReference.cache
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfoInputs.cache
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfo.cs
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.CoreCompileInputs.cache
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.sourcelink.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets.build.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets.development.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.TPfulbo.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.build.TPfulbo.props
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.TPfulbo.props
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.TPfulbo.props
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/staticwebassets.pack.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/scopedcss/bundle/TPfulbo.styles.css
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.Up2Date
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/refint/TPfulbo.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/coaches.json
+C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/players.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.AssemblyReference.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfoInputs.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfo.cs
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.CoreCompileInputs.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cs
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.sourcelink.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/refint/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/appsettings.Development.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/appsettings.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo.deps.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo.runtimeconfig.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/TPfulbo.pdb
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets.build.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets.development.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.TPfulbo.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.build.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/scopedcss/bundle/TPfulbo.styles.css
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.Up2Date
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/coaches.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/dates.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/players.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/categories.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/fields.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/teams.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/TPfulbo/bin/Debug/net8.0/Data/matches.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/appsettings.Development.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/appsettings.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/categories.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/coaches.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/dates.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/fields.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/matches.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/players.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/teams.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.deps.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.runtimeconfig.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.pdb
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.AssemblyReference.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfoInputs.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfo.cs
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.CoreCompileInputs.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cs
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.sourcelink.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets.build.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets.development.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.TPfulbo.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.build.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.TPfulbo.props
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/scopedcss/bundle/TPfulbo.styles.css
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.Up2Date
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/refint/TPfulbo.dll
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
+/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
