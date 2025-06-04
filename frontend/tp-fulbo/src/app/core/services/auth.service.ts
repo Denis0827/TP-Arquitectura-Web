@@ -4,8 +4,8 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export interface LoginCredentials {
-  email: string;
-  password: string;
+  Mail: string;
+  Contraseña: string;
 }
 
 export interface AuthResponse {
@@ -31,9 +31,9 @@ export class AuthService {
 
   login(credentials: LoginCredentials): Observable<AuthResponse> {
     console.log('Attempting login with:', credentials);
-    console.log('API URL:', `${environment.apiUrl}/auth/login`);
+    console.log('API URL:', `${environment.apiUrl}/user/login`);
     
-    return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, credentials)
+    return this.http.post<AuthResponse>(`${environment.apiUrl}/user/login`, credentials)
       .pipe(
         tap({
           next: (response) => {
