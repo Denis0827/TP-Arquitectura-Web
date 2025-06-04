@@ -1,23 +1,8 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
-
-export interface Team {
-  id: number;
-  name: string;
-  description?: string;
-  coachId: number;
-  players: Player[];
-}
-
-export interface Player {
-  id: number;
-  firstName: string;
-  lastName: string;
-  position: string;
-  number: number;
-}
+import { environment } from '../../../../environments/environment';
+import { Team, TeamResponse, Player } from '../../../models/team.model';
 
 export interface CreateTeamRequest {
   name: string;
@@ -35,17 +20,20 @@ export interface UpdateTeamRequest {
   providedIn: 'root'
 })
 export class TeamService {
-  private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/teams`;
+  private apiUrl = `${environment.apiUrl}/api/team`;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getAllTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.apiUrl);
   }
 
-  getTeamById(teamId: number): Observable<Team> {
-    return this.http.get<Team>(`${this.apiUrl}/${teamId}`);
+  getTeamById(idTeam: number): Observable<Team> {
+    return this.http.get<Team>(`${this.apiUrl}/${idTeam}`);
+  }
+
+  getTeamsByPlayer(idPlayer: number): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.apiUrl}/players/${idPlayer}`);
   }
 
   createTeam(team: CreateTeamRequest): Observable<Team> {

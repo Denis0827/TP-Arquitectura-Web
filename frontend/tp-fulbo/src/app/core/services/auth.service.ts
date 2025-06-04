@@ -1,60 +1,41 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
 
-export interface LoginCredentials {
-  Mail: string;
-  Contraseña: string;
+export interface LoginRequest {
+  email: string;
+  password: string;
 }
 
-export interface AuthResponse {
+export interface LoginResponse {
   token: string;
-  user: any; // You can create a proper User interface later
+  user: {
+    id: number;
+    email: string;
+    // Agrega otros campos del usuario que necesites
+  };
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private http = inject(HttpClient);
-  private currentUserSubject = new BehaviorSubject<any>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
+  constructor(private apiService: ApiService) {}
 
-  constructor() {
-    // Check if there's a stored token on service initialization
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
-      this.currentUserSubject.next(JSON.parse(storedUser));
-    }
-  }
-
-  login(credentials: LoginCredentials): Observable<AuthResponse> {
-    console.log('Attempting login with:', credentials);
-    console.log('API URL:', `${environment.apiUrl}/user/login`);
-    
-    return this.http.post<AuthResponse>(`${environment.apiUrl}/user/login`, credentials)
-      .pipe(
-        tap({
-          next: (response) => {
-            console.log('Login successful:', response);
-            localStorage.setItem('currentUser', JSON.stringify(response));
-            this.currentUserSubject.next(response);
-          },
-          error: (error) => {
-            console.error('Login error:', error);
-          }
-        })
-      );
+  login(credentials: LoginRequest): Observable<LoginResponse> {
+    return this.apiService.post<LoginResponse>('/auth/login', credentials);
   }
 
   logout(): void {
-    // Remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    // Implementar lógica de logout (limpiar token, etc)
+    localStorage.removeItem('token');
   }
 
   isAuthenticated(): boolean {
-    return !!this.currentUserSubject.value;
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 } 
