@@ -1,0 +1,157 @@
+.dates-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+  }
+
+  .create-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+}
+
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.date-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &.pending {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+
+    &.confirmed {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    &.cancelled {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  }
+}
+
+.date-info, .date-stats {
+  margin-bottom: 1rem;
+
+  .info-item, .stat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #666;
+
+    .icon {
+      margin-right: 0.5rem;
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.date-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  .action-button {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.3s;
+
+    &.view {
+      background-color: #007bff;
+      color: white;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    &.edit {
+      background-color: #6c757d;
+      color: white;
+
+      &:hover {
+        background-color: #545b62;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dates-container {
+    padding: 1rem;
+  }
+
+  .dates-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+
+    .create-button {
+      width: 100%;
+    }
+  }
+
+  .dates-grid {
+    grid-template-columns: 1fr;
+  }
+}
