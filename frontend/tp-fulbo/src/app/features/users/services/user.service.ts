@@ -37,9 +37,6 @@ export class UserService {
 
   constructor() {}
 
-  getCurrentUser(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/me`);
-  }
 
   updateProfile(userId: number, data: UpdateUserRequest): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${userId}`, data);

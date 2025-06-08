@@ -1,0 +1,27 @@
+<div class="nav-container">
+  <nav class="sidebar" [class.open]="isMenuOpen">
+    <div class="sidebar-header">
+      <h1>TP Fulbo</h1>
+    </div>
+    <ul class="nav-list">
+      <li *ngFor="let item of navItems">
+        <a [routerLink]="item.path" routerLinkActive="active">
+          <span class="icon">{{item.icon}}</span>
+          <span class="label">{{item.label}}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="main-content">
+    <header class="top-bar">
+      <button class="menu-toggle" (click)="toggleMenu()">
+        <span class="menu-icon">☰</span>
+      </button>
+      <h1>TP Fulbo</h1>
+    </header>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
