@@ -150,3 +150,44 @@ C:/Users/Denis Wu/Desktop/TP Arquitectura/TPfulbo/bin/Debug/net8.0/players.json
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
 /Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/appsettings.Development.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/appsettings.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/categories.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/coaches.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/dates.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/fields.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/matches.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/players.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/teams.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.deps.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.runtimeconfig.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/TPfulbo.pdb
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.AssemblyReference.cache
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfoInputs.cache
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.AssemblyInfo.cs
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.CoreCompileInputs.cache
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cs
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.MvcApplicationPartsAssemblyInfo.cache
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.sourcelink.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets.build.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets.development.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.TPfulbo.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.build.TPfulbo.props
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.TPfulbo.props
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.TPfulbo.props
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/scopedcss/bundle/TPfulbo.styles.css
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.csproj.CopyComplete
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/refint/TPfulbo.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll

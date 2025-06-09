@@ -7,10 +7,22 @@ import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
   standalone: true,
   imports: [RouterOutlet, NavBarComponent],
   template: `
-    <app-nav-bar>
-      <router-outlet></router-outlet>
-    </app-nav-bar>
+    <div class="layout">
+      <app-nav-bar></app-nav-bar>
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   `,
-  styles: []
+  styles: [`
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+  `]
 })
 export class MainLayoutComponent {} 

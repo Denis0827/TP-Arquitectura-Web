@@ -2,13 +2,25 @@
   <nav class="sidebar" [class.open]="isMenuOpen">
     <div class="sidebar-header">
       <h1>TP Fulbo</h1>
+      <div *ngIf="currentUser" class="user-info">
+        <span class="user-role">{{ getUserRole() }}</span>
+        <span class="user-name">{{ getUserDisplayName() }}</span>
+      </div>
     </div>
     <ul class="nav-list">
       <li *ngFor="let item of navItems">
-        <a [routerLink]="item.path" routerLinkActive="active">
-          <span class="icon">{{item.icon}}</span>
-          <span class="label">{{item.label}}</span>
-        </a>
+        <ng-container *ngIf="canNavigate(item); else loginRequired">
+          <a [routerLink]="item.path" routerLinkActive="active">
+            <span class="icon">{{item.icon}}</span>
+            <span class="label">{{item.label}}</span>
+          </a>
+        </ng-container>
+        <ng-template #loginRequired>
+          <a [routerLink]="['/auth/login']" class="login-required">
+            <span class="icon">{{item.icon}}</span>
+            <span class="label">{{item.label}}</span>
+          </a>
+        </ng-template>
       </li>
     </ul>
   </nav>
@@ -16,12 +28,18 @@
   <div class="main-content">
     <header class="top-bar">
       <button class="menu-toggle" (click)="toggleMenu()">
-        <span class="menu-icon">☰</span>
+        <span class="menu-icon" style="color: aqua;">☰</span>
       </button>
-      <h1>TP Fulbo</h1>
+      <div class="header-content">
+        <h1>TP Fulbo</h1>
+        <div *ngIf="currentUser" class="user-info">
+          <span class="user-role">{{ getUserRole() }}</span>
+          <span class="user-name">{{ getUserDisplayName() }}</span>
+        </div>
+      </div>
     </header>
     <main class="content">
-      <router-outlet></router-outlet>
+      <ng-content></ng-content>
     </main>
   </div>
 </div>

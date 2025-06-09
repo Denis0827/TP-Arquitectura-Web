@@ -12,16 +12,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Add CORS
+// Add CORS for Angular dev servers
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularDevServer",
         builder => builder
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins(
+                "http://localhost:4200",
+                "http://localhost:57767"
+            )
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
-});
+}
+);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

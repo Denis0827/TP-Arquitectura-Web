@@ -2,26 +2,29 @@ export interface User {
   id: number;
   username: string;
   email: string;
+  firstName: string;
+  lastName: string;
+  role: string;
   password?: string; // Opcional porque no queremos exponer la contraseña en el frontend
-  role?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
 export interface LoginRequest {
-  username: string;
-  password: string;
+  mail: string;
+  contraseña: string;
 }
 
 export interface LoginResponse {
-  token: string;
-  user: User;
+  message: string;
+  userType: 'Player' | 'Coach';
+  userId: number;
 }
 
 export interface RegisterRequest {
-  username: string;
   email: string;
   password: string;
+  name: string;
 }
 
 export interface Player {

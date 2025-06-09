@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj": {}
+    "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj": {}
   },
   "projects": {
-    "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj": {
+    "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
+        "projectUniqueName": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
         "projectName": "TPfulbo",
-        "projectPath": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
-        "packagesPath": "/Users/victorpablonavajas/.nuget/packages/",
-        "outputPath": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/",
+        "projectPath": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
+        "packagesPath": "/Users/gs/.nuget/packages/",
+        "outputPath": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/victorpablonavajas/.nuget/NuGet/NuGet.Config"
+          "/Users/gs/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -71,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.409/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet@8/8.0.16/libexec/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

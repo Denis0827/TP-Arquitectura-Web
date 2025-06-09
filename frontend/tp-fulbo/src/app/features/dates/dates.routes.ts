@@ -1,16 +1,21 @@
 import { Routes } from '@angular/router';
+import { DatesListComponent } from './pages/dates-list/dates-list.component';
 
 export const DATES_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () => import('./dates-list/dates-list.component').then(m => m.DatesListComponent)
+    component: DatesListComponent
   },
   {
     path: 'new',
-    loadComponent: () => import('./date-form/date-form.component').then(m => m.DateFormComponent)
+    loadComponent: () => import('./pages/date-new/date-new.component').then(m => m.DateNewComponent)
   },
-  {
-    path: ':id',
-    loadComponent: () => import('./date-detail/date-detail.component').then(m => m.DateDetailComponent)
-  }
+  // {
+  //   path: ':id',
+  //   loadComponent: () => import('./pages/date-detail/date-detail.component').then(m => m.DateDetailComponent)
+  // },
+  // {
+  //   path: ':id/edit',
+  //   loadComponent: () => import('./pages/date-form/date-form.component').then(m => m.DateFormComponent)
+  // }
 ]; 

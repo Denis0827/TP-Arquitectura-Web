@@ -1,56 +1,45 @@
 <div class="dates-container">
   <div class="dates-header">
-    <h1>Fechas de Partidos</h1>
-    <button class="create-button" routerLink="/dates/new">Crear Nueva Fecha</button>
+    <h2>{{ isCoach ? 'Gestión de Fechas' : 'Próximas Fechas' }}</h2>
+    <button *ngIf="isCoach" class="new-date-button" routerLink="/dates/new">
+      Nueva Fecha
+    </button>
   </div>
 
-  <div class="dates-grid">
-    <div *ngFor="let date of dates" class="date-card">
-      <div class="date-header">
-        <h2>{{ date.title }}</h2>
-        <span class="status-badge" [ngClass]="date.status">
-          {{ date.status | titlecase }}
-        </span>
-      </div>
+  <!-- Loading state -->
+  <div *ngIf="loading" class="loading-state">
+    <p>Cargando fechas...</p>
+  </div>
 
-      <div class="date-info">
-        <div class="info-item">
-          <i class="icon">📅</i>
-          <span>{{ date.date | date:'longDate' }}</span>
-        </div>
-        <div class="info-item">
-          <i class="icon">⏰</i>
-          <span>{{ date.time }}</span>
-        </div>
-        <div class="info-item">
-          <i class="icon">📍</i>
-          <span>{{ date.location }}</span>
-        </div>
-      </div>
+  <!-- Error state -->
+  <div *ngIf="error" class="error-state">
+    <p>{{ error }}</p>
+    <button class="btn-retry" (click)="ngOnInit()">
+      Reintentar
+    </button>
+  </div>
 
-      <div class="date-stats">
-        <div class="stat-item">
-          <i class="icon">👥</i>
-          <span>{{ date.currentPlayers }}/{{ date.maxPlayers }} Jugadores</span>
-        </div>
-        <div class="stat-item">
-          <i class="icon">🏃</i>
-          <span>{{ date.teams.length || 0 }} Equipos</span>
-        </div>
-        <div class="stat-item">
-          <i class="icon">⚽</i>
-          <span>{{ date.matches.length || 0 }} Partidos</span>
-        </div>
-      </div>
+  <!-- Content state -->
+  <div *ngIf="!loading && !error" class="dates-grid">
+    <ng-container *ngIf="dates.length > 0; else noDates">
+      <ng-container *ngFor="let date of dates">
+        <!-- Mostrar el componente según el rol del usuario -->
+        <app-date-list-player-card 
+          *ngIf="!isCoach" 
+          [date]="date">
+        </app-date-list-player-card>
+        
+        <app-date-list-coach-card 
+          *ngIf="isCoach" 
+          [date]="date">
+        </app-date-list-coach-card>
+      </ng-container>
+    </ng-container>
 
-      <div class="date-actions">
-        <button class="action-button view" [routerLink]="['/dates', date.id]">
-          Ver Detalles
-        </button>
-        <button class="action-button edit" [routerLink]="['/dates', date.id, 'edit']">
-          Editar
-        </button>
+    <ng-template #noDates>
+      <div class="no-dates">
+        <p>No hay fechas disponibles</p>
       </div>
-    </div>
+    </ng-template>
   </div>
 </div>

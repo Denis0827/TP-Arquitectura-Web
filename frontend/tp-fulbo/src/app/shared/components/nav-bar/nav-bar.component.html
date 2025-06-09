@@ -1,0 +1,12 @@
+<nav *ngIf="shouldShowNavBar()" class="nav-bar">
+  <div class="nav-content">
+    <div class="logo">
+      <a routerLink="/">TP Fulbo</a>
+    </div>
+    <ul class="nav-links">
+      <li><a routerLink="/dates" routerLinkActive="active">Fechas</a></li>
+      <li><a routerLink="/teams" routerLinkActive="active">Equipos</a></li>
+      <li><a routerLink="/players" routerLinkActive="active">Jugadores</a></li>
+    </ul>
+  </div>
+</nav> 

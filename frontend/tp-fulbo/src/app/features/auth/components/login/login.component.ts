@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService} from '../../../../core/services/auth.service';
+import { LoginRequest } from '../../../../models/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +16,34 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  loading = false;
+  error = '';
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   onSubmit() {
-    console.log('Login attempt:', { username: this.username, password: this.password });
-    // TODO: Implementar la lógica de login
+    this.loading = true;
+    this.error = '';
+
+    const credentials: LoginRequest = {
+      mail: this.username,
+      contraseña: this.password
+    };
+
+    this.authService.login(credentials).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Login error:', err);
+        this.error = 'Error al iniciar sesión. Por favor, verifica tus credenciales.';
+        this.loading = false;
+      }
+    });
   }
 }

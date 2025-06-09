@@ -41,7 +41,7 @@ namespace TPfulbo.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var (success, message, userType, userId) = await _userManager.Login(request.Mail, request.Contraseña);
+            (bool success, string message, string userType, int userId) = await _userManager.Login(request.mail, request.contraseña);
             
             if (!success)
             {

@@ -2,13 +2,14 @@
   <h2>Login</h2>
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="username">Username:</label>
+      <label for="username">Email:</label>
       <input 
-        type="text" 
+        type="email" 
         id="username" 
         [(ngModel)]="username" 
         name="username" 
         required
+        [disabled]="loading"
         class="form-control">
     </div>
     <div class="form-group">
@@ -19,9 +20,15 @@
         [(ngModel)]="password" 
         name="password" 
         required
+        [disabled]="loading"
         class="form-control">
     </div>
-    <button type="submit" class="btn-submit">Login</button>
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+    <button type="submit" class="btn-submit" [disabled]="loading">
+      {{ loading ? 'Ingresando...' : 'Login' }}
+    </button>
   </form>
   <p class="register-link">
     Don't have an account? <a routerLink="/auth/register">Register here</a>

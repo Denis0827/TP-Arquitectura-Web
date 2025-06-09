@@ -27,11 +27,11 @@ export const routes: Routes = [
       //   loadChildren: () => import('./features/matches/matches.routes').then(m => m.MATCHES_ROUTES),
       //   canActivate: [authGuard]
       // },
-      // {
-      //   path: 'dates',
-      //   loadChildren: () => import('./features/dates/dates.routes').then(m => m.DATES_ROUTES),
-      //   canActivate: [authGuard]
-      // },
+      {
+        path: 'dates',
+        loadChildren: () => import('./features/dates/dates.routes').then(m => m.DATES_ROUTES),
+        // canActivate: [authGuard]
+      },
       {
         path: 'users',
         loadChildren: () => import('./features/users/users.routes').then(m => m.USER_ROUTES),

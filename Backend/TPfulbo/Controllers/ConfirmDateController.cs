@@ -49,8 +49,8 @@ namespace TPfulbo.Controllers
         {
             var (success, message) = await _dateManager.ConfirmPlayer(idDate, idPlayer);
             if (!success)
-                return BadRequest(message);
-            return Ok(message);
+                return BadRequest(new { message });
+            return Ok(new { message });
         }
 
         [HttpGet("{idDate}/players")]
