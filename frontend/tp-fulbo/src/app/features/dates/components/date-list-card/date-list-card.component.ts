@@ -13,29 +13,25 @@ import { ConfirmDate } from '../../../../models/confirm-date.model';
 export class DateListCardComponent {
   @Input() date!: ConfirmDate;
 
-  getStatusClass(): string {
-    switch (this.date.status.toLowerCase()) {
-      case 'confirmed':
-        return 'status-confirmed';
-      case 'pending':
-        return 'status-pending';
-      case 'cancelled':
-        return 'status-cancelled';
-      default:
-        return '';
-    }
+  getFormattedDate(): string {
+    const date = new Date(this.date.fecha);
+    return date.toLocaleDateString('es-AR', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   }
 
-  getStatusText(): string {
-    switch (this.date.status.toLowerCase()) {
-      case 'confirmed':
-        return 'Confirmada';
-      case 'pending':
-        return 'Pendiente';
-      case 'cancelled':
-        return 'Cancelada';
-      default:
-        return this.date.status;
-    }
+  getFormattedTime(): string {
+    const date = new Date(this.date.fecha);
+    return date.toLocaleTimeString('es-AR', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+
+  getPlayersCount(): number {
+    return this.date.idPlayers.length;
   }
 }
