@@ -1,0 +1,96 @@
+.date-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #2c3e50;
+  }
+
+  .status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &.status-confirmed {
+      background-color: #e3fcef;
+      color: #00a854;
+    }
+
+    &.status-pending {
+      background-color: #fff7e6;
+      color: #fa8c16;
+    }
+
+    &.status-cancelled {
+      background-color: #fff1f0;
+      color: #f5222d;
+    }
+  }
+}
+
+.date-details {
+  margin-bottom: 1.5rem;
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: #666;
+
+    .icon {
+      margin-right: 0.75rem;
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.date-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+
+  .players {
+    display: flex;
+    align-items: center;
+    color: #666;
+
+    .icon {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .btn-details {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #40a9ff;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<div class="date-card">
+  <div class="date-header">
+    <h3>{{ date.title }}</h3>
+    <span class="status" [class]="getStatusClass()">{{ getStatusText() }}</span>
+  </div>
+  
+  <div class="date-details">
+    <div class="detail-item">
+      <span class="icon">📅</span>
+      <span>{{ date.date | date:'dd/MM/yyyy' }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="icon">⏰</span>
+      <span>{{ date.time }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="icon">📍</span>
+      <span>{{ date.location }}</span>
+    </div>
+  </div>
+
+  <div class="date-footer">
+    <div class="players">
+      <span class="icon">👥</span>
+      <span>{{ date.currentPlayers }}/{{ date.maxPlayers }} jugadores</span>
+    </div>
+    <button class="btn-details" [routerLink]="['/dates', date.id]">
+      Ver detalles
+    </button>
+  </div>
+</div>
