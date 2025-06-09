@@ -53,5 +53,16 @@ namespace TPfulbo.Managers
         {
             return await _dateRepository.GetConfirmedPlayers(idDate);
         }
+
+        public async Task<(bool success, string message)> CancelPlayerConfirmation(int idDate, int idPlayer)
+        {
+            // Validar que el jugador esté confirmado
+            var confirmedPlayers = await _dateRepository.GetConfirmedPlayers(idDate);
+            if (!confirmedPlayers.Contains(idPlayer))
+                return (false, "El jugador no está confirmado para esta fecha");
+
+            var result = await _dateRepository.CancelPlayerConfirmation(idDate, idPlayer);
+            return (result, result ? "Confirmación cancelada exitosamente" : "Error al cancelar la confirmación");
+        }
     }
 } 

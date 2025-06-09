@@ -14,5 +14,6 @@ namespace TPfulbo.Repositories.Interfaces
         Task<bool> DeleteDate(int idDate);
         Task<bool> ConfirmPlayer(int idDate, int idPlayer);
         Task<List<int>> GetConfirmedPlayers(int idDate);
+        Task<bool> CancelPlayerConfirmation(int idDate, int idPlayer);
     }
 } 

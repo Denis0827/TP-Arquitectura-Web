@@ -100,5 +100,21 @@ namespace TPfulbo.Repositories
             var date = _dates.FirstOrDefault(d => d.IdDate == idDate);
             return await Task.FromResult(date?.IdPlayers ?? new List<int>());
         }
+
+        public async Task<bool> CancelPlayerConfirmation(int idDate, int idPlayer)
+        {
+            var date = _dates.FirstOrDefault(d => d.IdDate == idDate);
+            if (date == null)
+                return await Task.FromResult(false);
+
+            if (date.IdPlayers.Contains(idPlayer))
+            {
+                date.IdPlayers.Remove(idPlayer);
+                SaveDates();
+                return await Task.FromResult(true);
+            }
+
+            return await Task.FromResult(false);
+        }
     }
 } 

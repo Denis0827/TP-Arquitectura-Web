@@ -59,5 +59,14 @@ namespace TPfulbo.Controllers
             var players = await _dateManager.GetConfirmedPlayers(idDate);
             return Ok(players);
         }
+
+        [HttpDelete("{idDate}/confirm/{idPlayer}")]
+        public async Task<IActionResult> CancelPlayerConfirmation(int idDate, int idPlayer)
+        {
+            var (success, message) = await _dateManager.CancelPlayerConfirmation(idDate, idPlayer);
+            if (!success)
+                return BadRequest(new { message });
+            return Ok(new { message });
+        }
     }
 } 

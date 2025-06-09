@@ -104,6 +104,6 @@ export class ConfirmDateService {
   }
 
   cancelConfirmation(dateId: number, playerId: number): Observable<any> {
-    return this.apiService.post(`api/ConfirmDate/${dateId}/cancel`, { playerId });
+    return this.apiService.delete(`api/ConfirmDate/${dateId}/confirm/${playerId}`);
   }
 } 
