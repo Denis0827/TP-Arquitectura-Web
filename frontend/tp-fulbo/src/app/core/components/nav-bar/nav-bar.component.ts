@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
@@ -19,24 +19,22 @@ interface NavItem {
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  private router = inject(Router);
+  private authService = inject(AuthService);
+
   navItems: NavItem[] = [
     { path: 'home', label: 'Home', icon: '🏠', requiresAuth: false },
     { path: 'matches', label: 'Matches', icon: '⚽', requiresAuth: true },
     { path: 'dates', label: 'Fechas', icon: '📅', requiresAuth: true },
-
   ];
+
   coachNavItems: NavItem[] = [
-  { path: 'users', label: 'Users', icon: '👤', requiresAuth: true },
+    { path: 'users', label: 'Users', icon: '👤', requiresAuth: true },
   ];
-  isCoach = false;
 
+  isCoach = false;
   isMenuOpen = false;
   currentUser: User | null = null;
-
-  constructor(
-    private router: Router,
-    public authService: AuthService
-  ) {}
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => {
@@ -44,7 +42,6 @@ export class NavBarComponent implements OnInit {
     });
 
     this.isCoach = this.authService.isCoach();
-    
   }
 
   toggleMenu() {

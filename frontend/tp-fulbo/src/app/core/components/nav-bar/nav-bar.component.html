@@ -23,7 +23,6 @@
         </ng-template>
       </li>
       @if (isCoach) {
-        
         <li *ngFor="let item of coachNavItems">
           <ng-container *ngIf="canNavigate(item); else loginRequired">
             <a [routerLink]="item.path" routerLinkActive="active">
