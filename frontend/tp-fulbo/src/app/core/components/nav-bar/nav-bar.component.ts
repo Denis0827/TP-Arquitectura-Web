@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
-import { User } from '../../../models/user.model';
+import { User } from '../../../models/auth.model';
 
 interface NavItem {
   path: string;

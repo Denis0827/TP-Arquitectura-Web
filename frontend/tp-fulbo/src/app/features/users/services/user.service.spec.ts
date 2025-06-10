@@ -4,7 +4,7 @@ import { UserService } from './user.service';
 import { environment } from '../../../../environments/environment';
 import { PlayerRequest, LoginRequest } from '../../../models/requests/player.request';
 import { LoginResponse, PlayerResponse, CoachResponse } from '../../../models/responses/login.response';
-import { Player, Coach } from '../../../models/user.model';
+import { Player, Coach } from '../../../models/register.model';
 
 describe('UserService', () => {
   let service: UserService;

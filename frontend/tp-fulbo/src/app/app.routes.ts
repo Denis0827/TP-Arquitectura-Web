@@ -1,21 +1,21 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
-import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'auth/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: MainLayoutComponent,
     children: [
       {
         path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'home',
-        loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent)
+        loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
+        canActivate: [authGuard]
       },
       // {
       //   path: 'teams',
@@ -41,13 +41,7 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
-      }
-    ]
+    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES)
   },
   {
     path: '**',

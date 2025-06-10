@@ -7,7 +7,7 @@ namespace TPfulbo.Models
         private int _idUser;
         private string _nombre;
         private string _apellido;
-        private DateTime _fechaNacimiento;
+        private string _fechaNacimiento;
         private string _mail;
         private string _telefono;
         private string _contraseña;
@@ -30,7 +30,7 @@ namespace TPfulbo.Models
             set { _apellido = value; }
         }
 
-        public DateTime FechaNacimiento
+        public string FechaNacimiento
         {
             get { return _fechaNacimiento; }
             set { _fechaNacimiento = value; }
@@ -54,13 +54,8 @@ namespace TPfulbo.Models
             set { _contraseña = value; }
         }
 
-        // Constructor sin parámetros para deserialización JSON
-        public User()
-        {
-        }
-
         // Constructor con parámetros
-        public User(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
+        public User(string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña)
         {
             _nombre = nombre;
             _apellido = apellido;

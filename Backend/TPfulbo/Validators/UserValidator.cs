@@ -10,7 +10,7 @@ namespace TPfulbo.Validators
         public (bool isValid, string message) ValidateUserData(
             string nombre,
             string apellido,
-            DateTime fechaNacimiento,
+            string fechaNacimiento,
             string mail,
             string telefono,
             string contraseña,
@@ -26,7 +26,7 @@ namespace TPfulbo.Validators
                 return (false, "El apellido no puede estar vacío");
             }
 
-            if (fechaNacimiento == default(DateTime))
+            if (string.IsNullOrWhiteSpace(fechaNacimiento))
             {
                 return (false, "La fecha de nacimiento no puede estar vacía");
             }

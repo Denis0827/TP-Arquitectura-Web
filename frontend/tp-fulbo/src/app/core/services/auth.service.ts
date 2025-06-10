@@ -1,6 +1,6 @@
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { BehaviorSubject, Observable, tap, catchError, of, switchMap } from 'rxjs';
-import { LoginRequest, LoginResponse, RegisterRequest, User } from '../../models/user.model';
+import { LoginRequest, LoginResponse, RegisterRequest, User } from '../../models/auth.model';
 import { isPlatformBrowser } from '@angular/common';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
@@ -71,7 +71,6 @@ export class AuthService {
       // Guardar el usuario
       const user: User = {
         id: response.userId,
-        username: '', // Estos datos deberían venir del backend
         email: '',
         firstName: '',
         lastName: '',
@@ -89,7 +88,6 @@ export class AuthService {
     }
     this.currentUserSubject.next(response.userId ? {
       id: response.userId,
-      username: '',
       email: '',
       firstName: '',
       lastName: '',
@@ -122,7 +120,6 @@ export class AuthService {
             tap(userData => {
               const user: User = {
                 id: response.userId,
-                username: userData.email,
                 email: userData.email,
                 firstName: userData.nombre || userData.firstName,
                 lastName: userData.apellido || userData.lastName,
@@ -136,7 +133,6 @@ export class AuthService {
               // Si falla, al menos guardamos los datos básicos
               const basicUser: User = {
                 id: response.userId,
-                username: '',
                 email: '',
                 firstName: '',
                 lastName: '',
@@ -156,7 +152,17 @@ export class AuthService {
   }
 
   register(userData: RegisterRequest): Observable<User> {
-    return this.apiService.post<User>('api/user/register', userData);
+    return this.apiService.post<User>('api/user/register', userData)
+      .pipe(
+        tap(response => {
+          // Handle successful registration, e.g., navigate to login
+          this.router.navigate(['/auth/login']);
+        }),
+        catchError(error => {
+          console.error('Registration error:', error);
+          throw error;
+        })
+      );
   }
 
   logout(): void {

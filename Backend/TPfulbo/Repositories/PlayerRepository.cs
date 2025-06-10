@@ -50,7 +50,7 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_players.FirstOrDefault(p => p.IdUser == idPlayer));
         }
 
-        public async Task<Player> CreatePlayer(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
+        public async Task<Player> CreatePlayer(string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña)
         {
             int newId = _players.Count > 0 ? _players.Max(p => p.IdUser) + 1 : 1;
             var newPlayer = new Player(nombre, apellido, fechaNacimiento, mail, telefono, contraseña)

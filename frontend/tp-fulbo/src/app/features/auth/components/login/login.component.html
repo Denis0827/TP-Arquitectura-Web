@@ -1,36 +1,40 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Email:</label>
-      <input 
-        type="email" 
-        id="username" 
-        [(ngModel)]="username" 
-        name="username" 
-        required
-        [disabled]="loading"
-        class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input 
-        type="password" 
-        id="password" 
-        [(ngModel)]="password" 
-        name="password" 
-        required
-        [disabled]="loading"
-        class="form-control">
-    </div>
-    <div class="error-message" *ngIf="error">
-      {{ error }}
-    </div>
-    <button type="submit" class="btn-submit" [disabled]="loading">
-      {{ loading ? 'Ingresando...' : 'Login' }}
-    </button>
-  </form>
-  <p class="register-link">
-    Don't have an account? <a routerLink="/auth/register">Register here</a>
-  </p>
+<div class="login-wrapper">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Email:</label>
+        <input 
+          type="email" 
+          id="username" 
+          [(ngModel)]="username" 
+          name="username" 
+          required
+          [disabled]="loading"
+          class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          required
+          [disabled]="loading"
+          class="form-control">
+      </div>
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="loading">
+        {{ loading ? 'Ingresando...' : 'Login' }}
+      </button>
+    </form>
+    <p class="register-link">
+      No tienes cuenta? <a routerLink="/auth/register">Registrate aquí</a>
+    </p>
+  </div>
 </div>
+
+

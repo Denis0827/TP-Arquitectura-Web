@@ -55,7 +55,7 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_coaches.FirstOrDefault(c => c.Mail.Equals(email, StringComparison.OrdinalIgnoreCase)));
         }
 
-        public async Task<Coach> CreateCoach(int playerId, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
+        public async Task<Coach> CreateCoach(int playerId, string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña)
         {
             int newId = _coaches.Count > 0 ? _coaches.Max(c => c.IdUser) + 1 : 1;
             var newCoach = new Coach(playerId, nombre, apellido, fechaNacimiento, mail, telefono, contraseña);

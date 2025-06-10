@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Player } from '../../../../models/user.model';
+import { Player } from '../../../../models/auth.model';
 
 @Component({
   selector: 'app-player-assist-card',

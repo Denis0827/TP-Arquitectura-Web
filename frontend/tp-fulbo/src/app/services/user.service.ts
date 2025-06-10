@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 // Import models
-import { Player, Coach } from '../models/user.model';
-import { PlayerRequest, LoginRequest } from '../models/requests/player.request';
-import { LoginResponse, PlayerResponse, CoachResponse } from '../models/responses/login.response';
+import { Player, Coach, LoginRequest, LoginResponse, RegisterRequest, User } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root'

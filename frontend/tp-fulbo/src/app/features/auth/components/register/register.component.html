@@ -1,1 +1,143 @@
-<p>register works!</p>
+<div class="register-wrapper">
+  <div class="register-container">
+    <h2>Registrarse</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="firstName">Nombre:</label>
+        <input 
+          type="text" 
+          id="firstName" 
+          [(ngModel)]="firstName" 
+          name="firstName" 
+          required
+          [disabled]="loading"
+          class="form-control"
+          [class.is-invalid]="firstNameError">
+        <div class="error-message" *ngIf="firstNameError">
+          {{ firstNameError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Apellido:</label>
+        <input 
+          type="text" 
+          id="lastName" 
+          [(ngModel)]="lastName" 
+          name="lastName" 
+          required
+          [disabled]="loading"
+          class="form-control"
+          [class.is-invalid]="lastNameError">
+        <div class="error-message" *ngIf="lastNameError">
+          {{ lastNameError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          required
+          [disabled]="loading"
+          class="form-control"
+          [class.is-invalid]="emailError">
+        <div class="error-message" *ngIf="emailError">
+          {{ emailError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          required
+          [disabled]="loading"
+          class="form-control"
+          [class.is-invalid]="passwordError">
+        <div class="error-message" *ngIf="passwordError">
+          {{ passwordError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar Contraseña:</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          [(ngModel)]="confirmPassword" 
+          name="confirmPassword" 
+          required
+          [disabled]="loading"
+          class="form-control"
+          [class.is-invalid]="confirmPasswordError">
+        <div class="error-message" *ngIf="confirmPasswordError">
+          {{ confirmPasswordError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dni">DNI:</label>
+        <input 
+          type="text" 
+          id="dni" 
+          [(ngModel)]="dni" 
+          name="dni" 
+          required
+          [disabled]="loading"
+          class="form-control"
+          maxlength="8"
+          [class.is-invalid]="dniError">
+        <div class="error-message" *ngIf="dniError">
+          {{ dniError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="birthDate">Fecha de Nacimiento (dd/mm/aaaa):</label>
+        <input 
+          type="text" 
+          id="birthDate" 
+          [(ngModel)]="birthDate" 
+          name="birthDate" 
+          placeholder="dd/mm/aaaa"
+          required
+          [disabled]="loading"
+          class="form-control"
+          (input)="onBirthDateInput($event)"
+          maxlength="10"
+          [class.is-invalid]="birthDateError">
+        <div class="error-message" *ngIf="birthDateError">
+          {{ birthDateError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono (xx-xxxx-xxxx):</label>
+        <input 
+          type="text" 
+          id="phone" 
+          [(ngModel)]="phone" 
+          name="phone" 
+          placeholder="xx-xxxx-xxxx"
+          required
+          [disabled]="loading"
+          class="form-control"
+          (input)="onPhoneInput($event)"
+          maxlength="12"
+          [class.is-invalid]="phoneError">
+        <div class="error-message" *ngIf="phoneError">
+          {{ phoneError }}
+        </div>
+      </div>
+      <div class="error-message" *ngIf="generalError">
+        {{ generalError }}
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="loading">
+        {{ loading ? 'Registrando...' : 'Registrar' }}
+      </button>
+    </form>
+    <p class="login-link">
+      ¿Ya tienes cuenta? <a routerLink="/auth/login">Inicia sesión aquí</a>
+    </p>
+  </div>
+</div>

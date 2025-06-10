@@ -3,7 +3,7 @@ import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService} from '../../../../core/services/auth.service';
-import { LoginRequest } from '../../../../models/user.model';
+import { LoginRequest } from '../../../../models/auth.model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -36,7 +36,7 @@ export class LoginComponent {
 
     this.authService.login(credentials).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/dates']);
         this.loading = false;
       },
       error: (err) => {

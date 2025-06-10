@@ -23,7 +23,7 @@ namespace TPfulbo.Managers
             _validator = new UserValidator();
         }
 
-        public async Task<(bool success, string message, Player player)> CreatePlayer(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña)
+        public async Task<(bool success, string message, Player player)> CreatePlayer(string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña)
         {
             var existingPlayers = await _playerRepository.GetAllPlayers();            
             // Validar datos del usuario

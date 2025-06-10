@@ -5,7 +5,7 @@ import { ConfirmDateService } from '../../services/confirm-date.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { ConfirmDate } from '../../../../models/confirm-date.model';
 import { PlayerAssistCardComponent } from '../../components/player-assist-card/player-assist-card.component';
-import { Player } from '../../../../models/user.model';
+import { Player } from '../../../../models/auth.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

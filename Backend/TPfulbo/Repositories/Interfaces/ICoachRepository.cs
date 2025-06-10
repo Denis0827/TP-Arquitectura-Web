@@ -9,7 +9,7 @@ namespace TPfulbo.Repositories.Interfaces
     {
         Task<IEnumerable<Coach>> GetAllCoaches();
         Task<Coach> GetCoachById(int idCoach);
-        Task<Coach> CreateCoach(int playerId, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string contraseña);
+        Task<Coach> CreateCoach(int playerId, string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña);
         Task<bool> DeleteCoach(int idCoach);
         Task<Coach> GetCoachByEmail(string email);
     }

@@ -3,7 +3,7 @@
     "IdUser": 1,
     "Nombre": "Juan",
     "Apellido": "Pérez",
-    "FechaNacimiento": "1995-05-15T00:00:00",
+    "FechaNacimiento": "15/05/1995",
     "Mail": "juan.perez@email.com",
     "Telefono": "11-5555-5555",
     "Contraseña": "hashed_password_1"
@@ -12,7 +12,7 @@
     "IdUser": 2,
     "Nombre": "María",
     "Apellido": "González",
-    "FechaNacimiento": "1998-08-22T00:00:00",
+    "FechaNacimiento": "22/08/1998",
     "Mail": "maria.gonzalez@email.com",
     "Telefono": "11-5555-5556",
     "Contraseña": "hashed_password_2"
@@ -21,7 +21,7 @@
     "IdUser": 3,
     "Nombre": "Carlos",
     "Apellido": "Rodríguez",
-    "FechaNacimiento": "1997-03-10T00:00:00",
+    "FechaNacimiento": "10/03/1997",
     "Mail": "carlos.rodriguez@email.com",
     "Telefono": "11-5555-5557",
     "Contraseña": "hashed_password_3"
@@ -30,7 +30,7 @@
     "IdUser": 4,
     "Nombre": "Ana",
     "Apellido": "Martínez",
-    "FechaNacimiento": "1996-11-30T00:00:00",
+    "FechaNacimiento": "30/11/1996",
     "Mail": "ana.martinez@email.com",
     "Telefono": "11-5555-5558",
     "Contraseña": "hashed_password_4"
@@ -39,7 +39,7 @@
     "IdUser": 5,
     "Nombre": "Luis",
     "Apellido": "Sánchez",
-    "FechaNacimiento": "1999-07-18T00:00:00",
+    "FechaNacimiento": "18/07/1999",
     "Mail": "luis.sanchez@email.com",
     "Telefono": "11-5555-5559",
     "Contraseña": "hashed_password_5"
@@ -48,7 +48,7 @@
     "IdUser": 6,
     "Nombre": "Laura",
     "Apellido": "Díaz",
-    "FechaNacimiento": "1994-12-05T00:00:00",
+    "FechaNacimiento": "05/12/1994",
     "Mail": "laura.diaz@email.com",
     "Telefono": "11-5555-5560",
     "Contraseña": "hashed_password_6"
@@ -57,7 +57,7 @@
     "IdUser": 7,
     "Nombre": "Diego",
     "Apellido": "Fernández",
-    "FechaNacimiento": "1998-04-25T00:00:00",
+    "FechaNacimiento": "25/04/1998",
     "Mail": "diego.fernandez@email.com",
     "Telefono": "11-5555-5561",
     "Contraseña": "hashed_password_7"
@@ -66,7 +66,7 @@
     "IdUser": 8,
     "Nombre": "Sofía",
     "Apellido": "López",
-    "FechaNacimiento": "1997-09-12T00:00:00",
+    "FechaNacimiento": "12/09/1997",
     "Mail": "sofia.lopez@email.com",
     "Telefono": "11-5555-5562",
     "Contraseña": "hashed_password_8"
@@ -75,7 +75,7 @@
     "IdUser": 9,
     "Nombre": "Martín",
     "Apellido": "Gómez",
-    "FechaNacimiento": "1996-06-28T00:00:00",
+    "FechaNacimiento": "28/06/1996",
     "Mail": "martin.gomez@email.com",
     "Telefono": "11-5555-5563",
     "Contraseña": "hashed_password_9"
@@ -84,7 +84,7 @@
     "IdUser": 10,
     "Nombre": "Valentina",
     "Apellido": "Torres",
-    "FechaNacimiento": "1999-02-14T00:00:00",
+    "FechaNacimiento": "14/02/1999",
     "Mail": "valentina.torres@email.com",
     "Telefono": "11-5555-5564",
     "Contraseña": "hashed_password_10"
