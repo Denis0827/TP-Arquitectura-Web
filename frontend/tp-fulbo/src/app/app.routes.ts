@@ -9,11 +9,11 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: '',
     component: MainLayoutComponent,
     children: [
       {
-        path: '',
+        path: 'home',
         loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
         canActivate: [authGuard]
       },
@@ -30,7 +30,7 @@ export const routes: Routes = [
       {
         path: 'dates',
         loadChildren: () => import('./features/dates/dates.routes').then(m => m.DATES_ROUTES),
-        // canActivate: [authGuard]
+        canActivate: [authGuard]
       },
       {
         path: 'users',
@@ -45,6 +45,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'auth/login'
   }
 ];

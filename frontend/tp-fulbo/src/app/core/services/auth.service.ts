@@ -1,5 +1,5 @@
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
-import { BehaviorSubject, Observable, tap, catchError, of, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, catchError, of, switchMap, throwError } from 'rxjs';
 import { LoginRequest, LoginResponse, RegisterRequest, User } from '../../models/auth.model';
 import { isPlatformBrowser } from '@angular/common';
 import { ApiService } from './api.service';
@@ -160,7 +160,12 @@ export class AuthService {
         }),
         catchError(error => {
           console.error('Registration error:', error);
-          throw error;
+          // Propagar el error con el mensaje del backend
+          return throwError(() => ({
+            error: {
+              message: error.error?.message || 'Error al registrar. Por favor, intenta de nuevo.'
+            }
+          }));
         })
       );
   }

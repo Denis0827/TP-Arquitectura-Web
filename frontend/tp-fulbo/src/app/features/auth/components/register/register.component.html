@@ -46,6 +46,9 @@
         <div class="error-message" *ngIf="emailError">
           {{ emailError }}
         </div>
+        <div class="error-message2" *ngIf="emailError2">
+            {{ emailError2 }}
+          </div>
       </div>
       <div class="form-group">
         <label for="password">Contraseña:</label>
@@ -94,7 +97,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="birthDate">Fecha de Nacimiento (dd/mm/aaaa):</label>
+        <label for="birthDate">Fecha de Nacimiento:</label>
         <input 
           type="text" 
           id="birthDate" 
@@ -112,7 +115,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="phone">Teléfono (xx-xxxx-xxxx):</label>
+        <label for="phone">Teléfono:</label>
         <input 
           type="text" 
           id="phone" 

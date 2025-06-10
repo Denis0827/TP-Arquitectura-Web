@@ -106,5 +106,32 @@
     "Mail": "wudenis0827@gmail.com",
     "Telefono": "11-5835-8659",
     "Contrase\u00F1a": "Password123"
+  },
+  {
+    "IdUser": 13,
+    "Nombre": "Denis",
+    "Apellido": "Wu",
+    "FechaNacimiento": "27/08/2004",
+    "Mail": "wudenis082@gmail.com",
+    "Telefono": "12-9021-9219",
+    "Contrase\u00F1a": "Password123"
+  },
+  {
+    "IdUser": 14,
+    "Nombre": "Denis",
+    "Apellido": "Wu",
+    "FechaNacimiento": "27/08/2004",
+    "Mail": "wudenis027@gmail.com",
+    "Telefono": "12-2121-2212",
+    "Contrase\u00F1a": "Password123"
+  },
+  {
+    "IdUser": 15,
+    "Nombre": "Juan",
+    "Apellido": "P\u00E9rez",
+    "FechaNacimiento": "27/08/2004",
+    "Mail": "juan.pere2z@email.com",
+    "Telefono": "11-5555-5555",
+    "Contrase\u00F1a": "hashed_password_1"
   }
 ]

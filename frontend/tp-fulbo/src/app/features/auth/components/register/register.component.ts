@@ -27,6 +27,7 @@ export class RegisterComponent {
   firstNameError: string = '';
   lastNameError: string = '';
   emailError: string = '';
+  emailError2: string = '';
   passwordError: string = '';
   confirmPasswordError: string = '';
   dniError: string = '';
@@ -130,6 +131,7 @@ export class RegisterComponent {
     this.firstNameError = '';
     this.lastNameError = '';
     this.emailError = '';
+    this.emailError2 = '';
     this.passwordError = '';
     this.confirmPasswordError = '';
     this.dniError = '';
@@ -195,7 +197,11 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.error('Registration error:', err);
-        this.generalError = 'Error al registrar. Por favor, intenta de nuevo.';
+        if (err.error && err.error.message) {
+          this.emailError = String(err.error.message);
+        } else {
+          this.generalError = 'Error al registrar. Por favor, intenta de nuevo.';
+        }
         this.loading = false;
       }
     });
