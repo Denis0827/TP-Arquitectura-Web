@@ -23,10 +23,12 @@ export class NavBarComponent implements OnInit {
     { path: 'home', label: 'Home', icon: '🏠', requiresAuth: false },
     { path: 'matches', label: 'Matches', icon: '⚽', requiresAuth: true },
     { path: 'dates', label: 'Fechas', icon: '📅', requiresAuth: true },
-    { path: 'users', label: 'Users', icon: '👤', requiresAuth: true },
-    { path: 'teams', label: 'Teams', icon: '👥', requiresAuth: true },
-    { path: 'notifications', label: 'Notifications', icon: '🔔', requiresAuth: true },
+
   ];
+  coachNavItems: NavItem[] = [
+  { path: 'users', label: 'Users', icon: '👤', requiresAuth: true },
+  ];
+  isCoach = false;
 
   isMenuOpen = false;
   currentUser: User | null = null;
@@ -40,6 +42,9 @@ export class NavBarComponent implements OnInit {
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
     });
+
+    this.isCoach = this.authService.isCoach();
+    
   }
 
   toggleMenu() {
