@@ -106,4 +106,21 @@ export class ConfirmDateService {
   cancelConfirmation(dateId: number, playerId: number): Observable<any> {
     return this.apiService.delete(`api/ConfirmDate/${dateId}/confirm/${playerId}`);
   }
+
+  getConfirmedPlayers(dateId: number): Observable<number[]> {
+    console.log('Fetching confirmed players for date:', dateId);
+    return this.apiService.get<number[]>(`api/ConfirmDate/${dateId}/players`).pipe(
+      tap(players => {
+        console.log('Confirmed players received:', players);
+        if (!Array.isArray(players)) {
+          console.error('Invalid players data received:', players);
+          throw new Error('Invalid players data received from server');
+        }
+      }),
+      catchError(error => {
+        console.error('Error fetching confirmed players:', error);
+        return throwError(() => new Error('Failed to fetch confirmed players: ' + (error.message || 'Unknown error')));
+      })
+    );
+  }
 } 

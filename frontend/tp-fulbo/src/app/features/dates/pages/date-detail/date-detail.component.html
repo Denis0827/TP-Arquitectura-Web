@@ -1,0 +1,62 @@
+<div class="date-detail-container">
+  <!-- Loading state -->
+  <div *ngIf="loading" class="loading-state">
+    <p>Cargando detalles de la fecha...</p>
+  </div>
+
+  <!-- Error state -->
+  <div *ngIf="error" class="error-state">
+    <p>{{ error }}</p>
+    <button class="btn-retry" (click)="loadDateDetails(date?.idDate || 0)">
+      Reintentar
+    </button>
+  </div>
+
+  <!-- Content state -->
+  <div *ngIf="!loading && !error && date" class="date-detail-card">
+    <div class="date-header">
+      <button class="back-button" (click)="onBackClick()">
+        ← Volver
+      </button>
+      <h2>Fecha {{ date.idDate }}</h2>
+    </div>
+
+    <div class="date-info">
+      <div class="info-item">
+        <span class="icon">📅</span>
+        <span class="text">{{ getFormattedDate() }}</span>
+      </div>
+      <div class="info-item">
+        <span class="icon">🕒</span>
+        <span class="text">{{ getFormattedTime() }}</span>
+      </div>
+      <div class="info-item">
+        <span class="icon">👥</span>
+        <span class="text">{{ confirmedPlayers.length }} jugadores confirmados</span>
+      </div>
+    </div>
+
+    <div class="players-section">
+      <h3>Jugadores</h3>
+      
+      <!-- Loading players state -->
+      <div *ngIf="loading" class="loading-players">
+        <p>Cargando jugadores...</p>
+      </div>
+
+      <!-- No players state -->
+      <div *ngIf="!loading && players.length === 0" class="no-players">
+        <p>No hay jugadores registrados</p>
+      </div>
+
+      <!-- Players list -->
+      <div *ngIf="!loading && players.length > 0" class="players-grid">
+        <app-player-assist-card
+          *ngFor="let player of players"
+          [player]="player"
+          [isConfirmed]="isPlayerConfirmed(player.id)">
+        </app-player-assist-card>
+      </div>
+    </div>
+  </div>
+</div>

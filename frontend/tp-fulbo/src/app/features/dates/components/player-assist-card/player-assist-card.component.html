@@ -1,0 +1,15 @@
+<div class="player-card" [class.confirmed]="isConfirmed">
+  <div class="player-avatar">
+    {{ getInitials() }}
+  </div>
+  <div class="player-info">
+    <h4 class="player-name">{{ getFullName() }}</h4>
+    <div class="player-details">
+      <span *ngIf="player.position" class="position">{{ player.position }}</span>
+      <span *ngIf="player.number" class="number">#{{ player.number }}</span>
+    </div>
+  </div>
+  <div class="status-indicator" [class.confirmed]="isConfirmed">
+    {{ isConfirmed ? 'Confirmado' : 'Pendiente' }}
+  </div>
+</div>

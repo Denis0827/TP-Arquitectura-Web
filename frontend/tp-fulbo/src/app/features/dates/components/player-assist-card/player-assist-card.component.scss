@@ -1,0 +1,83 @@
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &.confirmed {
+    border-color: #2ecc71;
+    background-color: #f8fff9;
+  }
+}
+
+.player-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #3498db;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.player-info {
+  flex: 1;
+  min-width: 0; // Para evitar que el contenido se desborde
+
+  .player-name {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .player-details {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: #666;
+
+    .position {
+      background-color: #f1f1f1;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .number {
+      color: #3498db;
+      font-weight: 500;
+    }
+  }
+}
+
+.status-indicator {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: #f1f1f1;
+  color: #666;
+  white-space: nowrap;
+
+  &.confirmed {
+    background-color: #2ecc71;
+    color: white;
+  }
+}
