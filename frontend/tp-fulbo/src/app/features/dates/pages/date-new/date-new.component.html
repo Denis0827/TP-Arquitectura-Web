@@ -1,10 +1,21 @@
 <div class="date-new-container">
   <div class="date-new-card">
-    <h2>Crear Nueva Fecha</h2>
+    <div class="date-header">
+      <button class="back-button" (click)="onCancel()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Volver
+      </button>
+      <h2>Crear Nueva Fecha</h2>
+    </div>
 
     <form [formGroup]="dateForm" (ngSubmit)="onSubmit()" class="date-form">
       <div class="form-group">
-        <label for="fecha">Fecha</label>
+        <label for="fecha">
+          <span class="icon">📅</span>
+          Fecha
+        </label>
         <input 
           type="date" 
           id="fecha" 
@@ -18,7 +29,10 @@
       </div>
 
       <div class="form-group">
-        <label for="hora">Hora</label>
+        <label for="hora">
+          <span class="icon">🕒</span>
+          Hora
+        </label>
         <input 
           type="time" 
           id="hora" 
@@ -35,13 +49,6 @@
       </div>
 
       <div class="form-actions">
-        <button 
-          type="button" 
-          class="btn btn-secondary" 
-          (click)="onCancel()"
-          [disabled]="loading">
-          Cancelar
-        </button>
         <button 
           type="submit" 
           class="btn btn-primary" 

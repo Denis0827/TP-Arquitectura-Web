@@ -1,10 +1,8 @@
 .date-new-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 64px); // Ajustar según la altura del navbar
   padding: 2rem;
-  background-color: #f5f6fa;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 64px);
 }
 
 .date-new-card {
@@ -12,14 +10,46 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
-  width: 100%;
-  max-width: 500px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+
+  .back-button {
+    padding: 0.6rem 1rem;
+    background-color: #4a9eff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    &:hover {
+      background-color: #3498db;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
 
   h2 {
-    margin: 0 0 2rem;
-    color: #2c3e50;
-    text-align: center;
+    margin: 0;
     font-size: 1.5rem;
+    color: #2c3e50;
   }
 }
 
@@ -28,24 +58,33 @@
     margin-bottom: 1.5rem;
 
     label {
-      display: block;
-      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
       color: #2c3e50;
       font-weight: 500;
+      font-size: 1.1rem;
+
+      .icon {
+        font-size: 1.2rem;
+      }
     }
 
     .form-control {
       width: 100%;
       padding: 0.75rem;
       border: 1px solid #ddd;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 1rem;
-      transition: border-color 0.2s ease;
+      transition: all 0.2s ease;
+      background-color: #f8f9fa;
 
       &:focus {
         outline: none;
-        border-color: #3498db;
-        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        border-color: #4a9eff;
+        box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+        background-color: white;
       }
 
       &.is-invalid {
@@ -60,7 +99,8 @@
     .invalid-feedback {
       color: #e74c3c;
       font-size: 0.875rem;
-      margin-top: 0.25rem;
+      margin-top: 0.5rem;
+      padding-left: 0.5rem;
     }
   }
 }
@@ -68,49 +108,61 @@
 .error-message {
   color: #e74c3c;
   background-color: #fdf0ed;
-  padding: 0.75rem;
-  border-radius: 4px;
+  padding: 1rem;
+  border-radius: 6px;
   margin-bottom: 1.5rem;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
 }
 
 .form-actions {
-  display: flex;
-  gap: 1rem;
   margin-top: 2rem;
 
   button {
-    flex: 1;
+    width: 100%;
     padding: 0.75rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
+    background-color: #4a9eff;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: #3498db;
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
 
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
+      transform: none;
     }
+  }
+}
 
-    &.btn-primary {
-      background-color: #3498db;
-      color: white;
+@media (max-width: 768px) {
+  .date-new-container {
+    padding: 1rem;
+  }
 
-      &:hover:not(:disabled) {
-        background-color: #2980b9;
-      }
-    }
+  .date-new-card {
+    padding: 1.5rem;
+  }
 
-    &.btn-secondary {
-      background-color: #95a5a6;
-      color: white;
+  .date-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
 
-      &:hover:not(:disabled) {
-        background-color: #7f8c8d;
-      }
+    .back-button {
+      align-self: flex-start;
     }
   }
 }
