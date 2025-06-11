@@ -1,0 +1,23 @@
+<div class="player-card">
+  <div class="player-info">
+    <span class="player-name">{{ player.firstName }} {{ player.lastName }}</span>
+    <span class="player-position" *ngIf="player.position">({{ player.position }})</span>
+  </div>
+  
+  <div class="team-selector">
+    <button 
+      class="team-button team-a" 
+      [class.active]="selectedTeam === 'A'"
+      (click)="onTeamChange('A')"
+      [disabled]="selectedTeam === 'A'">
+      Equipo A
+    </button>
+    <button 
+      class="team-button team-b" 
+      [class.active]="selectedTeam === 'B'"
+      (click)="onTeamChange('B')"
+      [disabled]="selectedTeam === 'B'">
+      Equipo B
+    </button>
+  </div>
+</div>

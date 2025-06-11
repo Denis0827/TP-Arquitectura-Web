@@ -22,11 +22,11 @@ export const routes: Routes = [
       //   loadChildren: () => import('./features/teams/teams.routes').then(m => m.TEAMS_ROUTES),
       //   canActivate: [authGuard]
       // },
-      // {
-      //   path: 'matches',
-      //   loadChildren: () => import('./features/matches/matches.routes').then(m => m.MATCHES_ROUTES),
-      //   canActivate: [authGuard]
-      // },
+      {
+        path: 'matches',
+        loadChildren: () => import('./features/matches/matches.routes').then(m => m.MATCHES_ROUTES),
+        canActivate: [authGuard]
+      },
       {
         path: 'dates',
         loadChildren: () => import('./features/dates/dates.routes').then(m => m.DATES_ROUTES),

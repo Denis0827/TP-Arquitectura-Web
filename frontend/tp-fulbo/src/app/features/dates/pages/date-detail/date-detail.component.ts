@@ -10,11 +10,12 @@ import { Player } from '../../../../models/auth.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { forkJoin, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-date-detail',
   standalone: true,
-  imports: [CommonModule, PlayerAssistCardComponent],
+  imports: [CommonModule, RouterModule, PlayerAssistCardComponent],
   templateUrl: './date-detail.component.html',
   styleUrl: './date-detail.component.scss'
 })
