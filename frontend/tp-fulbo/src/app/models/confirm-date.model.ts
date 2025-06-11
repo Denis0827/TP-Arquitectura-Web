@@ -29,12 +29,24 @@ export interface Player {
 }
 
 export interface ConfirmDateRequest {
-  idMatch: number;
-  idTeam: number;
-  notes?: string;
+  fecha: string;
+  idPlayers: number[];
 }
 
 export interface ConfirmDateResponse {
+  success: boolean;
   message: string;
-  dateId: number;
+  data: ConfirmDate;
+}
+
+export interface ConfirmDateListResponse {
+  success: boolean;
+  message: string;
+  data: ConfirmDate[];
+}
+
+export interface ConfirmDatePlayersResponse {
+  success: boolean;
+  message: string;
+  data: number[];
 } 

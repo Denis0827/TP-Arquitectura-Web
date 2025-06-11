@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, tap, catchError, throwError } from 'rxjs';
-import { ConfirmDate, ConfirmDateRequest, ConfirmDateResponse } from '../../../models/confirm-date.model';
+import { Observable, tap, catchError, throwError, map } from 'rxjs';
+import { ConfirmDate, ConfirmDateRequest, ConfirmDateResponse, ConfirmDateListResponse, ConfirmDatePlayersResponse } from '../../../models/confirm-date.model';
 import { ApiService } from '../../../core/services/api.service';
 
 @Injectable({
@@ -11,7 +11,13 @@ export class ConfirmDateService {
 
   getAllDates(): Observable<ConfirmDate[]> {
     console.log('Fetching all dates...');
-    return this.apiService.get<ConfirmDate[]>('api/ConfirmDate').pipe(
+    return this.apiService.get<ConfirmDateListResponse>('api/ConfirmDate').pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+        return response.data;
+      }),
       tap(dates => {
         console.log('Dates received:', dates);
         if (!Array.isArray(dates)) {
@@ -28,7 +34,13 @@ export class ConfirmDateService {
 
   getDateById(idDate: number): Observable<ConfirmDate> {
     console.log('Fetching date by ID:', idDate);
-    return this.apiService.get<ConfirmDate>(`api/ConfirmDate/${idDate}`).pipe(
+    return this.apiService.get<ConfirmDateResponse>(`api/ConfirmDate/${idDate}`).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+        return response.data;
+      }),
       tap(date => {
         console.log('Date received:', date);
         if (!date || !date.idDate) {
@@ -45,7 +57,13 @@ export class ConfirmDateService {
 
   createDate(date: ConfirmDate): Observable<ConfirmDate> {
     console.log('Creating new date:', date);
-    return this.apiService.post<ConfirmDate>('api/ConfirmDate', date).pipe(
+    return this.apiService.post<ConfirmDateResponse>('api/ConfirmDate', date).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+        return response.data;
+      }),
       tap(newDate => {
         console.log('Date created successfully:', newDate);
       }),
@@ -58,7 +76,13 @@ export class ConfirmDateService {
 
   updateDate(idDate: number, date: ConfirmDate): Observable<ConfirmDate> {
     console.log('Updating date:', { idDate, date });
-    return this.apiService.put<ConfirmDate>(`api/ConfirmDate/${idDate}`, date).pipe(
+    return this.apiService.put<ConfirmDateResponse>(`api/ConfirmDate/${idDate}`, date).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+        return response.data;
+      }),
       tap(updatedDate => {
         console.log('Date updated successfully:', updatedDate);
       }),
@@ -71,7 +95,12 @@ export class ConfirmDateService {
 
   deleteDate(idDate: number): Observable<void> {
     console.log('Deleting date:', idDate);
-    return this.apiService.delete<void>(`api/ConfirmDate/${idDate}`).pipe(
+    return this.apiService.delete<{ success: boolean; message: string }>(`api/ConfirmDate/${idDate}`).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+      }),
       tap(() => {
         console.log('Date deleted successfully');
       }),
@@ -84,7 +113,13 @@ export class ConfirmDateService {
 
   getDatesByPlayer(idPlayer: number): Observable<ConfirmDate[]> {
     console.log('Fetching dates for player:', idPlayer);
-    return this.apiService.get<ConfirmDate[]>(`api/ConfirmDate/player/${idPlayer}`).pipe(
+    return this.apiService.get<ConfirmDateListResponse>(`api/ConfirmDate/player/${idPlayer}`).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+        return response.data;
+      }),
       tap(dates => {
         console.log('Player dates received:', dates);
         if (!Array.isArray(dates)) {
@@ -98,18 +133,36 @@ export class ConfirmDateService {
       })
     );
   }
-  // [HttpPost("{idDate}/confirm/{idPlayer}")]
-  confirmAttendance(dateId: number, playerId: number): Observable<any> {
-    return this.apiService.post(`api/ConfirmDate/${dateId}/confirm/${playerId}`, { dateId,playerId });
+
+  confirmAttendance(dateId: number, playerId: number): Observable<void> {
+    return this.apiService.post<{ success: boolean; message: string }>(`api/ConfirmDate/${dateId}/confirm/${playerId}`, { dateId, playerId }).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+      })
+    );
   }
 
-  cancelConfirmation(dateId: number, playerId: number): Observable<any> {
-    return this.apiService.delete(`api/ConfirmDate/${dateId}/confirm/${playerId}`);
+  cancelConfirmation(dateId: number, playerId: number): Observable<void> {
+    return this.apiService.delete<{ success: boolean; message: string }>(`api/ConfirmDate/${dateId}/confirm/${playerId}`).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+      })
+    );
   }
 
   getConfirmedPlayers(dateId: number): Observable<number[]> {
     console.log('Fetching confirmed players for date:', dateId);
-    return this.apiService.get<number[]>(`api/ConfirmDate/${dateId}/players`).pipe(
+    return this.apiService.get<ConfirmDatePlayersResponse>(`api/ConfirmDate/${dateId}/players`).pipe(
+      map(response => {
+        if (!response.success) {
+          throw new Error(response.message);
+        }
+        return response.data;
+      }),
       tap(players => {
         console.log('Confirmed players received:', players);
         if (!Array.isArray(players)) {

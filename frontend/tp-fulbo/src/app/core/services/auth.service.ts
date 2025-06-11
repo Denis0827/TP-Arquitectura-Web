@@ -1,6 +1,6 @@
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { BehaviorSubject, Observable, tap, catchError, of, switchMap, throwError } from 'rxjs';
-import { LoginRequest, LoginResponse, RegisterRequest, User } from '../../models/auth.model';
+import { LoginRequest, LoginResponse, RegisterRequest, User, RegisterResponse } from '../../models/auth.model';
 import { isPlatformBrowser } from '@angular/common';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
@@ -65,33 +65,33 @@ export class AuthService {
   private setAuthData(response: LoginResponse): void {
     if (isPlatformBrowser(this.platformId)) {
       // Generar un token temporal (en producción esto vendría del backend)
-      const tempToken = btoa(`${response.userId}:${Date.now()}`);
+      const tempToken = btoa(`${response.data.userId}:${Date.now()}`);
       localStorage.setItem(this.TOKEN_KEY, tempToken);
       
       // Guardar el usuario
       const user: User = {
-        id: response.userId,
+        id: response.data.userId,
         email: '',
         firstName: '',
         lastName: '',
-        role: response.userType
+        role: response.data.userType
       };
       localStorage.setItem(this.USER_KEY, JSON.stringify(user));
       
       // Guardar el tipo de usuario
-      const isCoach = response.userType === 'Coach';
+      const isCoach = response.data.userType === 'Coach';
       localStorage.setItem(this.IS_COACH_KEY, isCoach.toString());
       
       // Calcular y guardar la fecha de expiración (24 horas desde ahora)
       const expiryTime = Date.now() + (24 * 60 * 60 * 1000);
       localStorage.setItem(this.TOKEN_EXPIRY_KEY, expiryTime.toString());
     }
-    this.currentUserSubject.next(response.userId ? {
-      id: response.userId,
+    this.currentUserSubject.next(response.data.userId ? {
+      id: response.data.userId,
       email: '',
       firstName: '',
       lastName: '',
-      role: response.userType
+      role: response.data.userType
     } : null);
   }
 
@@ -107,23 +107,27 @@ export class AuthService {
     return this.apiService.post<LoginResponse>('api/user/login', credentials)
       .pipe(
         switchMap(response => {
+          if (!response.success) {
+            throw new Error(response.message);
+          }
+
           // Primero guardamos los datos básicos
-          const tempToken = btoa(`${response.userId}:${Date.now()}`);
+          const tempToken = btoa(`${response.data.userId}:${Date.now()}`);
           localStorage.setItem(this.TOKEN_KEY, tempToken);
-          localStorage.setItem(this.IS_COACH_KEY, (response.userType === 'Coach').toString());
+          localStorage.setItem(this.IS_COACH_KEY, (response.data.userType === 'Coach').toString());
           const expiryTime = Date.now() + (24 * 60 * 60 * 1000);
           localStorage.setItem(this.TOKEN_EXPIRY_KEY, expiryTime.toString());
 
           // Luego obtenemos los datos completos del usuario
-          const endpoint = response.userType === 'Coach' ? 'coaches' : 'players';
-          return this.apiService.get<any>(`api/user/${endpoint}/${response.userId}`).pipe(
+          const endpoint = response.data.userType === 'Coach' ? 'coaches' : 'players';
+          return this.apiService.get<any>(`api/user/${endpoint}/${response.data.userId}`).pipe(
             tap(userData => {
               const user: User = {
-                id: response.userId,
-                email: userData.email,
-                firstName: userData.nombre || userData.firstName,
-                lastName: userData.apellido || userData.lastName,
-                role: response.userType
+                id: response.data.userId,
+                email: userData.data.email,
+                firstName: userData.data.nombre || userData.data.firstName,
+                lastName: userData.data.apellido || userData.data.lastName,
+                role: response.data.userType
               };
               localStorage.setItem(this.USER_KEY, JSON.stringify(user));
               this.currentUserSubject.next(user);
@@ -132,11 +136,11 @@ export class AuthService {
               console.error('Error fetching user details:', error);
               // Si falla, al menos guardamos los datos básicos
               const basicUser: User = {
-                id: response.userId,
+                id: response.data.userId,
                 email: '',
                 firstName: '',
                 lastName: '',
-                role: response.userType
+                role: response.data.userType
               };
               localStorage.setItem(this.USER_KEY, JSON.stringify(basicUser));
               this.currentUserSubject.next(basicUser);
@@ -151,12 +155,14 @@ export class AuthService {
       );
   }
 
-  register(userData: RegisterRequest): Observable<User> {
-    return this.apiService.post<User>('api/user/register', userData)
+  register(userData: RegisterRequest): Observable<RegisterResponse> {
+    return this.apiService.post<RegisterResponse>('api/user/register', userData)
       .pipe(
         tap(response => {
-          // Handle successful registration, e.g., navigate to login
-          this.router.navigate(['/auth/login']);
+          if (response.success) {
+            // Solo redirigir si el registro fue exitoso
+            this.router.navigate(['/auth/login']);
+          }
         }),
         catchError(error => {
           console.error('Registration error:', error);

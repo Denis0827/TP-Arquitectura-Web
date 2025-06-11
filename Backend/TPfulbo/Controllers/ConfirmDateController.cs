@@ -23,7 +23,7 @@ namespace TPfulbo.Controllers
         public async Task<ActionResult<IEnumerable<ConfirmDate>>> GetAllDates()
         {
             var dates = await _dateManager.GetAllDates();
-            return Ok(dates);
+            return Ok(ApiResponse<object>.CreateSuccess(dates, "Fechas obtenidas exitosamente"));
         }
 
         [HttpGet("{idDate}")]
@@ -31,8 +31,8 @@ namespace TPfulbo.Controllers
         {
             var date = await _dateManager.GetDateById(idDate);
             if (date == null)
-                return NotFound("Fecha no encontrada");
-            return Ok(date);
+                return NotFound(ApiResponse<object>.CreateError("Fecha no encontrada"));
+            return Ok(ApiResponse<object>.CreateSuccess(date, "Fecha encontrada exitosamente"));
         }
 
         [HttpDelete("{idDate}")]
@@ -40,8 +40,8 @@ namespace TPfulbo.Controllers
         {
             var success = await _dateManager.DeleteDate(idDate);
             if (!success)
-                return NotFound("Fecha no encontrada");
-            return Ok("Fecha eliminada exitosamente");
+                return NotFound(ApiResponse<object>.CreateError("Fecha no encontrada"));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idDate }, "Fecha eliminada exitosamente"));
         }
 
         [HttpPost("{idDate}/confirm/{idPlayer}")]
@@ -49,15 +49,15 @@ namespace TPfulbo.Controllers
         {
             var (success, message) = await _dateManager.ConfirmPlayer(idDate, idPlayer);
             if (!success)
-                return BadRequest(new { message });
-            return Ok(new { message });
+                return BadRequest(ApiResponse<object>.CreateError(message));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idDate, idPlayer }, message));
         }
 
         [HttpGet("{idDate}/players")]
         public async Task<ActionResult<List<int>>> GetConfirmedPlayers(int idDate)
         {
             var players = await _dateManager.GetConfirmedPlayers(idDate);
-            return Ok(players);
+            return Ok(ApiResponse<object>.CreateSuccess(players, "Players confirmados obtenidos exitosamente"));
         }
 
         [HttpDelete("{idDate}/confirm/{idPlayer}")]
@@ -65,8 +65,8 @@ namespace TPfulbo.Controllers
         {
             var (success, message) = await _dateManager.CancelPlayerConfirmation(idDate, idPlayer);
             if (!success)
-                return BadRequest(new { message });
-            return Ok(new { message });
+                return BadRequest(ApiResponse<object>.CreateError(message));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idDate, idPlayer }, message));
         }
     }
 } 

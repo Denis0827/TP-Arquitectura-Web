@@ -36,7 +36,7 @@ export class LoginComponent {
 
     this.authService.login(credentials).subscribe({
       next: () => {
-        this.router.navigate(['/dates']);
+        this.router.navigate(['/home']);
         this.loading = false;
       },
       error: (err) => {

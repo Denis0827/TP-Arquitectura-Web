@@ -33,17 +33,17 @@ namespace TPfulbo.Controllers
 
             if (!success)
             {
-                return BadRequest(message);
+                return BadRequest(ApiResponse<object>.CreateError(message));
             }
 
-            return Ok(new { message, matchId = match.IdMatch });
+            return Ok(ApiResponse<object>.CreateSuccess(new { matchId = match.IdMatch }, message));
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Match>>> GetAllMatches()
         {
             var matches = await _matchManager.GetAllMatches();
-            return Ok(matches);
+            return Ok(ApiResponse<object>.CreateSuccess(matches, "Partidos obtenidos exitosamente"));
         }
 
         [HttpGet("{idMatch}")]
@@ -51,29 +51,29 @@ namespace TPfulbo.Controllers
         {
             var match = await _matchManager.GetMatchById(idMatch);
             if (match == null)
-                return NotFound("Partido no encontrado");
-            return Ok(match);
+                return NotFound(ApiResponse<object>.CreateError("Partido no encontrado"));
+            return Ok(ApiResponse<object>.CreateSuccess(match, "Partido encontrado exitosamente"));
         }
 
         [HttpGet("category/{idCategory}")]
         public async Task<ActionResult<IEnumerable<Match>>> GetMatchesByCategory(int idCategory)
         {
             var matches = await _matchManager.GetMatchesByCategory(idCategory);
-            return Ok(matches);
+            return Ok(ApiResponse<object>.CreateSuccess(matches, "Partidos de la categoría obtenidos exitosamente"));
         }
 
         [HttpGet("coaches/{idCoach}")]
         public async Task<ActionResult<IEnumerable<Match>>> GetMatchesByCoach(int idCoach)
         {
             var matches = await _matchManager.GetMatchesByCoach(idCoach);
-            return Ok(matches);
+            return Ok(ApiResponse<object>.CreateSuccess(matches, "Partidos del coach obtenidos exitosamente"));
         }
 
         [HttpGet("players/{idPlayer}")]
         public async Task<ActionResult<IEnumerable<Match>>> GetMatchesByPlayer(int idPlayer)
         {
             var matches = await _matchManager.GetMatchesByPlayer(idPlayer);
-            return Ok(matches);
+            return Ok(ApiResponse<object>.CreateSuccess(matches, "Partidos del player obtenidos exitosamente"));
         }
 
         [HttpDelete("{idMatch}")]
@@ -81,8 +81,8 @@ namespace TPfulbo.Controllers
         {
             var (success, message) = await _matchManager.DeleteMatch(idMatch);
             if (!success)
-                return NotFound("Partido no encontrado");
-            return Ok("Partido eliminado exitosamente");
+                return NotFound(ApiResponse<object>.CreateError(message));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idMatch }, message));
         }
     }
 } 

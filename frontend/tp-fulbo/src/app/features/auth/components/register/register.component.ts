@@ -197,8 +197,8 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.error('Registration error:', err);
-        if (err.error && err.error.message) {
-          this.emailError = String(err.error.message);
+        if (err.error && err.error.message == 'El mail ya está registrado') {
+          this.emailError = 'El mail ya está registrado.';
         } else {
           this.generalError = 'Error al registrar. Por favor, intenta de nuevo.';
         }

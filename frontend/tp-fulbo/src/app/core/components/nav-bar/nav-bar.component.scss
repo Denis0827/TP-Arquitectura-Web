@@ -18,6 +18,8 @@
   bottom: 0;
   z-index: 1000;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 
   &.open {
     transform: translateX(0);
@@ -39,23 +41,45 @@
   }
 
   .user-info {
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    align-items: center;
+    gap: 1rem;
 
-    .user-role {
-      font-size: 0.8rem;
-      color: #3498db;
-      font-weight: 500;
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: #1687d38e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: white;
+      text-transform: uppercase;
     }
 
-    .user-name {
-      font-size: 0.9rem;
-      color: white;
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      text-align: left;
+
+      .user-name {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: white;
+      }
+
+      .user-role {
+        font-size: 0.8rem;
+        color: #3498db;
+        font-weight: 500;
+      }
     }
   }
 }
@@ -64,6 +88,9 @@
   list-style: none;
   padding: 0;
   margin: 1rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
   li {
     margin: 0.5rem 0;
@@ -89,6 +116,37 @@
 
   .icon {
     margin-right: 0.75rem;
+  }
+
+  .logout-item {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    .logout-button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: none;
+      color: rgba(255, 255, 255, 0.7);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s;
+
+      &:hover {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .icon {
+        font-size: 1.2rem;
+        margin-right: 0.75rem;
+      }
+
+      .label {
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 
@@ -134,6 +192,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex: 1;
 
     h1 {
       margin: 0;
@@ -143,20 +202,42 @@
     .user-info {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 1rem;
       padding: 0.5rem 1rem;
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      margin-left: auto;
 
-      .user-role {
-        font-size: 0.8rem;
-        color: #3498db;
-        font-weight: 500;
-      }
-
-      .user-name {
+      .user-avatar {
+        width: 32px;
+        height: 32px;
+        background-color: #246c9ca2;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
         font-size: 0.9rem;
         color: white;
+        text-transform: uppercase;
+      }
+
+      .user-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .user-name {
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: white;
+        }
+
+        .user-role {
+          font-size: 0.75rem;
+          color: #3498db;
+          font-weight: 500;
+        }
       }
     }
   }

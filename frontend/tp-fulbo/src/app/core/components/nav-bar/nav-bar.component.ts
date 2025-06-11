@@ -39,9 +39,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
+      this.isCoach = this.authService.isCoach();
     });
-
-    this.isCoach = this.authService.isCoach();
   }
 
   toggleMenu() {
@@ -54,11 +53,26 @@ export class NavBarComponent implements OnInit {
 
   getUserDisplayName(): string {
     if (!this.currentUser) return '';
-    return `${this.currentUser.firstName} ${this.currentUser.lastName}`.trim() || this.currentUser.email;
+    const firstName = this.currentUser.firstName || '';
+    const lastName = this.currentUser.lastName || '';
+    const fullName = `${firstName} ${lastName}`.trim();
+    return fullName || 'Usuario';
   }
 
   getUserRole(): string {
     if (!this.currentUser) return '';
     return this.currentUser.role === 'Coach' ? 'Entrenador' : 'Jugador';
+  }
+
+  getUserInitials(): string {
+    if (!this.currentUser) return '';
+    const firstName = this.currentUser.firstName || '';
+    const lastName = this.currentUser.lastName || '';
+    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase() || 'U';
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 }

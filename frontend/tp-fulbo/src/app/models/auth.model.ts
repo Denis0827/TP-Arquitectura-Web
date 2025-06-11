@@ -18,9 +18,12 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
+  success: boolean;
   message: string;
-  userType: 'Player' | 'Coach';
-  userId: number;
+  data: {
+    userType: 'Player' | 'Coach';
+    userId: number;
+  };
 }
 
 export interface RegisterRequest {
@@ -30,6 +33,14 @@ export interface RegisterRequest {
   Apellido: string;
   FechaNacimiento: string;
   Telefono: string;
+}
+
+export interface RegisterResponse {
+  success: boolean;
+  message: string;
+  data: {
+    playerId: number;
+  };
 }
 
 export interface Player extends User {

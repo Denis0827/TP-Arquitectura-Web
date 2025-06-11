@@ -32,10 +32,10 @@ namespace TPfulbo.Controllers
 
             if (!success)
             {
-                return BadRequest(message);
+                return BadRequest(ApiResponse<object>.CreateError(message));
             }
 
-            return Ok(new { message, playerId = player.IdUser });
+            return Ok(ApiResponse<object>.CreateSuccess(new { playerId = player.IdUser }, message));
         }
 
         [HttpPost("login")]
@@ -45,10 +45,10 @@ namespace TPfulbo.Controllers
             
             if (!success)
             {
-                return BadRequest(message);
+                return BadRequest(ApiResponse<object>.CreateError(message));
             }
 
-            return Ok(new { message, userType, userId });
+            return Ok(ApiResponse<object>.CreateSuccess(new { userType, userId }, message));
         }
 
         [HttpPost("players/{playerId}/coach")]
@@ -57,17 +57,17 @@ namespace TPfulbo.Controllers
             var (success, message) = await _userManager.CreateCoach(playerId);
             if (!success)
             {
-                return BadRequest(message);
+                return BadRequest(ApiResponse<object>.CreateError(message));
             }
 
-            return Ok(message);
+            return Ok(ApiResponse<object>.CreateSuccess(new { playerId }, message));
         }
 
         [HttpGet("coaches")]
         public async Task<IActionResult> GetAllCoaches()
         {
             var coaches = await _userManager.GetAllCoaches();
-            return Ok(coaches);
+            return Ok(ApiResponse<object>.CreateSuccess(coaches, "Coaches obtenidos exitosamente"));
         }
 
         [HttpGet("coaches/{idCoach}")]
@@ -75,8 +75,8 @@ namespace TPfulbo.Controllers
         {
             var coach = await _userManager.GetCoachById(idCoach);
             if (coach == null)
-                return NotFound("Coach no encontrado");
-            return Ok(coach);
+                return NotFound(ApiResponse<object>.CreateError("Coach no encontrado"));
+            return Ok(ApiResponse<object>.CreateSuccess(coach, "Coach encontrado exitosamente"));
         }
 
         [HttpDelete("coaches/{idCoach}")]
@@ -84,15 +84,15 @@ namespace TPfulbo.Controllers
         {
             var success = await _userManager.DeleteCoach(idCoach);
             if (!success)
-                return NotFound("Coach no encontrado");
-            return Ok("Coach eliminado exitosamente");
+                return NotFound(ApiResponse<object>.CreateError("Coach no encontrado"));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idCoach }, "Coach eliminado exitosamente"));
         }
 
         [HttpGet("players")]
         public async Task<IActionResult> GetAllPlayers()
         {
             var players = await _userManager.GetAllPlayers();
-            return Ok(players);
+            return Ok(ApiResponse<object>.CreateSuccess(players, "Players obtenidos exitosamente"));
         }
 
         [HttpGet("players/{idPlayer}")]
@@ -100,8 +100,8 @@ namespace TPfulbo.Controllers
         {
             var player = await _userManager.GetPlayerById(idPlayer);
             if (player == null)
-                return NotFound("Player no encontrado");
-            return Ok(player);
+                return NotFound(ApiResponse<object>.CreateError("Player no encontrado"));
+            return Ok(ApiResponse<object>.CreateSuccess(player, "Player encontrado exitosamente"));
         }
 
         [HttpDelete("players/{idPlayer}")]
@@ -109,11 +109,9 @@ namespace TPfulbo.Controllers
         {
             var success = await _userManager.DeletePlayer(idPlayer);
             if (!success)
-                return NotFound("Player no encontrado");
-            return Ok("Player eliminado exitosamente");
+                return NotFound(ApiResponse<object>.CreateError("Player no encontrado"));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idPlayer }, "Player eliminado exitosamente"));
         }
-
-
     }
 } 
 

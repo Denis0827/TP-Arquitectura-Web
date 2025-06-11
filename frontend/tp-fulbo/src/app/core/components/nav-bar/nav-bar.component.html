@@ -3,8 +3,13 @@
     <div class="sidebar-header">
       <h1>TP Fulbo</h1>
       <div *ngIf="currentUser" class="user-info">
-        <span class="user-role">{{ getUserRole() }}</span>
-        <span class="user-name">{{ getUserDisplayName() }}</span>
+        <div class="user-avatar">
+          {{ getUserInitials() }}
+        </div>
+        <div class="user-details">
+          <span class="user-name">{{ getUserDisplayName() }}</span>
+          <span class="user-role">{{ getUserRole() }}</span>
+        </div>
       </div>
     </div>
     <ul class="nav-list">
@@ -37,20 +42,31 @@
             </a>
           </ng-template>
         </li>
-    }
+      }
+      <li class="logout-item">
+        <button class="logout-button" (click)="logout()">
+          <span class="icon">⇠</span>
+          <span class="label">Cerrar Sesión</span>
+        </button>
+      </li>
     </ul>
   </nav>
 
   <div class="main-content">
     <header class="top-bar">
       <button class="menu-toggle" (click)="toggleMenu()">
-        <span class="menu-icon" style="color: aqua;">☰</span>
+        <span class="menu-icon">☰</span>
       </button>
       <div class="header-content">
         <h1>TP Fulbo</h1>
         <div *ngIf="currentUser" class="user-info">
-          <span class="user-role">{{ getUserRole() }}</span>
-          <span class="user-name">{{ getUserDisplayName() }}</span>
+          <div class="user-avatar">
+            {{ getUserInitials() }}
+          </div>
+          <div class="user-details">
+            <span class="user-name">{{ getUserDisplayName() }}</span>
+            <span class="user-role">{{ getUserRole() }}</span>
+          </div>
         </div>
       </div>
     </header>

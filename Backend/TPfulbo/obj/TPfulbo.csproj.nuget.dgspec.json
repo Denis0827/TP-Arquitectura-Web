@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj": {}
+    "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj": {
+    "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
+        "projectUniqueName": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
         "projectName": "TPfulbo",
-        "projectPath": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
+        "projectPath": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
         "packagesPath": "C:\\Users\\Denis Wu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\obj\\",
+        "outputPath": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Denis Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
