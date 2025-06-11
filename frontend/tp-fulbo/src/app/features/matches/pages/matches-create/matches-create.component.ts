@@ -24,7 +24,7 @@ interface TeamAssignment {
 })
 export class MatchesCreateComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
+  router = inject(Router);
   private confirmDateService = inject(ConfirmDateService);
   private userService = inject(UserService);
   private apiService = inject(ApiService);

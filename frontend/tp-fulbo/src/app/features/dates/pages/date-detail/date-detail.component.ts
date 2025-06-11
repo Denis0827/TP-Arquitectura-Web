@@ -5,7 +5,6 @@ import { ConfirmDateService } from '../../services/confirm-date.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { UserService } from '../../../../core/services/user.service';
 import { ConfirmDate } from '../../../../models/confirm-date.model';
-import { PlayerAssistCardComponent } from '../../components/player-assist-card/player-assist-card.component';
 import { Player } from '../../../../models/auth.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { forkJoin, of } from 'rxjs';
@@ -15,7 +14,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-date-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, PlayerAssistCardComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './date-detail.component.html',
   styleUrl: './date-detail.component.scss'
 })

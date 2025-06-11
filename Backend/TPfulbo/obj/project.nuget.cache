@@ -1,23 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "Chq25ErxdwQTFTx4u+x0lpktLUBsS9F+6qyjbuY3n9ALCvgki3RxvC0JPHupq0bPc9EFcCLCnNqK+Gu0eG/7UA==",
+  "dgSpecHash": "GVV6r7L8PY4=",
   "success": true,
-  "projectFilePath": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
+  "projectFilePath": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
   "expectedPackageFiles": [
-    "/Users/gs/.nuget/packages/microsoft.aspnetcore.openapi/8.0.16/microsoft.aspnetcore.openapi.8.0.16.nupkg.sha512",
-    "/Users/gs/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
-    "/Users/gs/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
-    "/Users/gs/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
-    "/Users/gs/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
-    "/Users/gs/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.2/swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
-    "/Users/gs/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.6.2/swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512"
+    "/Users/victorpablonavajas/.nuget/packages/microsoft.aspnetcore.openapi/8.0.16/microsoft.aspnetcore.openapi.8.0.16.nupkg.sha512",
+    "/Users/victorpablonavajas/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/victorpablonavajas/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/Users/victorpablonavajas/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
+    "/Users/victorpablonavajas/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
+    "/Users/victorpablonavajas/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.2/swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
+    "/Users/victorpablonavajas/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.6.2/swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Access to the path '/Users/gs/.local/share' is denied."
-    }
-  ]
+  "logs": []
 }
