@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vk9C3LprPhA=",
+  "dgSpecHash": "F4rqtbAHyuE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
+  "projectFilePath": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Denis Wu\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.16\\microsoft.aspnetcore.openapi.8.0.16.nupkg.sha512",
     "C:\\Users\\Denis Wu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

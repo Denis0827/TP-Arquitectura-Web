@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmDateService } from '../../services/confirm-date.service';
 import { AuthService } from '../../../../core/services/auth.service';
+import { UserService } from '../../../../core/services/user.service';
 import { ConfirmDate } from '../../../../models/confirm-date.model';
 import { PlayerAssistCardComponent } from '../../components/player-assist-card/player-assist-card.component';
 import { Player } from '../../../../models/auth.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { forkJoin, of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-date-detail',
@@ -20,6 +23,7 @@ export class DateDetailComponent implements OnInit {
   private router = inject(Router);
   private datesService = inject(ConfirmDateService);
   private authService = inject(AuthService);
+  private userService = inject(UserService);
 
   date: ConfirmDate | null = null;
   loading = true;
@@ -68,14 +72,42 @@ export class DateDetailComponent implements OnInit {
 
   private loadConfirmedPlayers(dateId: number) {
     this.datesService.getConfirmedPlayers(dateId).subscribe({
-      next: (players: number[]) => {
-        this.confirmedPlayers = players;
-        this.loading = false;
+      next: (playerIds: number[]) => {
+        this.confirmedPlayers = playerIds;
+        this.loadPlayersDetails(playerIds);
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error loading confirmed players:', error);
         this.error = 'Error al cargar los jugadores confirmados';
         this.loading = false;
+      }
+    });
+  }
+
+  private loadPlayersDetails(playerIds: number[]) {
+    if (playerIds.length === 0) {
+      this.loading = false;
+      return;
+    }
+
+    const playerRequests = playerIds.map(id => 
+      this.userService.getPlayerById(id).pipe(
+        catchError(error => {
+          console.error(`Error loading player ${id}:`, error);
+          return of(null);
+        })
+      )
+    );
+
+    forkJoin(playerRequests).pipe(
+      finalize(() => this.loading = false)
+    ).subscribe({
+      next: (players) => {
+        this.players = players.filter((player): player is Player => player !== null);
+      },
+      error: (error) => {
+        console.error('Error loading players details:', error);
+        this.error = 'Error al cargar los detalles de los jugadores';
       }
     });
   }
