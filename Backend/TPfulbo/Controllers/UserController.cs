@@ -19,7 +19,7 @@ namespace TPfulbo.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> CreatePlayer([FromBody] PlayerRequest request)
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             var (success, message, player) = await _userManager.CreatePlayer(
                 request.Nombre,
@@ -27,21 +27,21 @@ namespace TPfulbo.Controllers
                 request.FechaNacimiento,
                 request.Mail,
                 request.Telefono,
-                request.Contraseña
+                request.Contraseña,
+                request.DNI,
+                request.Edad
             );
 
             if (!success)
-            {
                 return BadRequest(ApiResponse<object>.CreateError(message));
-            }
 
-            return Ok(ApiResponse<object>.CreateSuccess(new { playerId = player.IdUser }, message));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idPlayer = player.IdUser }, message));
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            (bool success, string message, string userType, int userId) = await _userManager.Login(request.mail, request.contraseña);
+            (bool success, string message, string userType, int userId) = await _userManager.Login(request.Mail, request.Contraseña);
             
             if (!success)
             {
@@ -51,16 +51,16 @@ namespace TPfulbo.Controllers
             return Ok(ApiResponse<object>.CreateSuccess(new { userType, userId }, message));
         }
 
-        [HttpPost("players/{playerId}/coach")]
-        public async Task<IActionResult> CreateCoach(int playerId)
+        [HttpPost("players/{idPlayer}/coach")]
+        public async Task<IActionResult> CreateCoach(int idPlayer, [FromBody] CreateCoachRequest request)
         {
-            var (success, message) = await _userManager.CreateCoach(playerId);
+            var (success, message) = await _userManager.CreateCoach(idPlayer, request.Licencia, request.FechaIngreso, request.AniosExperiencia);
             if (!success)
             {
                 return BadRequest(ApiResponse<object>.CreateError(message));
             }
 
-            return Ok(ApiResponse<object>.CreateSuccess(new { playerId }, message));
+            return Ok(ApiResponse<object>.CreateSuccess(new { idPlayer }, message));
         }
 
         [HttpGet("coaches")]

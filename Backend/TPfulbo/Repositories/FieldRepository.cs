@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public FieldRepository()
         {
-            _jsonFilePath = Path.Combine("Data", "fields.json");
+            _jsonFilePath = Path.Combine("..", "..", "Data", "fields.json");
             LoadFields();
         }
 

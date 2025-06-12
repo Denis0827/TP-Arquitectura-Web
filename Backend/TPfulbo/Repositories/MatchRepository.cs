@@ -17,7 +17,7 @@ namespace TPfulbo.Repositories
 
         public MatchRepository(ITeamRepository teamRepository)
         {
-            _jsonFilePath = Path.Combine("Data", "matches.json");
+            _jsonFilePath = Path.Combine("..", "..", "Data", "matches.json");
             _teamRepository = teamRepository;
             LoadMatches();
         }
@@ -38,7 +38,7 @@ namespace TPfulbo.Repositories
 
         private void SaveMatches()
         {
-            string jsonString = JsonSerializer.Serialize(_matches);
+            string jsonString = JsonSerializer.Serialize(_matches, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_jsonFilePath, jsonString);
         }
 

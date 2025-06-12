@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public CoachRepository()
         {
-            _jsonFilePath = Path.Combine("Data", "coaches.json");
+            _jsonFilePath = Path.Combine("..", "..", "Data", "coaches.json");
             LoadCoaches();
         }
 
@@ -55,10 +55,13 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_coaches.FirstOrDefault(c => c.Mail.Equals(email, StringComparison.OrdinalIgnoreCase)));
         }
 
-        public async Task<Coach> CreateCoach(int playerId, string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña)
+        public async Task<Coach> CreateCoach(string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña, string licencia, DateTime fechaIngreso, int aniosExperiencia)
         {
             int newId = _coaches.Count > 0 ? _coaches.Max(c => c.IdUser) + 1 : 1;
-            var newCoach = new Coach(playerId, nombre, apellido, fechaNacimiento, mail, telefono, contraseña);
+            var newCoach = new Coach(nombre, apellido, fechaNacimiento, mail, telefono, contraseña, licencia, fechaIngreso, aniosExperiencia)
+            {
+                IdUser = newId
+            };
 
             _coaches.Add(newCoach);
             SaveCoaches();

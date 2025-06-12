@@ -9,7 +9,7 @@ namespace TPfulbo.Repositories.Interfaces
     {
         Task<IEnumerable<Player>> GetAllPlayers();
         Task<Player> GetPlayerById(int idPlayer);
-        Task<Player> CreatePlayer(string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña);
+        Task<Player> CreatePlayer(string nombre, string apellido, string fechaNacimiento, string mail, string telefono, string contraseña, string dni, int edad);
         Task<bool> DeletePlayer(int idPlayer);
         Task<Player> GetPlayerByEmail(string email);
     }

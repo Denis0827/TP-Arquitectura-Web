@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public CategoryRepository()
         {
-            _jsonFilePath = Path.Combine("Data", "categories.json");
+            _jsonFilePath = Path.Combine("..", "..", "Data", "categories.json");
             LoadCategories();
         }
 

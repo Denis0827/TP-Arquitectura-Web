@@ -56,8 +56,8 @@ namespace TPfulbo.Controllers
         [HttpGet("{idDate}/players")]
         public async Task<ActionResult<List<int>>> GetConfirmedPlayers(int idDate)
         {
-            var players = await _dateManager.GetConfirmedPlayers(idDate);
-            return Ok(ApiResponse<object>.CreateSuccess(players, "Players confirmados obtenidos exitosamente"));
+            var idPlayers = await _dateManager.GetConfirmedPlayers(idDate);
+            return Ok(ApiResponse<object>.CreateSuccess(idPlayers, "Players confirmados obtenidos exitosamente"));
         }
 
         [HttpDelete("{idDate}/confirm/{idPlayer}")]
@@ -67,6 +67,16 @@ namespace TPfulbo.Controllers
             if (!success)
                 return BadRequest(ApiResponse<object>.CreateError(message));
             return Ok(ApiResponse<object>.CreateSuccess(new { idDate, idPlayer }, message));
+        }
+
+        [HttpPost("coaches/{idCoach}/createDate")]
+        public async Task<IActionResult> CreateDate(int idCoach, [FromBody] CreateDateRequest request)
+        {
+            var (success, message, date) = await _dateManager.CreateDate(idCoach, request.Fecha);
+            if (!success)
+                return BadRequest(ApiResponse<object>.CreateError(message));
+
+            return Ok(ApiResponse<ConfirmDate>.CreateSuccess(date, message));
         }
     }
 } 

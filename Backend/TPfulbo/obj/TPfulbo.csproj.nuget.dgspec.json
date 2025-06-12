@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj": {}
+    "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj": {}
   },
   "projects": {
-    "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj": {
+    "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
+        "projectUniqueName": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
         "projectName": "TPfulbo",
-        "projectPath": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
-        "packagesPath": "/Users/victorpablonavajas/.nuget/packages/",
-        "outputPath": "/Users/victorpablonavajas/Desktop/fq/Arquiweb/TP-Arquitectura-Web/Backend/TPfulbo/obj/",
+        "projectPath": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
+        "packagesPath": "C:\\Users\\Denis Wu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Denis Wu\\Desktop\\Nueva carpeta\\TP-Arquitectura-Web\\Backend\\TPfulbo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/victorpablonavajas/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Denis Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -71,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.409/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

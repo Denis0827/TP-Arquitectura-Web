@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public ConfirmDateRepository()
         {
-            _jsonFilePath = Path.Combine("Data", "dates.json");
+            _jsonFilePath = Path.Combine("..", "..", "Data", "dates.json");
             LoadDates();
         }
 

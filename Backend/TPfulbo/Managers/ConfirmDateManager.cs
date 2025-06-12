@@ -10,11 +10,16 @@ namespace TPfulbo.Managers
     public class ConfirmDateManager
     {
         private readonly IConfirmDateRepository _dateRepository;
+        private readonly ICoachRepository _coachRepository;
         private readonly ConfirmDateValidator _dateValidator;
 
-        public ConfirmDateManager(IConfirmDateRepository dateRepository, ConfirmDateValidator dateValidator)
+        public ConfirmDateManager(
+            IConfirmDateRepository dateRepository,
+            ICoachRepository coachRepository,
+            ConfirmDateValidator dateValidator)
         {
             _dateRepository = dateRepository;
+            _coachRepository = coachRepository;
             _dateValidator = dateValidator;
         }
 
@@ -63,6 +68,24 @@ namespace TPfulbo.Managers
 
             var result = await _dateRepository.CancelPlayerConfirmation(idDate, idPlayer);
             return (result, result ? "Confirmación cancelada exitosamente" : "Error al cancelar la confirmación");
+        }
+
+        public async Task<(bool success, string message, ConfirmDate date)> CreateDate(int idCoach, DateTime fecha)
+        {
+            // Validar que el coach existe
+            var coach = await _coachRepository.GetCoachById(idCoach);
+            if (coach == null)
+            {
+                return (false, "No tienes permiso para realizar esta función", null);
+            }
+
+            // Check if date already exists
+            var existingDate = await _dateRepository.GetDateByFecha(fecha);
+            if (existingDate != null)
+                return (false, "Ya existe una fecha para este día y hora", null);
+
+            var newDate = await _dateRepository.CreateDate(fecha);
+            return (true, "Fecha creada exitosamente", newDate);
         }
     }
 } 

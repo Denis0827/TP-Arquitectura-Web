@@ -1,0 +1,22 @@
+<div class="player-card">
+  <div class="player-info">
+    <span class="player-name">{{ player.nombre }} {{ player.apellido }}</span>
+  </div>
+  
+  <div class="team-selector">
+    <div class="split-button">
+      <button 
+        class="team-a"
+        [class.active]="selectedTeam === 'A'"
+        (click)="onTeamChange('A')">
+        Equipo A
+      </button>
+      <button 
+        class="team-b"
+        [class.active]="selectedTeam === 'B'"
+        (click)="onTeamChange('B')">
+        Equipo B
+      </button>
+    </div>
+  </div>
+</div>

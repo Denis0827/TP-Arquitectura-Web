@@ -13,15 +13,18 @@ namespace TPfulbo.Managers
         private readonly IMatchRepository _matchRepository;
         private readonly TeamManager _teamManager;
         private readonly MatchValidator _matchValidator;
+        private readonly ICoachRepository _coachRepository;
 
         public MatchManager(
             IMatchRepository matchRepository,
             TeamManager teamManager,
-            MatchValidator matchValidator)
+            MatchValidator matchValidator,
+            ICoachRepository coachRepository)
         {
             _matchRepository = matchRepository;
             _teamManager = teamManager;
             _matchValidator = matchValidator;
+            _coachRepository = coachRepository;
         }
 
         public async Task<IEnumerable<Match>> GetAllMatches()
@@ -51,6 +54,13 @@ namespace TPfulbo.Managers
 
         public async Task<(bool success, string message, Match match)> CreateMatch(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
         {
+            // Validar que el coach existe
+            var coach = await _coachRepository.GetCoachById(idCoach);
+            if (coach == null)
+            {
+                return (false, "No tienes permiso para realizar esta función.", null);
+            }
+
             // Validar todos los datos
             var (isValid, message) = await _matchValidator.ValidateMatchData(idField, idDate, idCategory, idPlayersTeamA, idPlayersTeamB);
             if (!isValid)

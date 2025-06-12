@@ -1,0 +1,75 @@
+.player-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+
+  .player-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .player-name {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .player-position {
+      color: #666;
+      font-size: 0.9em;
+    }
+  }
+
+  .team-selector {
+    .split-button {
+      display: flex;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid #e0e0e0;
+      width: 200px;
+
+      button {
+        flex: 1;
+        padding: 8px 16px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        color: #666;
+
+        &.team-a {
+          border-right: 1px solid #e0e0e0;
+          
+          &.active {
+            background-color: #2196F3;
+            color: white;
+          }
+
+          &:hover:not(.active) {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: #2196F3;
+          }
+        }
+
+        &.team-b {
+          border-left: 1px solid #e0e0e0;
+          
+          &.active {
+            background-color: #FF5722;
+            color: white;
+          }
+
+          &:hover:not(.active) {
+            background-color: rgba(255, 87, 34, 0.1);
+            color: #FF5722;
+          }
+        }
+      }
+    }
+  }
+}
