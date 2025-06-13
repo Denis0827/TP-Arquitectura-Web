@@ -55,10 +55,10 @@ namespace TPfulbo.Repositories
             return await Task.FromResult(_dates.FirstOrDefault(d => d.Fecha.Date == fecha.Date));
         }
 
-        public async Task<ConfirmDate> CreateDate(DateTime fecha)
+        public async Task<ConfirmDate> CreateDate(DateTime fecha, int idField, int idCategory)
         {
             int newId = _dates.Count > 0 ? _dates.Max(d => d.IdDate) + 1 : 1;
-            var newDate = new ConfirmDate(fecha)
+            var newDate = new ConfirmDate(fecha, idField, idCategory)
             {
                 IdDate = newId
             };

@@ -20,14 +20,14 @@ namespace TPfulbo.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ConfirmDate>>> GetAllDates()
+        public async Task<ActionResult<IEnumerable<ConfirmDateResponse>>> GetAllDates()
         {
             var dates = await _dateManager.GetAllDates();
             return Ok(ApiResponse<object>.CreateSuccess(dates, "Fechas obtenidas exitosamente"));
         }
 
         [HttpGet("{idDate}")]
-        public async Task<ActionResult<ConfirmDate>> GetDateById(int idDate)
+        public async Task<ActionResult<ConfirmDateResponse>> GetDateById(int idDate)
         {
             var date = await _dateManager.GetDateById(idDate);
             if (date == null)
@@ -72,11 +72,11 @@ namespace TPfulbo.Controllers
         [HttpPost("coaches/{idCoach}/createDate")]
         public async Task<IActionResult> CreateDate(int idCoach, [FromBody] CreateDateRequest request)
         {
-            var (success, message, date) = await _dateManager.CreateDate(idCoach, request.Fecha);
+            var (success, message, date) = await _dateManager.CreateDate(idCoach, request.Fecha, request.IdField, request.IdCategory);
             if (!success)
                 return BadRequest(ApiResponse<object>.CreateError(message));
 
-            return Ok(ApiResponse<ConfirmDate>.CreateSuccess(date, message));
+            return Ok(ApiResponse<object>.CreateSuccess(date, message));
         }
     }
 } 

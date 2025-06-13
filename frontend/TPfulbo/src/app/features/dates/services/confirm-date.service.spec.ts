@@ -10,14 +10,18 @@ describe('ConfirmDateService', () => {
   let service: ConfirmDateService;
   let httpMock: HttpTestingController;
 
-  const mockDate: ConfirmDate = {
+  const mockDate: ConfirmDate & { idField: number; idCategory: number } = {
     idDate: 1,
     fecha: '2024-03-20T10:00:00',
-    idPlayers: [1, 2, 3]
+    idPlayers: [1, 2, 3],
+    idField: 1,
+    idCategory: 1
   };
 
-  const mockCreateDateRequest: CreateDateRequest = {
-    fecha: '2024-03-20T10:00:00'
+  const mockCreateDateRequest: CreateDateRequest & { idField: number; idCategory: number } = {
+    fecha: '2024-03-20T10:00:00',
+    idField: 1,
+    idCategory: 1
   };
 
   const mockConfirmPlayerResponse: ConfirmPlayerResponse = {
@@ -122,9 +126,11 @@ describe('ConfirmDateService', () => {
   describe('createDate', () => {
     const mockCoachId = 123;
 
-    it('should create a new date', () => {
+    it('should create a new date with field and category', () => {
       service.createDate(mockCoachId, mockCreateDateRequest).subscribe(response => {
         expect(response).toEqual(mockDate);
+        expect(response.idField).toBeDefined();
+        expect(response.idCategory).toBeDefined();
       });
 
       const req = httpMock.expectOne(`${environment.apiUrl}/api/ConfirmDate/coaches/${mockCoachId}/createDate`);

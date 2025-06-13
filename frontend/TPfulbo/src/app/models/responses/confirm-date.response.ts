@@ -6,13 +6,15 @@ export interface ConfirmPlayerResponse {
     data: {
         idDate: number;
         idPlayer: number;
+        idField: number;
+        idCategory: number;
     }
 }
 
 export interface GetDateByIdResponse {
     success: boolean;
     message: string;
-    data: ConfirmDate;
+    data: ConfirmDate & { idField: number; idCategory: number };
 }
 
 export interface GetConfirmedPlayersResponse {
@@ -24,11 +26,11 @@ export interface GetConfirmedPlayersResponse {
 export interface GetAllDatesResponse {
     success: boolean;
     message: string;
-    data: ConfirmDate[];
+    data: (ConfirmDate & { idField: number; idCategory: number })[];
 }
 
 export interface CreateDateResponse {
     success: boolean;
     message: string;
-    data: ConfirmDate;
+    data: ConfirmDate & { idField: number; idCategory: number };
 }

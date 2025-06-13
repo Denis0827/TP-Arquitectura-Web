@@ -2,6 +2,8 @@
   {
     "IdDate": 1,
     "Fecha": "2026-03-20T18:00:00",
+    "IdField": 1,
+    "IdCategory": 2,
     "IdPlayers": [
       2,
       3,
@@ -18,6 +20,8 @@
   {
     "IdDate": 2,
     "Fecha": "2026-03-27T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -32,6 +36,8 @@
   {
     "IdDate": 3,
     "Fecha": "2026-04-03T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -48,6 +54,8 @@
   {
     "IdDate": 4,
     "Fecha": "2026-04-10T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -63,6 +71,8 @@
   {
     "IdDate": 5,
     "Fecha": "2026-04-17T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       4,
@@ -78,6 +88,8 @@
   {
     "IdDate": 6,
     "Fecha": "2026-04-24T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -92,6 +104,8 @@
   {
     "IdDate": 7,
     "Fecha": "2026-05-01T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -107,6 +121,8 @@
   {
     "IdDate": 8,
     "Fecha": "2026-05-08T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -121,6 +137,8 @@
   {
     "IdDate": 9,
     "Fecha": "2026-05-15T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -136,6 +154,8 @@
   {
     "IdDate": 10,
     "Fecha": "2026-05-22T18:00:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": [
       2,
       3,
@@ -151,21 +171,29 @@
   {
     "IdDate": 11,
     "Fecha": "2024-03-20T15:30:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": []
   },
   {
     "IdDate": 12,
     "Fecha": "2025-06-20T03:28:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": []
   },
   {
     "IdDate": 13,
     "Fecha": "2025-06-29T14:12:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": []
   },
   {
     "IdDate": 14,
     "Fecha": "2025-10-13T17:25:00",
+    "IdField": 1,
+    "IdCategory": 1,
     "IdPlayers": []
   }
 ]

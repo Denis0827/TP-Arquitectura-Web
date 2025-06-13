@@ -10,7 +10,7 @@ namespace TPfulbo.Repositories.Interfaces
         Task<IEnumerable<ConfirmDate>> GetAllDates();
         Task<ConfirmDate> GetDateById(int idDate);
         Task<ConfirmDate> GetDateByFecha(DateTime fecha);
-        Task<ConfirmDate> CreateDate(DateTime fecha);
+        Task<ConfirmDate> CreateDate(DateTime fecha, int idField, int idCategory);
         Task<bool> DeleteDate(int idDate);
         Task<bool> ConfirmPlayer(int idDate, int idPlayer);
         Task<List<int>> GetConfirmedPlayers(int idDate);

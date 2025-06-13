@@ -57,7 +57,7 @@ export class ConfirmDateService {
     );
   }
 
-  createDate(idCoach: number, date: CreateDateRequest): Observable<ConfirmDate> {
+  createDate(idCoach: number, date: CreateDateRequest & { idField: number; idCategory: number }): Observable<ConfirmDate & { idField: number; idCategory: number }> {
     console.log(`Creating new date for coach ${idCoach}:`, date);
     return this.apiService.post<CreateDateResponse>(`api/ConfirmDate/coaches/${idCoach}/createDate`, date).pipe(
       map(response => {
