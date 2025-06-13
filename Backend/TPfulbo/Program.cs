@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
         builder => builder
             .WithOrigins(
                 "http://localhost:4200",
-                "http://localhost:53960"
+                "http://localhost:55090"
             )
             .AllowAnyMethod()
             .AllowAnyHeader()
@@ -50,6 +50,8 @@ builder.Services.AddSingleton<UserManager>();
 builder.Services.AddSingleton<TeamManager>();
 builder.Services.AddSingleton<ConfirmDateManager>();
 builder.Services.AddSingleton<MatchManager>();
+builder.Services.AddSingleton<FieldManager>();
+builder.Services.AddSingleton<CategoryManager>();
 
 var app = builder.Build();
 

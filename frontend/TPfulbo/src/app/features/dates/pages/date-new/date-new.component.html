@@ -44,6 +44,44 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="idField">
+          <i class="fas fa-futbol"></i>
+          Campo
+        </label>
+        <select id="idField" formControlName="idField" class="form-control" [class.is-invalid]="dateForm.get('idField')?.invalid && dateForm.get('idField')?.touched">
+          <option value="">Seleccionar campo</option>
+          <option *ngFor="let field of fields" [value]="field.idField">
+            {{field.calle}} {{field.altura}} - {{field.botines ? 'Con botines' : 'Sin botines'}} (Capacidad: {{field.capacidad}})
+          </option>
+        </select>
+        <div *ngIf="dateForm.get('idField')?.invalid && dateForm.get('idField')?.touched" class="invalid-feedback">
+          Por favor selecciona un campo
+        </div>
+        <div *ngIf="loadingFields" class="text-muted">
+          Cargando campos disponibles...
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="idCategory">
+          <i class="fas fa-trophy"></i>
+          Categoría
+        </label>
+        <select id="idCategory" formControlName="idCategory" class="form-control" [class.is-invalid]="dateForm.get('idCategory')?.invalid && dateForm.get('idCategory')?.touched">
+          <option value="">Seleccionar categoría</option>
+          <option *ngFor="let category of categories" [value]="category.idCategory">
+            {{category.anio}} - {{category.genero}}
+          </option>
+        </select>
+        <div *ngIf="dateForm.get('idCategory')?.invalid && dateForm.get('idCategory')?.touched" class="invalid-feedback">
+          Por favor selecciona una categoría
+        </div>
+        <div *ngIf="loadingCategories" class="text-muted">
+          Cargando categorías disponibles...
+        </div>
+      </div>
+
       <div class="error-message" *ngIf="error">
         {{ error }}
       </div>

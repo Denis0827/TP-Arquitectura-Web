@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { User, Player, Coach } from '../../../models/user.model';
 import { LoginRequest } from '../../../models/requests/auth.request';
 import { LoginResponse } from '../../../models/responses/auth.response';
+import { CoachResponse, CoachesResponse } from '../../../models/responses/user.response';
 
 export interface UpdateUserRequest {
   firstName?: string;

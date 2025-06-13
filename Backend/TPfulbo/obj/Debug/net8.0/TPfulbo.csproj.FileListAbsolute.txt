@@ -259,3 +259,10 @@ C:/Users/Denis Wu/Desktop/Nueva carpeta/TP-Arquitectura-Web/Backend/TPfulbo/obj/
 C:/Users/Denis Wu/Desktop/Nueva carpeta/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.pdb
 C:/Users/Denis Wu/Desktop/Nueva carpeta/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/TPfulbo.genruntimeconfig.cache
 C:/Users/Denis Wu/Desktop/Nueva carpeta/TP-Arquitectura-Web/Backend/TPfulbo/obj/Debug/net8.0/ref/TPfulbo.dll
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/categories.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/coaches.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/dates.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/fields.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/matches.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/players.json
+/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/bin/Debug/net8.0/Data/teams.json

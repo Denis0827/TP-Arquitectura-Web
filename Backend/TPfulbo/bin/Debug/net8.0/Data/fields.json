@@ -14,13 +14,5 @@
     "Capacidad": 30,
     "Botines": "Pasto_sintetico",
     "TieneEstacionamiento": false
-  },
-  {
-    "IdField": 3,
-    "Calle": "Av. Figueroa Alcorta",
-    "Altura": 6600,
-    "Capacidad": 300,
-    "Botines": "Pasto_sintetico",
-    "TieneEstacionamiento": true
   }
 ] 

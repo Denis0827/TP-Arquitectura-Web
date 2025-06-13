@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Team, TeamResponse, Player } from '../../../models/team.model';
+import { Team } from '../../../models/team.model';
+import { TeamResponse } from '../../../models/responses/team.response';
+import { Player } from '../../../models/user.model';
 
 export interface CreateTeamRequest {
   name: string;

@@ -1,0 +1,14 @@
+[
+  {
+    "IdUser": 11,
+    "Nombre": "Guido",
+    "Apellido": "Salem",
+    "FechaNacimiento": "13/10/1999",
+    "Mail": "guido.salem2@email.com",
+    "Telefono": "11-1234-5678",
+    "Contrase\u00F1a": "Password123",
+    "Licencia": "A",
+    "FechaIngreso": "2025-03-20T00:00:00",
+    "AniosExperiencia": 5
+  }
+]

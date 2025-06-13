@@ -6,12 +6,16 @@ import { AuthService } from '../../features/auth/services/auth.service';
 import { ConfirmDateService } from '../../features/dates/services/confirm-date.service';
 import { MatchService } from '../../features/matches/services/match.service';
 import { TeamService } from '../../features/teams/services/team.service';
+import { FieldService } from './field.service';
+import { CategoryService } from './category.service';
 import { User, Player, Coach } from '../../models/user.model';
 import { LoginRequest, RegisterRequest } from '../../models/requests/auth.request';
 import { LoginResponse, RegisterResponse } from '../../models/responses/auth.response';
 import { ConfirmDate } from '../../models/confirm-date.model';
 import { Match } from '../../models/match.model';
 import { Team } from '../../models/team.model';
+import { Field, CreateFieldRequest } from '../../models/field.model';
+import { Category } from '../../models/category.model';
 import { CreateDateRequest } from '../../models/requests/confirm-date.request';
 import { CreateTeamRequest, UpdateTeamRequest } from '../../features/teams/services/team.service';
 import { UpdateUserRequest } from '../../features/users/services/user.service';
@@ -26,7 +30,9 @@ export class ServiceFacade {
     private authService: AuthService,
     private confirmDateService: ConfirmDateService,
     private matchService: MatchService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private fieldService: FieldService,
+    private categoryService: CategoryService
   ) {}
 
   // Auth related methods
@@ -148,6 +154,48 @@ export class ServiceFacade {
 
   deleteTeam(teamId: number): Observable<void> {
     return this.teamService.deleteTeam(teamId);
+  }
+
+  // Field related methods
+  getAllFields(): Observable<Field[]> {
+    return this.fieldService.getAllFields();
+  }
+
+  getFieldById(id: number): Observable<Field> {
+    return this.fieldService.getFieldById(id);
+  }
+
+  getFieldsByBotines(botines: string): Observable<Field[]> {
+    return this.fieldService.getFieldsByBotines(botines);
+  }
+
+  getFieldsByEstacionamiento(tieneEstacionamiento: boolean): Observable<Field[]> {
+    return this.fieldService.getFieldsByEstacionamiento(tieneEstacionamiento);
+  }
+
+  createField(field: CreateFieldRequest): Observable<number> {
+    return this.fieldService.createField(field);
+  }
+
+  deleteField(id: number): Observable<void> {
+    return this.fieldService.deleteField(id);
+  }
+
+  // Category related methods
+  getAllCategories(): Observable<Category[]> {
+    return this.categoryService.getAllCategories();
+  }
+
+  getCategoryById(id: number): Observable<Category> {
+    return this.categoryService.getCategoryById(id);
+  }
+
+  createCategory(anio: number, genero: string): Observable<Category> {
+    return this.categoryService.createCategory(anio, genero);
+  }
+
+  deleteCategory(id: number): Observable<void> {
+    return this.categoryService.deleteCategory(id);
   }
 
   // API utility methods
