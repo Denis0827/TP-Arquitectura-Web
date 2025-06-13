@@ -39,6 +39,14 @@
         <span class="icon">🕒</span>
         <span class="text">{{ getFormattedTime() }}</span>
       </div>
+      <div class="info-item" *ngIf="field">
+        <span class="icon">🏟️</span>
+        <span class="text">{{ field.calle }} {{ field.altura }} - {{ field.botines ? 'Con botines' : 'Sin botines' }} (Capacidad: {{ field.capacidad }})</span>
+      </div>
+      <div class="info-item" *ngIf="category">
+        <span class="icon">🏆</span>
+        <span class="text">{{ category.anio }} - {{ category.genero }}</span>
+      </div>
       <div class="info-item">
         <span class="icon">👥</span>
         <span class="text">{{ players.length }} jugadores confirmados</span>

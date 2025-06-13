@@ -1,11 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { User, Player, Coach } from '../../../models/user.model';
 import { LoginRequest } from '../../../models/requests/auth.request';
 import { LoginResponse } from '../../../models/responses/auth.response';
 import { CoachResponse, CoachesResponse } from '../../../models/responses/user.response';
+import { ApiResponse } from '../../../models/responses/api.response';
 
 export interface UpdateUserRequest {
   firstName?: string;
@@ -23,7 +24,7 @@ export interface ChangePasswordRequest {
 })
 export class UserService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/api/user`;
+  private apiUrl = `${environment.apiUrl}api/user`;
 
   constructor() {}
 
@@ -58,6 +59,12 @@ export class UserService {
 
   getAllPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(`${this.apiUrl}/players`);
+  }
+
+  getPlayerById(playerId: number): Observable<Player> {
+    return this.http.get<ApiResponse<Player>>(`${this.apiUrl}/players/${playerId}`).pipe(
+      map(response => response.data)
+    );
   }
 
   // Convertir jugador a coach

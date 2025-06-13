@@ -1,14 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmDateService } from '../../services/confirm-date.service';
 import { AuthService } from '../../../auth/services/auth.service';
-import { UserService } from '../../../../core/services/user.service';
+import { ServiceFacade } from '../../../../core/services/service-facade.service';
 import { ConfirmDate } from '../../../../models/confirm-date.model';
 import { Player } from '../../../../models/user.model';
-import { HttpErrorResponse } from '@angular/common/http';
-import { forkJoin, of } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
+import { Field } from '../../../../models/field.model';
+import { Category } from '../../../../models/category.model';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -18,20 +16,19 @@ import { RouterModule } from '@angular/router';
   templateUrl: './date-detail.component.html',
   styleUrl: './date-detail.component.scss'
 })
-
 export class DateDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  private datesService = inject(ConfirmDateService);
   private authService = inject(AuthService);
-  private userService = inject(UserService);
+  private serviceFacade = inject(ServiceFacade);
 
   date: ConfirmDate | null = null;
+  field: Field | null = null;
+  category: Category | null = null;
+  players: Player[] = [];
   loading = true;
   error: string | null = null;
   isCoach = false;
-  players: Player[] = [];
-  confirmedPlayers: number[] = [];
 
   ngOnInit() {
     if (!this.authService.isAuthenticated()) {
@@ -52,63 +49,28 @@ export class DateDetailComponent implements OnInit {
   }
 
   loadDateDetails(dateId: number) {
+    console.log('Loading date details for ID:', dateId);
     this.loading = true;
     this.error = null;
 
-    this.datesService.getDateById(dateId).subscribe({
-      next: (date: ConfirmDate) => {
+    this.serviceFacade.getCompleteDate(dateId).subscribe({
+      next: ({ date, field, category, confirmedPlayers }) => {
+        console.log('Complete date data received:', { date, field, category, confirmedPlayers });
         this.date = date;
-        this.loadConfirmedPlayers(dateId);
+        this.field = field;
+        this.category = category;
+        this.players = confirmedPlayers;
+        this.loading = false;
+        console.log('Loading state set to false');
       },
-      error: (error: HttpErrorResponse) => {
+      error: (error) => {
         console.error('Error loading date details:', error);
         this.error = 'Error al cargar los detalles de la fecha';
         this.loading = false;
+        console.log('Loading state set to false due to error');
         if (error.status === 401) {
           this.router.navigate(['/auth/login']);
         }
-      }
-    });
-  }
-
-  private loadConfirmedPlayers(dateId: number) {
-    this.datesService.getConfirmedPlayers(dateId).subscribe({
-      next: (playerIds: number[]) => {
-        this.confirmedPlayers = playerIds;
-        this.loadPlayersDetails(playerIds);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.error('Error loading confirmed players:', error);
-        this.error = 'Error al cargar los jugadores confirmados';
-        this.loading = false;
-      }
-    });
-  }
-
-  private loadPlayersDetails(playerIds: number[]) {
-    if (playerIds.length === 0) {
-      this.loading = false;
-      return;
-    }
-
-    const playerRequests = playerIds.map(id => 
-      this.userService.getPlayerById(id).pipe(
-        catchError(error => {
-          console.error(`Error loading player ${id}:`, error);
-          return of(null);
-        })
-      )
-    );
-
-    forkJoin(playerRequests).pipe(
-      finalize(() => this.loading = false)
-    ).subscribe({
-      next: (players) => {
-        this.players = players.filter((player): player is Player => player !== null);
-      },
-      error: (error) => {
-        console.error('Error loading players details:', error);
-        this.error = 'Error al cargar los detalles de los jugadores';
       }
     });
   }
@@ -133,11 +95,7 @@ export class DateDetailComponent implements OnInit {
     });
   }
 
-  isPlayerConfirmed(playerId: number): boolean {
-    return this.confirmedPlayers.includes(playerId);
-  }
-
-  onBackClick(): void {
+  onBackClick() {
     this.router.navigate(['/dates']);
   }
 }

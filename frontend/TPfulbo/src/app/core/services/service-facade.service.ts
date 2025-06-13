@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin, switchMap, map, tap } from 'rxjs';
 import { ApiService } from './api.service';
 import { UserService } from '../../features/users/services/user.service';
 import { AuthService } from '../../features/auth/services/auth.service';
@@ -78,7 +78,7 @@ export class ServiceFacade {
   }
 
   getUserById(userId: number): Observable<User> {
-    return this.userService.getUserById(userId);
+    return this.userService.getPlayerById(userId);
   }
 
   updateProfile(userId: number, data: UpdateUserRequest): Observable<User> {
@@ -116,6 +116,38 @@ export class ServiceFacade {
 
   cancelConfirmation(dateId: number, playerId: number): Observable<void> {
     return this.confirmDateService.cancelConfirmation(dateId, playerId);
+  }
+
+  getCompleteDate(idDate: number): Observable<{
+    date: ConfirmDate;
+    field: Field;
+    category: Category;
+    confirmedPlayers: Player[];
+  }> {
+    console.log('ServiceFacade: Starting getCompleteDate for ID:', idDate);
+    return forkJoin({
+      date: this.confirmDateService.getDateById(idDate),
+      confirmedPlayers: this.confirmDateService.getConfirmedPlayers(idDate).pipe(
+        switchMap(playerIds => 
+          forkJoin(playerIds.map(id => this.userService.getPlayerById(id)))
+        )
+      )
+    }).pipe(
+      tap(result => console.log('ServiceFacade: First forkJoin result:', result)),
+      switchMap(({ date, confirmedPlayers }) => 
+        forkJoin({
+          field: this.getFieldById(date.idField),
+          category: this.categoryService.getCategoryById(date.idCategory)
+        }).pipe(
+          map(({ field, category }) => ({
+            date,
+            field,
+            category,
+            confirmedPlayers
+          }))
+        )
+      )
+    );
   }
 
   // Match related methods

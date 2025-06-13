@@ -195,5 +195,19 @@
     "IdField": 1,
     "IdCategory": 1,
     "IdPlayers": []
+  },
+  {
+    "IdDate": 15,
+    "Fecha": "2025-06-21T22:30:00",
+    "IdField": 3,
+    "IdCategory": 1,
+    "IdPlayers": []
+  },
+  {
+    "IdDate": 16,
+    "Fecha": "2025-06-23T12:36:00",
+    "IdField": 3,
+    "IdCategory": 2,
+    "IdPlayers": []
   }
 ]
