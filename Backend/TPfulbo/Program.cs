@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
         builder => builder
             .WithOrigins(
                 "http://localhost:4200",
-                "http://localhost:55090"
+                "http://localhost:63275"
             )
             .AllowAnyMethod()
             .AllowAnyHeader()
@@ -39,6 +39,7 @@ builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
 builder.Services.AddSingleton<ITeamRepository, TeamRepository>();
 builder.Services.AddSingleton<IConfirmDateRepository, ConfirmDateRepository>();
 builder.Services.AddSingleton<IMatchRepository, MatchRepository>();
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
 
 // Validators
 builder.Services.AddSingleton<MatchValidator>();

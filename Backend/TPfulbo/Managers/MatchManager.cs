@@ -11,18 +11,15 @@ namespace TPfulbo.Managers
     public class MatchManager
     {
         private readonly IMatchRepository _matchRepository;
-        private readonly TeamManager _teamManager;
         private readonly MatchValidator _matchValidator;
         private readonly ICoachRepository _coachRepository;
 
         public MatchManager(
             IMatchRepository matchRepository,
-            TeamManager teamManager,
             MatchValidator matchValidator,
             ICoachRepository coachRepository)
         {
             _matchRepository = matchRepository;
-            _teamManager = teamManager;
             _matchValidator = matchValidator;
             _coachRepository = coachRepository;
         }
@@ -52,7 +49,13 @@ namespace TPfulbo.Managers
             return await _matchRepository.GetMatchesByPlayer(idPlayer);
         }
 
-        public async Task<(bool success, string message, Match match)> CreateMatch(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
+        public async Task<(bool success, string message, Match match)> CreateMatch(
+            int idCoach, 
+            int idField, 
+            int idDate, 
+            int idCategory,
+            List<int> idPlayersTeamA,
+            List<int> idPlayersTeamB)
         {
             // Validar que el coach existe
             var coach = await _coachRepository.GetCoachById(idCoach);
@@ -62,21 +65,17 @@ namespace TPfulbo.Managers
             }
 
             // Validar todos los datos
-            var (isValid, message) = await _matchValidator.ValidateMatchData(idField, idDate, idCategory, idPlayersTeamA, idPlayersTeamB);
+            var (isValid, message) = await _matchValidator.ValidateMatchData(
+                idField, 
+                idDate, 
+                idCategory,
+                idPlayersTeamA,
+                idPlayersTeamB);
             if (!isValid)
                 return (false, message, null);
 
-            // Crear equipos
-            var teamA = await _teamManager.CreateTeam(idPlayersTeamA);
-            if (teamA == null)
-                return (false, "Error al crear el equipo A", null);
-
-            var teamB = await _teamManager.CreateTeam(idPlayersTeamB);
-            if (teamB == null)
-                return (false, "Error al crear el equipo B", null);
-
             // Crear partido
-            var match = await _matchRepository.CreateMatch(idCoach, idField, idDate, idCategory, teamA.IdTeam, teamB.IdTeam);
+            var match = await _matchRepository.CreateMatch(idCoach, idField, idDate, idCategory, idPlayersTeamA, idPlayersTeamB);
             return (true, "Partido creado exitosamente", match);
         }
 
@@ -86,21 +85,12 @@ namespace TPfulbo.Managers
             if (match == null)
                 return (false, "Partido no encontrado");
 
-            // Eliminar los equipos asociados
-            var resultTeamA = await _teamManager.DeleteTeam(match.IdTeamA);
-            if (!resultTeamA)
-                return (false, "Error al eliminar el equipo A");
-
-            var resultTeamB = await _teamManager.DeleteTeam(match.IdTeamB);
-            if (!resultTeamB)
-                return (false, "Error al eliminar el equipo B");
-
             // Eliminar el partido
             var matchDeleted = await _matchRepository.DeleteMatch(idMatch);
             if (!matchDeleted)
                 return (false, "Error al eliminar el partido");
 
-            return (true, "Partido y equipos eliminados exitosamente");
+            return (true, "Partido eliminado exitosamente");
         }
     }
 } 

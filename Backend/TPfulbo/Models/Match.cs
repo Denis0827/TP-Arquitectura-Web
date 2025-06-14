@@ -54,14 +54,12 @@ namespace TPfulbo.Models
             set { _idTeamB = value; }
         }
 
-        public Match(int idCoach, int idField, int idDate, int idCategory, int idTeamA, int idTeamB)
+        public Match(int idCoach, int idField, int idDate, int idCategory)
         {
             _idCoach = idCoach;
             _idField = idField;
             _idDate = idDate;
             _idCategory = idCategory;
-            _idTeamA = idTeamA;
-            _idTeamB = idTeamB;
         }
     }
 } 

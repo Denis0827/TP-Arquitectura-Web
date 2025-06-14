@@ -29,8 +29,7 @@
       5,
       6,
       7,
-      8,
-      1
+      8
     ]
   },
   {
@@ -48,7 +47,8 @@
       8,
       9,
       10,
-      12
+      12,
+      1
     ]
   },
   {
@@ -173,14 +173,18 @@
     "Fecha": "2024-03-20T15:30:00",
     "IdField": 1,
     "IdCategory": 1,
-    "IdPlayers": []
+    "IdPlayers": [
+      1
+    ]
   },
   {
     "IdDate": 12,
     "Fecha": "2025-06-20T03:28:00",
     "IdField": 1,
     "IdCategory": 1,
-    "IdPlayers": []
+    "IdPlayers": [
+      1
+    ]
   },
   {
     "IdDate": 13,
@@ -194,14 +198,18 @@
     "Fecha": "2025-10-13T17:25:00",
     "IdField": 1,
     "IdCategory": 1,
-    "IdPlayers": []
+    "IdPlayers": [
+      1
+    ]
   },
   {
     "IdDate": 15,
     "Fecha": "2025-06-21T22:30:00",
     "IdField": 3,
     "IdCategory": 1,
-    "IdPlayers": []
+    "IdPlayers": [
+      1
+    ]
   },
   {
     "IdDate": 16,

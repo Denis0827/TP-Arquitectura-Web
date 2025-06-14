@@ -67,23 +67,27 @@ namespace TPfulbo.Repositories
             var matches = new List<Match>();
             foreach (var match in _matches)
             {
-                var teamA = await _teamRepository.GetTeamById(match.IdTeamA);
-                var teamB = await _teamRepository.GetTeamById(match.IdTeamB);
-
-                if (teamA != null && teamA.IdPlayers.Contains(idPlayer) ||
-                    teamB != null && teamB.IdPlayers.Contains(idPlayer))
-                {
-                    matches.Add(match);
-                }
+                matches.Add(match);
             }
             return matches;
         }
 
-        public async Task<Match> CreateMatch(int idCoach, int idField, int idDate, int idCategory, int idTeamA, int idTeamB)
+        public async Task<Match> GetMatchByDate(int idDate)
         {
-            var match = new Match (idCoach, idField, idDate, idCategory, idTeamA, idTeamB)
+            return await Task.FromResult(_matches.FirstOrDefault(m => m.IdDate == idDate));
+        }
+
+        public async Task<Match> CreateMatch(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
+        {
+            // Create teams first
+            var teamA = await _teamRepository.CreateTeam(idPlayersTeamA);
+            var teamB = await _teamRepository.CreateTeam(idPlayersTeamB);
+
+            var match = new Match(idCoach, idField, idDate, idCategory)
             {
-                IdMatch = _matches.Count > 0 ? _matches.Max(m => m.IdMatch) + 1 : 1
+                IdMatch = _matches.Count > 0 ? _matches.Max(m => m.IdMatch) + 1 : 1,
+                IdTeamA = teamA.IdTeam,
+                IdTeamB = teamB.IdTeam
             };
 
             _matches.Add(match);
