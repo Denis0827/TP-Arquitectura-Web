@@ -151,6 +151,10 @@ export class ServiceFacade {
   }
 
   // Match related methods
+  getAllMatches(): Observable<Match[]> {
+    return this.matchService.getAllMatches();
+  }
+
   getMatchesByDate(idDate: number): Observable<Match[]> {
     return this.matchService.getMatchesByDate(idDate);
   }

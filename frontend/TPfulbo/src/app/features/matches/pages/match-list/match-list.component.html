@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2>Matches List</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Match ID</th>
+              <th>Coach ID</th>
+              <th>Field ID</th>
+              <th>Date ID</th>
+              <th>Category ID</th>
+              <th>Team A Players</th>
+              <th>Team B Players</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (match of matches; track match.idMatch) {
+              <tr>
+                <td>{{ match.idMatch }}</td>
+                <td>{{ match.idCoach }}</td>
+                <td>{{ match.idField }}</td>
+                <td>{{ match.idDate }}</td>
+                <td>{{ match.idCategory }}</td>
+                <td>{{ match.idPlayersTeamA.join(', ') }}</td>
+                <td>{{ match.idPlayersTeamB.join(', ') }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
