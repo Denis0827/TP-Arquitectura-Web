@@ -19,11 +19,11 @@ namespace TPfulbo.Controllers
             _matchManager = matchManager;
         }
 
-        [HttpPost("coaches/{idCoach}/createMatch")]
-        public async Task<IActionResult> CreateMatch(int idCoach, [FromBody] CreateMatchRequest request)
+        [HttpPost("createMatch")]
+        public async Task<IActionResult> CreateMatch([FromBody] CreateMatchRequest request)
         {
             var (success, message, match) = await _matchManager.CreateMatch(
-                idCoach,
+                request.IdCoach,
                 request.IdField,
                 request.IdConfirmDate,
                 request.IdCategory,

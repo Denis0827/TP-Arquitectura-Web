@@ -1,8 +1,8 @@
 export interface CreateMatchRequest {
   idCoach: number;
   idField: number;
-  idDate: number;
+  idConfirmDate: number;
   idCategory: number;
-  idTeamA: number;
-  idTeamB: number;
+  idPlayersTeamA: number[];
+  idPlayersTeamB: number[];
 }

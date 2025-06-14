@@ -13,12 +13,10 @@ namespace TPfulbo.Repositories
     {
         private readonly string _jsonFilePath;
         private List<Match> _matches;
-        private readonly ITeamRepository _teamRepository;
 
-        public MatchRepository(ITeamRepository teamRepository)
+        public MatchRepository()
         {
             _jsonFilePath = Path.Combine("..", "..", "Data", "matches.json");
-            _teamRepository = teamRepository;
             LoadMatches();
         }
 
@@ -79,15 +77,9 @@ namespace TPfulbo.Repositories
 
         public async Task<Match> CreateMatch(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
         {
-            // Create teams first
-            var teamA = await _teamRepository.CreateTeam(idPlayersTeamA);
-            var teamB = await _teamRepository.CreateTeam(idPlayersTeamB);
-
-            var match = new Match(idCoach, idField, idDate, idCategory)
+            var match = new Match(idCoach, idField, idDate, idCategory, idPlayersTeamA, idPlayersTeamB)
             {
-                IdMatch = _matches.Count > 0 ? _matches.Max(m => m.IdMatch) + 1 : 1,
-                IdTeamA = teamA.IdTeam,
-                IdTeamB = teamB.IdTeam
+                IdMatch = _matches.Count > 0 ? _matches.Max(m => m.IdMatch) + 1 : 1
             };
 
             _matches.Add(match);

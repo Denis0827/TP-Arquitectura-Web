@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TPfulbo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee3de9f249408f4b9b73429d644592f72177d141")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+758e4d1abc4cfa9fb2ecff6100be1cdc52b5d62e")]
 [assembly: System.Reflection.AssemblyProductAttribute("TPfulbo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TPfulbo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

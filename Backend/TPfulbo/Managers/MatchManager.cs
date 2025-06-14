@@ -61,7 +61,7 @@ namespace TPfulbo.Managers
             var coach = await _coachRepository.GetCoachById(idCoach);
             if (coach == null)
             {
-                return (false, "No tienes permiso para realizar esta función.", null);
+                return (false, "No tienes permiso para realizar esta función. A", null);
             }
 
             // Validar todos los datos

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TPfulbo.Models
 {
@@ -9,8 +10,10 @@ namespace TPfulbo.Models
         private int _idField;
         private int _idDate;
         private int _idCategory;
-        private int _idTeamA;
-        private int _idTeamB;
+        private List<int> _idPlayersTeamA;
+        private List<int> _idPlayersTeamB;
+        
+        
 
         public int IdMatch
         {
@@ -42,24 +45,26 @@ namespace TPfulbo.Models
             set { _idCategory = value; }
         }
 
-        public int IdTeamA
+        public List<int> IdPlayersTeamA
         {
-            get { return _idTeamA; }
-            set { _idTeamA = value; }
+            get { return _idPlayersTeamA; }
+            set { _idPlayersTeamA = value; }
         }
 
-        public int IdTeamB
+        public List<int> IdPlayersTeamB
         {
-            get { return _idTeamB; }
-            set { _idTeamB = value; }
+            get { return _idPlayersTeamB; }
+            set { _idPlayersTeamB = value; }
         }
 
-        public Match(int idCoach, int idField, int idDate, int idCategory)
+        public Match(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA = null, List<int> idPlayersTeamB = null)
         {
             _idCoach = idCoach;
             _idField = idField;
             _idDate = idDate;
             _idCategory = idCategory;
+            _idPlayersTeamA = idPlayersTeamA ?? new List<int>();
+            _idPlayersTeamB = idPlayersTeamB ?? new List<int>();
         }
     }
 } 

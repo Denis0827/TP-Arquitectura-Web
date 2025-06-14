@@ -11,7 +11,7 @@ import { CreateMatchResponse } from '../../../models/responses/match.response';
   providedIn: 'root'
 })
 export class MatchService {
-  private apiUrl = `${environment.apiUrl}/api/match`;
+  private apiUrl = `${environment.apiUrl}api/match`;
 
   constructor(private http: HttpClient) {}
 
@@ -22,6 +22,7 @@ export class MatchService {
   getAllMatches(): Observable<Match[]> {
     return this.http.get<{ success: boolean; message: string; data: Match[] }>(this.apiUrl).pipe(
       map(response => {
+
         if (!response.success) {
           throw new Error(response.message || 'Error al obtener los partidos');
         }
@@ -44,8 +45,10 @@ export class MatchService {
   }
 
   createMatch(request: CreateMatchRequest): Observable<{ matchId: number }> {
-    return this.http.post<CreateMatchResponse>(this.apiUrl, request).pipe(
+    return this.http.post<CreateMatchResponse>(this.apiUrl+'/createMatch', request).pipe(
       map(response => {
+        //print response
+
         if (!response.success) {
           throw new Error(response.message || 'Error al crear el partido');
         }

@@ -4,6 +4,6 @@ export interface Match {
   idField: number;
   idDate: number;
   idCategory: number;
-  idTeamA: number;
-  idTeamB: number;
+  idPlayersTeamA: number[];
+  idPlayersTeamB: number[];
 }

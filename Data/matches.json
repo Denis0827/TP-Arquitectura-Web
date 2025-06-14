@@ -1,12 +1,60 @@
 [
   {
     "IdMatch": 1,
-    "IdCoach": 1,
+    "IdCoach": 11,
     "IdField": 1,
-    "IdDate": 4,
+    "IdDate": 2,
     "IdCategory": 1,
-    "IdTeamA": [1],
-    "IdTeamB": [2]
+    "IdPlayersTeamA": [
+      6,
+      7,
+      8,
+      1
+    ],
+    "IdPlayersTeamB": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "IdMatch": 2,
+    "IdCoach": 11,
+    "IdField": 1,
+    "IdDate": 2,
+    "IdCategory": 1,
+    "IdPlayersTeamA": [
+      6,
+      7,
+      8,
+      1
+    ],
+    "IdPlayersTeamB": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "IdMatch": 3,
+    "IdCoach": 11,
+    "IdField": 1,
+    "IdDate": 5,
+    "IdCategory": 1,
+    "IdPlayersTeamA": [
+      4,
+      5,
+      6,
+      12
+    ],
+    "IdPlayersTeamB": [
+      2,
+      7,
+      8,
+      9,
+      10
+    ]
   }
-
 ]

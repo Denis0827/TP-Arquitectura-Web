@@ -12,6 +12,7 @@ import { ApiService } from '../../../../core/services/api.service';
 import { MatchService } from '../../services/match.service';
 import { CreateMatchRequest } from '../../../../models/requests/match.request';
 import { AuthService } from '../../../../features/auth/services/auth.service';
+import { ConfirmDate } from '../../../../models/confirm-date.model';
 
 interface TeamAssignment {
   playerId: number;
@@ -36,6 +37,7 @@ export class MatchesCreateComponent implements OnInit {
   private authService = inject(AuthService);
 
   dateId: number = 0;
+  dateInfo: ConfirmDate | null = null;
   confirmedPlayers: Player[] = [];
   loading: boolean = false;
   error: string | null = null;
@@ -49,14 +51,32 @@ export class MatchesCreateComponent implements OnInit {
       this.error = 'ID de fecha no válido';
       return;
     }
-    this.loadConfirmedPlayers();
+    this.loadDateInfo();
+  }
+
+  private loadDateInfo(): void {
+    this.loading = true;
+    this.error = null;
+
+    this.confirmDateService.getDateById(this.dateId).subscribe({
+      next: (date: ConfirmDate) => {
+        this.dateInfo = date;
+        this.loadConfirmedPlayers();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Error al cargar información de la fecha:', error);
+        this.error = 'Error al cargar la información de la fecha';
+        this.loading = false;
+      }
+    });
   }
 
   private loadConfirmedPlayers(): void {
-    this.loading = true;
-    this.error = null;
-    this.confirmedPlayers = [];
-    this.teamAssignments = [];
+    if (!this.dateInfo) {
+      this.error = 'No se pudo cargar la información de la fecha';
+      this.loading = false;
+      return;
+    }
 
     this.confirmDateService.getConfirmedPlayers(this.dateId).subscribe({
       next: (playerIds: number[]) => {
@@ -131,6 +151,11 @@ export class MatchesCreateComponent implements OnInit {
   }
 
   createMatch(): void {
+    if (!this.dateInfo) {
+      this.error = 'No se pudo cargar la información de la fecha';
+      return;
+    }
+
     const teamAPlayerIds = this.teamAssignments.filter(a => a.team === 'A').map(a => a.playerId);
     const teamBPlayerIds = this.teamAssignments.filter(a => a.team === 'B').map(a => a.playerId);
 
@@ -147,11 +172,11 @@ export class MatchesCreateComponent implements OnInit {
 
     const createMatchRequest: CreateMatchRequest = {
       idCoach: coachId,
-      idField: 1, // TODO: Obtener el idField de algún lugar
-      idDate: this.dateId,
-      idCategory: 1, // TODO: Obtener el idCategory de algún lugar
-      idTeamA: 1, // TODO: Crear o obtener el idTeamA
-      idTeamB: 2  // TODO: Crear o obtener el idTeamB
+      idField: this.dateInfo.idField,
+      idConfirmDate: this.dateId,
+      idCategory: this.dateInfo.idCategory,
+      idPlayersTeamA: teamAPlayerIds,
+      idPlayersTeamB: teamBPlayerIds
     };
 
     console.log('Creando partido con datos:', createMatchRequest);
