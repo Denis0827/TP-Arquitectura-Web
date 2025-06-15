@@ -1,35 +1,54 @@
 <div class="container mt-4">
-  <h2>Matches List</h2>
-  <div class="row">
-    <div class="col-12">
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Match ID</th>
-              <th>Coach ID</th>
-              <th>Field ID</th>
-              <th>Date ID</th>
-              <th>Category ID</th>
-              <th>Team A Players</th>
-              <th>Team B Players</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (match of matches; track match.idMatch) {
-              <tr>
-                <td>{{ match.idMatch }}</td>
-                <td>{{ match.idCoach }}</td>
-                <td>{{ match.idField }}</td>
-                <td>{{ match.idDate }}</td>
-                <td>{{ match.idCategory }}</td>
-                <td>{{ match.idPlayersTeamA.join(', ') }}</td>
-                <td>{{ match.idPlayersTeamB.join(', ') }}</td>
-              </tr>
-            }
-          </tbody>
-        </table>
+  <h2 class="text-center mb-4">Matches</h2>
+  <div class="row g-3">
+    @for (match of matches; track match.idMatch) {
+      <div class="col-md-6 col-lg-4">
+        <div class="match-card">
+          <div class="match-header">
+            <div class="match-info">
+              <span class="match-id">#{{ match.idMatch }}</span>
+              <span class="match-category">Cat. {{ match.idCategory }}</span>
+            </div>
+            <div class="match-date">
+              <i class="bi bi-calendar3"></i>
+              {{ match.idDate }}
+            </div>
+          </div>
+          
+          <div class="match-teams">
+            <div class="team team-a">
+              <div class="team-label">Team A</div>
+              <div class="players">
+                @for (player of match.teamAPlayers; track player.idUser) {
+                  <span class="player">{{ player.nombre }} {{ player.apellido }}</span>
+                }
+              </div>
+            </div>
+            
+            <div class="vs">VS</div>
+            
+            <div class="team team-b">
+              <div class="team-label">Team B</div>
+              <div class="players">
+                @for (player of match.teamBPlayers; track player.idUser) {
+                  <span class="player">{{ player.nombre }} {{ player.apellido }}</span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="match-footer">
+            <div class="match-detail">
+              <i class="bi bi-person"></i>
+              Coach: {{ match.coachName }}
+            </div>
+            <div class="match-detail">
+              <i class="bi bi-geo-alt"></i>
+              Field: {{ match.idField }}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    }
   </div>
 </div>

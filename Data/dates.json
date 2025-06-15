@@ -218,5 +218,12 @@
     "IdField": 3,
     "IdCategory": 2,
     "IdPlayers": []
+  },
+  {
+    "IdDate": 17,
+    "Fecha": "2025-10-15T00:44:00",
+    "IdField": 2,
+    "IdCategory": 2,
+    "IdPlayers": []
   }
 ]

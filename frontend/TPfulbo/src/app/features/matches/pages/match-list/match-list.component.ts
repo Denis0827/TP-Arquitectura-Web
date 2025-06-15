@@ -3,6 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ServiceFacade } from '../../../../core/services/service-facade.service';
 import { Match } from '../../../../models/match.model';
+import { Player, User, Coach } from '../../../../models/user.model';
+import { forkJoin, Observable, map } from 'rxjs';
+
+interface MatchWithDetails extends Match {
+  coachName?: string;
+  teamAPlayers?: User[];
+  teamBPlayers?: User[];
+}
 
 @Component({
   selector: 'app-match-list',
@@ -12,7 +20,7 @@ import { Match } from '../../../../models/match.model';
   styleUrls: ['./match-list.component.scss']
 })
 export class MatchListComponent implements OnInit {
-  public matches: Match[] = [];
+  public matches: MatchWithDetails[] = [];
 
   constructor(private serviceFacade: ServiceFacade) {}
 
@@ -23,12 +31,49 @@ export class MatchListComponent implements OnInit {
   private loadMatches(): void {
     this.serviceFacade.getAllMatches().subscribe({
       next: (matches) => {
-        this.matches = matches;
+        // Load details for each match
+        const matchDetailsObservables = matches.map(match => 
+          this.loadMatchDetails(match)
+        );
+
+        forkJoin(matchDetailsObservables).subscribe({
+          next: (matchesWithDetails) => {
+            this.matches = matchesWithDetails;
+          },
+          error: (error) => {
+            console.error('Error loading match details:', error);
+          }
+        });
       },
       error: (error) => {
         console.error('Error loading matches:', error);
-        // Here you might want to show an error message to the user
       }
     });
+  }
+
+  private loadMatchDetails(match: Match): Observable<MatchWithDetails> {
+    return forkJoin({
+      coach: this.serviceFacade.getCoachById(match.idCoach).pipe(
+        map(response => {
+          if ('data' in response) {
+            return response.data as Coach;
+          }
+          return response as Coach;
+        })
+      ),
+      teamAPlayers: forkJoin(match.idPlayersTeamA.map(id => 
+        this.serviceFacade.getUserById(id)
+      )),
+      teamBPlayers: forkJoin(match.idPlayersTeamB.map(id => 
+        this.serviceFacade.getUserById(id)
+      ))
+    }).pipe(
+      map(({ coach, teamAPlayers, teamBPlayers }) => ({
+        ...match,
+        coachName: coach ? `${coach.nombre} ${coach.apellido}` : 'Unknown Coach',
+        teamAPlayers,
+        teamBPlayers
+      }))
+    );
   }
 }

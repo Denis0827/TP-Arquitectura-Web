@@ -22,3 +22,118 @@
   border-radius: 8px;
   overflow: hidden;
 }
+
+.match-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  border: 1px solid #e9ecef;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .match-header {
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .match-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .match-id {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 0.9rem;
+      }
+
+      .match-category {
+        background: #e9ecef;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        color: #495057;
+      }
+    }
+
+    .match-date {
+      font-size: 0.85rem;
+      color: #6c757d;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+
+  .match-teams {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .team {
+      flex: 1;
+      text-align: center;
+
+      .team-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 0.5rem;
+      }
+
+      .players {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        justify-content: center;
+
+        .player {
+          background: #f8f9fa;
+          padding: 0.15rem 0.4rem;
+          border-radius: 3px;
+          font-size: 0.75rem;
+          color: #6c757d;
+          border: 1px solid #e9ecef;
+        }
+      }
+    }
+
+    .vs {
+      background: #dc3545;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
+
+  .match-footer {
+    padding: 0.75rem;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    background: #f8f9fa;
+
+    .match-detail {
+      font-size: 0.8rem;
+      color: #6c757d;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
