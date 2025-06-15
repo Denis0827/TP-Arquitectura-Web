@@ -482,24 +482,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/gs/.nuget/packages/": {}
+    "C:\\Users\\Denis Wu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
+      "projectUniqueName": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
       "projectName": "TPfulbo",
-      "projectPath": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/TPfulbo.csproj",
-      "packagesPath": "/Users/gs/.nuget/packages/",
-      "outputPath": "/Users/gs/Desktop/GS/DITELLA/ARQUITECTURA WEB/TP-Arquitectura-Web/Backend/TPfulbo/obj/",
+      "projectPath": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\TPfulbo.csproj",
+      "packagesPath": "C:\\Users\\Denis Wu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Denis Wu\\Desktop\\TP-Arquitectura-Web\\Backend\\TPfulbo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/gs/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Denis Wu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -512,6 +514,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -546,16 +553,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet@8/8.0.16/libexec/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Access to the path '/Users/gs/.local/share' is denied."
-    }
-  ]
+  }
 }
