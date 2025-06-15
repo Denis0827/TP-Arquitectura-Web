@@ -6,18 +6,14 @@
         <div class="match-card">
           <div class="match-header">
             <div class="match-info">
-              <span class="match-id">#{{ match.idMatch }}</span>
-              <span class="match-category">Cat. {{ match.idCategory }}</span>
-            </div>
-            <div class="match-date">
-              <i class="bi bi-calendar3"></i>
-              {{ match.idDate }}
+              <span class="match-title">Partido {{ match.idMatch }}</span>
+              <span class="match-category">Categoría {{ match.idCategory }}</span>
             </div>
           </div>
           
           <div class="match-teams">
             <div class="team team-a">
-              <div class="team-label">Team A</div>
+              <div class="team-label">Equipo A</div>
               <div class="players">
                 @for (player of match.teamAPlayers; track player.idUser) {
                   <span class="player">{{ player.nombre }} {{ player.apellido }}</span>
@@ -28,7 +24,7 @@
             <div class="vs">VS</div>
             
             <div class="team team-b">
-              <div class="team-label">Team B</div>
+              <div class="team-label">Equipo B</div>
               <div class="players">
                 @for (player of match.teamBPlayers; track player.idUser) {
                   <span class="player">{{ player.nombre }} {{ player.apellido }}</span>
@@ -37,14 +33,45 @@
             </div>
           </div>
 
-          <div class="match-footer">
-            <div class="match-detail">
-              <i class="bi bi-person"></i>
-              Coach: {{ match.coachName }}
+          <div class="match-details">
+            <div class="detail-section">
+              <div class="detail-header">
+                <i class="bi bi-person"></i>
+                <span>Entrenador</span>
+              </div>
+              <div class="detail-content">
+                {{ match.coachName }}
+              </div>
             </div>
-            <div class="match-detail">
-              <i class="bi bi-geo-alt"></i>
-              Field: {{ match.idField }}
+
+            <div class="detail-section">
+              <div class="detail-header">
+                <i class="bi bi-geo-alt"></i>
+                <span>Ubicación</span>
+              </div>
+              <div class="detail-content">
+                <div class="field-info">
+                  <div class="field-address">
+                    {{ match.field?.calle }} {{ match.field?.altura }}
+                  </div>
+                  <div class="field-details">
+                    <span class="capacity">
+                      <i class="bi bi-people"></i>
+                      Capacidad: {{ match.field?.capacidad }}
+                    </span>
+                    <span class="boots">
+                      <i class="bi bi-boot"></i>
+                      {{ match.field?.botines }}
+                    </span>
+                    @if (match.field?.tieneEstacionamiento) {
+                      <span class="parking">
+                        <i class="bi bi-p-square"></i>
+                        Estacionamiento
+                      </span>
+                    }
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

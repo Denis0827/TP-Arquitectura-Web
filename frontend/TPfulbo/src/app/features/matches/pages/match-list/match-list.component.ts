@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import { ServiceFacade } from '../../../../core/services/service-facade.service';
 import { Match } from '../../../../models/match.model';
 import { Player, User, Coach } from '../../../../models/user.model';
+import { Field } from '../../../../models/field.model';
 import { forkJoin, Observable, map } from 'rxjs';
 
 interface MatchWithDetails extends Match {
   coachName?: string;
   teamAPlayers?: User[];
   teamBPlayers?: User[];
+  field?: Field;
 }
 
 @Component({
@@ -61,6 +63,7 @@ export class MatchListComponent implements OnInit {
           return response as Coach;
         })
       ),
+      field: this.serviceFacade.getFieldById(match.idField),
       teamAPlayers: forkJoin(match.idPlayersTeamA.map(id => 
         this.serviceFacade.getUserById(id)
       )),
@@ -68,9 +71,10 @@ export class MatchListComponent implements OnInit {
         this.serviceFacade.getUserById(id)
       ))
     }).pipe(
-      map(({ coach, teamAPlayers, teamBPlayers }) => ({
+      map(({ coach, field, teamAPlayers, teamBPlayers }) => ({
         ...match,
         coachName: coach ? `${coach.nombre} ${coach.apellido}` : 'Unknown Coach',
+        field,
         teamAPlayers,
         teamBPlayers
       }))
