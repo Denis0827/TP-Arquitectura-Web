@@ -1,23 +1,25 @@
-<div class="container mt-4">
-  <h2 class="text-center mb-4">Matches</h2>
+<div class="matches-container">
+  <div class="matches-header">
+    <h2 class="text-center">Mis Partidos</h2>
+  </div>
   <div class="row g-3">
     @for (match of matches; track match.idMatch) {
       <div class="col-md-6 col-lg-4">
         <div class="match-card">
           <div class="match-header">
             <div class="match-info">
-              <span class="match-id">#{{ match.idMatch }}</span>
-              <span class="match-category">Cat. {{ match.idCategory }}</span>
+              <span class="match-id">#{{ match.displayIndex }}</span>
+              <span class="match-category" *ngIf="match.category">Cat. {{ match.category.anio }} - {{ match.category.genero }}</span>
             </div>
             <div class="match-date">
               <i class="bi bi-calendar3"></i>
-              {{ match.idDate }}
+              {{ match.fecha | date:'longDate' }} - {{ match.fecha | date:'shortTime' }}
             </div>
           </div>
           
           <div class="match-teams">
             <div class="team team-a">
-              <div class="team-label">Team A</div>
+              <div class="team-label">Equipo A</div>
               <div class="players">
                 @for (player of match.teamAPlayers; track player.idUser) {
                   <span class="player">{{ player.nombre }} {{ player.apellido }}</span>
@@ -28,7 +30,7 @@
             <div class="vs">VS</div>
             
             <div class="team team-b">
-              <div class="team-label">Team B</div>
+              <div class="team-label">Equipo B</div>
               <div class="players">
                 @for (player of match.teamBPlayers; track player.idUser) {
                   <span class="player">{{ player.nombre }} {{ player.apellido }}</span>
@@ -40,11 +42,11 @@
           <div class="match-footer">
             <div class="match-detail">
               <i class="bi bi-person"></i>
-              Coach: {{ match.coachName }}
+              Entrenador: {{ match.coachName }}
             </div>
-            <div class="match-detail">
+            <div class="match-detail" *ngIf="match.field">
               <i class="bi bi-geo-alt"></i>
-              Field: {{ match.idField }}
+              {{ match.field.calle }} {{ match.field.altura }} - {{ match.field.botines ? 'Con botines' : 'Sin botines' }}
             </div>
           </div>
         </div>

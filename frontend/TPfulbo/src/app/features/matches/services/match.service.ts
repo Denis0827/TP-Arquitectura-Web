@@ -5,22 +5,45 @@ import { environment } from '../../../../environments/environment';
 import { Match } from '../../../models/match.model';
 import { CreateMatchRequest } from '../../../models/requests/match.request';
 import { map, catchError } from 'rxjs/operators';
-import { CreateMatchResponse } from '../../../models/responses/match.response';
+import { CreateMatchResponse, MatchesResponse, GetMatchByIdResponse } from '../../../models/responses/match.response';
+import { AuthService } from '../../../features/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatchService {
-  private apiUrl = `${environment.apiUrl}api/match`;
+  private apiUrl = `${environment.apiUrl}api/matchConfirmed`;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
   private handleError(error: HttpErrorResponse) {
-    return throwError(() => error.error?.message || 'Ha ocurrido un error');
+    console.error('Error en el servicio:', error);
+    let errorMessage = 'Ha ocurrido un error';
+    
+    if (error.error instanceof ErrorEvent) {
+      // Error del cliente
+      errorMessage = error.error.message;
+    } else {
+      // Error del servidor
+      if (error.error && error.error.message) {
+        errorMessage = error.error.message;
+      } else if (error.status === 0) {
+        errorMessage = 'No se pudo conectar con el servidor';
+      } else if (error.status === 404) {
+        errorMessage = 'No se encontró el recurso solicitado';
+      } else if (error.status === 500) {
+        errorMessage = 'Error interno del servidor';
+      }
+    }
+    
+    return throwError(() => new Error(errorMessage));
   }
 
   getAllMatches(): Observable<Match[]> {
-    return this.http.get<{ success: boolean; message: string; data: Match[] }>(this.apiUrl).pipe(
+    return this.http.get<MatchesResponse>(this.apiUrl).pipe(
       map(response => {
 
         if (!response.success) {
@@ -33,7 +56,7 @@ export class MatchService {
   }
 
   getMatchById(idMatch: number): Observable<Match> {
-    return this.http.get<{ success: boolean; message: string; data: Match }>(`${this.apiUrl}/${idMatch}`).pipe(
+    return this.http.get<GetMatchByIdResponse>(`${this.apiUrl}/${idMatch}`).pipe(
       map(response => {
         if (!response.success) {
           throw new Error(response.message || 'Error al obtener el partido');
@@ -45,10 +68,17 @@ export class MatchService {
   }
 
   createMatch(request: CreateMatchRequest): Observable<{ matchId: number }> {
-    return this.http.post<CreateMatchResponse>(this.apiUrl+'/createMatch', request).pipe(
-      map(response => {
-        //print response
+    const coachId = this.authService.getUserId();
+    if (!coachId) {
+      return throwError(() => new Error('No se pudo obtener el ID del entrenador'));
+    }
 
+    console.log('Enviando request:', request);
+    console.log('URL:', `${this.apiUrl}/coaches/${coachId}/createMatch`);
+
+    return this.http.post<CreateMatchResponse>(`${this.apiUrl}/coaches/${coachId}/createMatch`, request).pipe(
+      map(response => {
+        console.log('Respuesta del servidor:', response);
         if (!response.success) {
           throw new Error(response.message || 'Error al crear el partido');
         }

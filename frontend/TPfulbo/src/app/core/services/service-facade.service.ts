@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin, switchMap, map, tap } from 'rxjs';
+import { Observable, forkJoin, switchMap, map, tap, of } from 'rxjs';
 import { ApiService } from './api.service';
-import { UserService } from '../../features/users/services/user.service';
+import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../features/auth/services/auth.service';
-import { ConfirmDateService } from '../../features/dates/services/confirm-date.service';
+import { MatchTentativeService } from '../../features/matchesTentative/services/matchTentative.service';
 import { MatchService } from '../../features/matches/services/match.service';
 import { TeamService } from '../../features/teams/services/team.service';
 import { FieldService } from './field.service';
@@ -11,14 +11,15 @@ import { CategoryService } from './category.service';
 import { User, Player, Coach } from '../../models/user.model';
 import { LoginRequest, RegisterRequest } from '../../models/requests/auth.request';
 import { LoginResponse, RegisterResponse } from '../../models/responses/auth.response';
-import { ConfirmDate } from '../../models/confirm-date.model';
+import { MatchTentative } from '../../models/matchTentative.model';
 import { Match } from '../../models/match.model';
 import { Team } from '../../models/team.model';
 import { Field, CreateFieldRequest } from '../../models/field.model';
 import { Category } from '../../models/category.model';
-import { CreateDateRequest } from '../../models/requests/confirm-date.request';
+import { CreateMatchTentativeRequest } from '../../models/requests/matchTentative.request';
 import { CreateTeamRequest, UpdateTeamRequest } from '../../features/teams/services/team.service';
-import { UpdateUserRequest } from '../../features/users/services/user.service';
+import { UpdateUserRequest } from '../../models/requests/user.request';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class ServiceFacade {
     private apiService: ApiService,
     private userService: UserService,
     private authService: AuthService,
-    private confirmDateService: ConfirmDateService,
+    private matchTentativeService:  MatchTentativeService,
     private matchService: MatchService,
     private teamService: TeamService,
     private fieldService: FieldService,
@@ -73,12 +74,8 @@ export class ServiceFacade {
   }
 
   // User related methods
-  getAllUsers(): Observable<User[]> {
-    return this.userService.getAllUsers();
-  }
-
-  getUserById(userId: number): Observable<User> {
-    return this.userService.getPlayerById(userId);
+  getPlayerById(playerId: number): Observable<Player> {
+    return this.userService.getPlayerById(playerId);
   }
 
   updateProfile(userId: number, data: UpdateUserRequest): Observable<User> {
@@ -98,55 +95,58 @@ export class ServiceFacade {
   }
 
   // Date related methods
-  getDatesByPlayer(idPlayer: number): Observable<ConfirmDate[]> {
-    return this.confirmDateService.getDatesByPlayer(idPlayer);
-  }
-
   getConfirmedPlayers(dateId: number): Observable<number[]> {
-    return this.confirmDateService.getConfirmedPlayers(dateId);
+    return this.matchTentativeService.getConfirmedPlayers(dateId);
   }
 
-  createDate(idCoach: number, dateData: CreateDateRequest): Observable<ConfirmDate> {
-    return this.confirmDateService.createDate(idCoach, dateData);
+  createMatchTentative(idCoach: number, dateData: CreateMatchTentativeRequest): Observable<MatchTentative> {
+    return this.matchTentativeService.createMatchTentative(idCoach, dateData);
   }
 
-  confirmAttendance(dateId: number, playerId: number): Observable<void> {
-    return this.confirmDateService.confirmAttendance(dateId, playerId);
+  confirmAttendance(matchId: number, playerId: number): Observable<void> {
+    return this.matchTentativeService.confirmAttendance(matchId, playerId);
   }
 
   cancelConfirmation(dateId: number, playerId: number): Observable<void> {
-    return this.confirmDateService.cancelConfirmation(dateId, playerId);
+    return this.matchTentativeService.cancelConfirmation(dateId, playerId);
   }
 
   getCompleteDate(idDate: number): Observable<{
-    date: ConfirmDate;
-    field: Field;
-    category: Category;
+    date: MatchTentative | undefined;
+    field: Field | undefined;
+    category: Category | undefined;
     confirmedPlayers: Player[];
   }> {
     console.log('ServiceFacade: Starting getCompleteDate for ID:', idDate);
     return forkJoin({
-      date: this.confirmDateService.getDateById(idDate),
-      confirmedPlayers: this.confirmDateService.getConfirmedPlayers(idDate).pipe(
+      date: this.matchTentativeService.getMatchTentativeById(idDate).pipe(catchError(() => of(undefined))),
+      confirmedPlayers: this.matchTentativeService.getConfirmedPlayers(idDate).pipe(
         switchMap(playerIds => 
-          forkJoin(playerIds.map(id => this.userService.getPlayerById(id)))
-        )
+          playerIds.length > 0 
+            ? forkJoin(playerIds.map(id => this.userService.getPlayerById(id).pipe(catchError(() => of(undefined))))) 
+            : of([])
+        ),
+        catchError(() => of([]))
       )
     }).pipe(
       tap(result => console.log('ServiceFacade: First forkJoin result:', result)),
-      switchMap(({ date, confirmedPlayers }) => 
-        forkJoin({
-          field: this.getFieldById(date.idField),
-          category: this.categoryService.getCategoryById(date.idCategory)
+      switchMap(({ date, confirmedPlayers }) => {
+        if (!date) {
+          console.warn('ServiceFacade: MatchTentative not found for ID:', idDate);
+          return of({ date: undefined, field: undefined, category: undefined, confirmedPlayers: [] });
+        }
+        return forkJoin({
+          field: this.getFieldById(date.idField).pipe(catchError(() => of(undefined))),
+          category: this.categoryService.getCategoryById(date.idCategory).pipe(catchError(() => of(undefined)))
         }).pipe(
           map(({ field, category }) => ({
             date,
             field,
             category,
-            confirmedPlayers
+            confirmedPlayers: confirmedPlayers.filter((p: Player | undefined): p is Player => p !== undefined) as Player[]
           }))
-        )
-      )
+        );
+      })
     );
   }
 

@@ -1,0 +1,56 @@
+[
+  {
+    "IdTeamA": 1,
+    "IdTeamB": 2,
+    "IdMatch": 1,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-03-20T18:00:00",
+    "IdCategory": 2
+  },
+  {
+    "IdTeamA": 3,
+    "IdTeamB": 4,
+    "IdMatch": 2,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-03-27T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdTeamA": 5,
+    "IdTeamB": 6,
+    "IdMatch": 3,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-04-03T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdTeamA": 7,
+    "IdTeamB": 8,
+    "IdMatch": 4,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-04-17T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdTeamA": 9,
+    "IdTeamB": 10,
+    "IdMatch": 5,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2024-03-20T15:30:00",
+    "IdCategory": 1
+  },
+  {
+    "IdTeamA": 11,
+    "IdTeamB": 12,
+    "IdMatch": 6,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-04-24T18:00:00",
+    "IdCategory": 1
+  }
+]

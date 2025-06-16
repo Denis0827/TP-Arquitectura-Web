@@ -37,22 +37,23 @@ builder.Services.AddSingleton<ICoachRepository, CoachRepository>();
 builder.Services.AddSingleton<IFieldRepository, FieldRepository>();
 builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
 builder.Services.AddSingleton<ITeamRepository, TeamRepository>();
-builder.Services.AddSingleton<IConfirmDateRepository, ConfirmDateRepository>();
-builder.Services.AddSingleton<IMatchRepository, MatchRepository>();
-builder.Services.AddSingleton<IUserRepository, UserRepository>();
+builder.Services.AddSingleton<IMatchConfirmedRepository, MatchConfirmedRepository>();
+builder.Services.AddSingleton<IMatchTentativeRepository, MatchTentativeRepository>();
 
 // Validators
-builder.Services.AddSingleton<MatchValidator>();
-builder.Services.AddSingleton<ConfirmDateValidator>();
 builder.Services.AddSingleton<UserValidator>();
+builder.Services.AddSingleton<CreateMatchTentativeValidator>();
+builder.Services.AddSingleton<MatchConfirmedValidator>();
+builder.Services.AddSingleton<ConfirmMatchValidator>();
+builder.Services.AddSingleton<CreateTeamValidator>();
 
 // Managers
 builder.Services.AddSingleton<UserManager>();
 builder.Services.AddSingleton<TeamManager>();
-builder.Services.AddSingleton<ConfirmDateManager>();
-builder.Services.AddSingleton<MatchManager>();
 builder.Services.AddSingleton<FieldManager>();
 builder.Services.AddSingleton<CategoryManager>();
+builder.Services.AddSingleton<MatchTentativeManager>();
+builder.Services.AddSingleton<MatchConfirmedManager>();
 
 var app = builder.Build();
 

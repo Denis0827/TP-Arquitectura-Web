@@ -25,7 +25,15 @@ namespace TPfulbo.Repositories
             if (File.Exists(_jsonFilePath))
             {
                 var jsonString = File.ReadAllText(_jsonFilePath);
-                _teams = JsonSerializer.Deserialize<List<Team>>(jsonString) ?? new List<Team>();
+                if (!string.IsNullOrEmpty(jsonString))
+                {
+                    _teams = JsonSerializer.Deserialize<List<Team>>(jsonString) ?? new List<Team>();
+                }
+                else
+                {
+                    _teams = new List<Team>();
+                    SaveTeams();
+                }
             }
             else
             {

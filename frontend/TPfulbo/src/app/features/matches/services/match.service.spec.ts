@@ -14,19 +14,16 @@ describe('MatchService', () => {
     idMatch: 1,
     idCoach: 1,
     idField: 1,
-    idDate: 1,
     idCategory: 1,
     idTeamA: 1,
-    idTeamB: 2
+    idTeamB: 2,
+    fecha: '2024-03-20'
   };
 
   const mockCreateMatchRequest: CreateMatchRequest = {
-    idCoach: 1,
-    idField: 1,
-    idDate: 1,
-    idCategory: 1,
-    idTeamA: 1,
-    idTeamB: 2
+    idMatchTentative: 1,
+    idPlayersTeamA: [1, 2, 3],
+    idPlayersTeamB: [4, 5, 6]
   };
 
   const mockCreateMatchResponse: CreateMatchResponse = {

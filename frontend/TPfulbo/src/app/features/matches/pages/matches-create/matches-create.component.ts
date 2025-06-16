@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmDateService } from '../../../../features/dates/services/confirm-date.service';
+import { MatchTentativeService } from '../../../../features/matchesTentative/services/matchTentative.service';
 import { PlayerCardTeamComponent } from '../../components/player-card-team/player-card-team.component';
 import { Player } from '../../../../models/user.model';
 import { forkJoin, Observable, of } from 'rxjs';
@@ -12,7 +12,7 @@ import { ApiService } from '../../../../core/services/api.service';
 import { MatchService } from '../../services/match.service';
 import { CreateMatchRequest } from '../../../../models/requests/match.request';
 import { AuthService } from '../../../../features/auth/services/auth.service';
-import { ConfirmDate } from '../../../../models/confirm-date.model';
+import { MatchTentative } from '../../../../models/matchTentative.model';
 
 interface TeamAssignment {
   playerId: number;
@@ -30,14 +30,14 @@ interface TeamAssignment {
 export class MatchesCreateComponent implements OnInit {
   private route = inject(ActivatedRoute);
   router = inject(Router);
-  private confirmDateService = inject(ConfirmDateService);
+  private matchTentativeService = inject(MatchTentativeService);
   private userService = inject(UserService);
   private apiService = inject(ApiService);
   private matchService = inject(MatchService);
   private authService = inject(AuthService);
 
-  dateId: number = 0;
-  dateInfo: ConfirmDate | null = null;
+  idMatch: number = 0;
+  dateInfo: MatchTentative | null = null;
   confirmedPlayers: Player[] = [];
   loading: boolean = false;
   error: string | null = null;
@@ -46,9 +46,9 @@ export class MatchesCreateComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.dateId = Number(this.route.snapshot.paramMap.get('idFecha'));
-    if (!this.dateId) {
-      this.error = 'ID de fecha no válido';
+    this.idMatch = Number(this.route.snapshot.paramMap.get('idMatch'));
+    if (!this.idMatch) {
+      this.error = 'ID de partido no válido';
       return;
     }
     this.loadDateInfo();
@@ -58,8 +58,8 @@ export class MatchesCreateComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    this.confirmDateService.getDateById(this.dateId).subscribe({
-      next: (date: ConfirmDate) => {
+    this.matchTentativeService.getMatchTentativeById(this.idMatch).subscribe({
+      next: (date: MatchTentative) => {
         this.dateInfo = date;
         this.loadConfirmedPlayers();
       },
@@ -72,25 +72,18 @@ export class MatchesCreateComponent implements OnInit {
   }
 
   private loadConfirmedPlayers(): void {
-    if (!this.dateInfo) {
-      this.error = 'No se pudo cargar la información de la fecha';
-      this.loading = false;
-      return;
-    }
-
-    this.confirmDateService.getConfirmedPlayers(this.dateId).subscribe({
+    this.matchTentativeService.getConfirmedPlayers(this.idMatch).subscribe({
       next: (playerIds: number[]) => {
-        if (!playerIds || playerIds.length === 0) {
+        if (playerIds.length === 0) {
           this.error = 'No hay jugadores confirmados para esta fecha';
           this.loading = false;
           return;
         }
 
-        const playerObservables = playerIds.map(playerId => 
-          this.userService.getPlayerById(playerId).pipe(
-            tap(player => console.log('Jugador cargado:', player)),
+        const playerObservables = playerIds.map(id => 
+          this.userService.getPlayerById(id).pipe(
             catchError(error => {
-              console.error(`Error al cargar jugador ${playerId}:`, error);
+              console.error(`Error al cargar jugador ${id}:`, error);
               return of(null);
             })
           )
@@ -110,7 +103,6 @@ export class MatchesCreateComponent implements OnInit {
               return;
             }
 
-            // Inicializar todas las asignaciones de equipo a 'A'
             this.teamAssignments = this.confirmedPlayers.map(player => ({
               playerId: player.idUser,
               team: 'A'
@@ -170,11 +162,11 @@ export class MatchesCreateComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
+    this.error = null;
+
     const createMatchRequest: CreateMatchRequest = {
-      idCoach: coachId,
-      idField: this.dateInfo.idField,
-      idConfirmDate: this.dateId,
-      idCategory: this.dateInfo.idCategory,
+      idMatchTentative: this.idMatch,
       idPlayersTeamA: teamAPlayerIds,
       idPlayersTeamB: teamBPlayerIds
     };
@@ -186,9 +178,13 @@ export class MatchesCreateComponent implements OnInit {
         console.log('Partido creado exitosamente:', response);
         this.router.navigate(['/matches']);
       },
-      error: (error: HttpErrorResponse) => {
+      error: (error: Error) => {
         console.error('Error al crear el partido:', error);
-        this.error = `Error al crear el partido: ${error.error?.message || error.message}`;
+        this.error = error.message || 'Error al crear el partido';
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
       }
     });
   }

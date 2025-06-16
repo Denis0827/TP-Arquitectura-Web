@@ -28,8 +28,8 @@ export const routes: Routes = [
         canActivate: [authGuard]
       },
       {
-        path: 'dates',
-        loadChildren: () => import('./features/dates/dates.routes').then(m => m.DATES_ROUTES),
+        path: 'matchesTentative',
+        loadChildren: () => import('./features/matchesTentative/matchTentative.routes').then(m => m.MATCHESTENTATIVE_ROUTES),
         canActivate: [authGuard]
       },
       {

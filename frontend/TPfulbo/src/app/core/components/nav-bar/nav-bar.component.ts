@@ -25,12 +25,12 @@ export class NavBarComponent implements OnInit {
 
   navItems: NavItem[] = [
     { path: 'home', label: 'Home', icon: '🏠', requiresAuth: false },
-    { path: 'matches', label: 'Matches', icon: '⚽', requiresAuth: true },
-    { path: 'dates', label: 'Fechas', icon: '📅', requiresAuth: true },
+    { path: 'matches', label: 'Mis partidos', icon: '⚽', requiresAuth: true },
+    { path: 'matchesTentative', label: 'Próximos partidos', icon: '📅', requiresAuth: true }
   ];
 
   coachNavItems: NavItem[] = [
-    { path: 'users', label: 'Users', icon: '👤', requiresAuth: true },
+    //{ path: 'users', label: 'Users', icon: '👤', requiresAuth: true },
   ];
 
   isCoach = false;

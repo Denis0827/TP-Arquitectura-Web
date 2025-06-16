@@ -1,0 +1,176 @@
+[
+  {
+    "IdPlayers": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "IdMatch": 4,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-04-10T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "IdMatch": 7,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-05-01T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10
+    ],
+    "IdMatch": 8,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-05-08T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      12
+    ],
+    "IdMatch": 9,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-05-15T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      12
+    ],
+    "IdMatch": 10,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-05-22T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      1,
+      12
+    ],
+    "IdMatch": 12,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2025-06-20T03:28:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [],
+    "IdMatch": 13,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2025-06-29T14:12:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      1
+    ],
+    "IdMatch": 14,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2025-10-13T17:25:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      1
+    ],
+    "IdMatch": 15,
+    "IdCoach": 11,
+    "IdField": 3,
+    "Fecha": "2025-06-21T22:30:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [],
+    "IdMatch": 16,
+    "IdCoach": 11,
+    "IdField": 3,
+    "Fecha": "2025-06-23T12:36:00",
+    "IdCategory": 2
+  },
+  {
+    "IdPlayers": [],
+    "IdMatch": 17,
+    "IdCoach": 11,
+    "IdField": 2,
+    "Fecha": "2025-10-15T00:44:00",
+    "IdCategory": 2
+  },
+  {
+    "IdPlayers": [
+      12
+    ],
+    "IdMatch": 18,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2026-10-20T15:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      12
+    ],
+    "IdMatch": 19,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2025-06-27T02:14:00",
+    "IdCategory": 1
+  },
+  {
+    "IdPlayers": [
+      12
+    ],
+    "IdMatch": 20,
+    "IdCoach": 11,
+    "IdField": 2,
+    "Fecha": "2025-06-19T14:12:00",
+    "IdCategory": 2
+  }
+]

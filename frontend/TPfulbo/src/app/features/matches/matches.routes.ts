@@ -7,7 +7,7 @@ export const MATCHES_ROUTES: Routes = [
     loadComponent: () => import('./pages/match-list/match-list.component').then(m => m.MatchListComponent)
   },
   {
-    path: 'new/:idFecha',
+    path: 'new/:idMatch',
     loadComponent: () => import('./pages/matches-create/matches-create.component').then(m => m.MatchesCreateComponent)
   },
   // {

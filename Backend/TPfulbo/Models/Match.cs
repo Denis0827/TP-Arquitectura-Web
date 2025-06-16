@@ -5,15 +5,11 @@ namespace TPfulbo.Models
 {
     public class Match
     {
+        private DateTime _fecha;
         private int _idMatch;
         private int _idCoach;
         private int _idField;
-        private int _idDate;
         private int _idCategory;
-        private List<int> _idPlayersTeamA;
-        private List<int> _idPlayersTeamB;
-        
-        
 
         public int IdMatch
         {
@@ -33,10 +29,10 @@ namespace TPfulbo.Models
             set { _idField = value; }
         }
 
-        public int IdDate
+        public DateTime Fecha
         {
-            get { return _idDate; }
-            set { _idDate = value; }
+            get { return _fecha; }
+            set { _fecha = value; }
         }
 
         public int IdCategory
@@ -45,26 +41,12 @@ namespace TPfulbo.Models
             set { _idCategory = value; }
         }
 
-        public List<int> IdPlayersTeamA
+        public Match(DateTime fecha, int idCoach, int idField, int idCategory)
         {
-            get { return _idPlayersTeamA; }
-            set { _idPlayersTeamA = value; }
-        }
-
-        public List<int> IdPlayersTeamB
-        {
-            get { return _idPlayersTeamB; }
-            set { _idPlayersTeamB = value; }
-        }
-
-        public Match(int idCoach, int idField, int idDate, int idCategory, List<int> idPlayersTeamA = null, List<int> idPlayersTeamB = null)
-        {
+            _fecha = fecha;
             _idCoach = idCoach;
             _idField = idField;
-            _idDate = idDate;
             _idCategory = idCategory;
-            _idPlayersTeamA = idPlayersTeamA ?? new List<int>();
-            _idPlayersTeamB = idPlayersTeamB ?? new List<int>();
         }
     }
 } 

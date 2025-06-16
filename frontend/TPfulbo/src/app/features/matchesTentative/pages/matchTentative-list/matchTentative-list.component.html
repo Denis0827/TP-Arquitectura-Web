@@ -1,0 +1,51 @@
+<div class="dates-container">
+  <div class="dates-header">
+    <h2>{{ isCoach ? 'Gestión de Partidos futuros' : 'Próximos Partidos' }}</h2>
+    <button *ngIf="isCoach" class="new-date-button" routerLink="/matchesTentative/new">
+      + Nueva Fecha
+    </button>
+  </div>
+
+  <!-- Loading state -->
+  <div *ngIf="loading" class="loading-state">
+    <p>Cargando partidos...</p>
+  </div>
+
+  <!-- Error state -->
+  <div *ngIf="error" class="error-state">
+    <p>{{ error }}</p>
+    <button class="btn-retry" (click)="ngOnInit()">
+      Reintentar
+    </button>
+  </div>
+
+  <!-- Content state -->
+  <div *ngIf="!loading && !error" class="dates-grid">
+    <ng-container *ngIf="matches.length > 0; else noDates">
+      <ng-container *ngFor="let date of matches; let i = index">
+        <!-- Mostrar el componente según el rol del usuario -->
+        <app-matchTentative-list-player-card 
+          *ngIf="!isCoach" 
+          [match]="date"
+          [displayIndex]="i + 1"
+          [field]="date.field"
+          [category]="date.category">
+        </app-matchTentative-list-player-card>
+        
+        <app-matchTentative-list-coach-card 
+          *ngIf="isCoach" 
+          [match]="date"
+          [displayIndex]="i + 1"
+          [field]="date.field"
+          [category]="date.category">
+        </app-matchTentative-list-coach-card>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #noDates>
+      <div class="no-dates">
+        <p>No hay partidos disponibles</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
