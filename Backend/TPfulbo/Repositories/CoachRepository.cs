@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public CoachRepository()
         {
-            _jsonFilePath = Path.Combine("..", "..", "Data", "coaches.json");
+            _jsonFilePath = Path.Combine("Data", "coaches.json");
             LoadCoaches();
         }
 

@@ -64,10 +64,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Ensure Kestrel listens on the PORT environment variable provided by Render
-var port = Environment.GetEnvironmentVariable("PORT") ?? "80";
-app.Urls.Add($"http://+:{port}");
-
 // Use CORS
 app.UseCors("AllowAngularDevServer");
 

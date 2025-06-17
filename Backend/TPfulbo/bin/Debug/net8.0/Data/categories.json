@@ -1,0 +1,12 @@
+[
+  {
+    "IdCategory": 1,
+    "Anio": 2024,
+    "Genero": "Masculino"
+  },
+  {
+    "IdCategory": 2,
+    "Anio": 2024,
+    "Genero": "Femenino"
+  }
+] 

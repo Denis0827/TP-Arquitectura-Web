@@ -1,0 +1,47 @@
+[
+  {
+    "IdTeamA": 1,
+    "IdTeamB": 2,
+    "IdMatch": 1,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2025-07-19T17:30:00",
+    "IdCategory": 1
+  },
+  {
+    "IdTeamA": 3,
+    "IdTeamB": 4,
+    "IdMatch": 2,
+    "IdCoach": 11,
+    "IdField": 2,
+    "Fecha": "2025-06-28T18:00:00",
+    "IdCategory": 2
+  },
+  {
+    "IdTeamA": 5,
+    "IdTeamB": 6,
+    "IdMatch": 3,
+    "IdCoach": 11,
+    "IdField": 1,
+    "Fecha": "2025-06-29T18:00:00",
+    "IdCategory": 2
+  },
+  {
+    "IdTeamA": 7,
+    "IdTeamB": 8,
+    "IdMatch": 4,
+    "IdCoach": 11,
+    "IdField": 3,
+    "Fecha": "2025-07-05T18:00:00",
+    "IdCategory": 1
+  },
+  {
+    "IdTeamA": 9,
+    "IdTeamB": 10,
+    "IdMatch": 5,
+    "IdCoach": 11,
+    "IdField": 2,
+    "Fecha": "2025-07-06T18:00:00",
+    "IdCategory": 1
+  }
+]

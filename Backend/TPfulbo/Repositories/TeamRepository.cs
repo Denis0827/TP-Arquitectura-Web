@@ -11,7 +11,7 @@ namespace TPfulbo.Repositories
 {
     public class TeamRepository : ITeamRepository
     {
-        private readonly string _jsonFilePath = Path.Combine("..", "..", "Data", "teams.json");
+        private readonly string _jsonFilePath = Path.Combine("Data", "teams.json");
         private List<Team> _teams;
 
         public TeamRepository()

@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public PlayerRepository()
         {
-            _jsonFilePath = Path.Combine("..", "..", "Data", "players.json");
+            _jsonFilePath = Path.Combine("Data", "players.json");
             LoadPlayers();
         }
 

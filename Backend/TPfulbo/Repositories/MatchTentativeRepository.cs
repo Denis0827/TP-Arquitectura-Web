@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public MatchTentativeRepository()
         {
-            _jsonFilePath = Path.Combine("..", "..", "Data", "matchesTentative.json");
+            _jsonFilePath = Path.Combine("Data", "matchesTentative.json");
             LoadMatchTentatives();
         }
 
@@ -88,9 +88,9 @@ namespace TPfulbo.Repositories
             {
                 matchTentative.IdPlayers.Add(idPlayer);
                 SaveMatchTentatives();
+                return await Task.FromResult(true);
             }
-
-            return await Task.FromResult(true);
+            return await Task.FromResult(false);
         }
 
         public async Task<List<int>> GetConfirmedPlayers(int idMatch)
@@ -111,7 +111,6 @@ namespace TPfulbo.Repositories
                 SaveMatchTentatives();
                 return await Task.FromResult(true);
             }
-
             return await Task.FromResult(false);
         }
     }

@@ -16,7 +16,7 @@ namespace TPfulbo.Repositories
 
         public MatchConfirmedRepository()
         {
-            _jsonFilePath = Path.Combine("..", "..", "Data", "matchesConfirmed.json");
+            _jsonFilePath = Path.Combine("Data", "matchesConfirmed.json");
             LoadMatches();
         }
 

@@ -1,0 +1,134 @@
+[
+  {
+    "DNI": "12345678",
+    "Edad": 10,
+    "IdUser": 1,
+    "Nombre": "Juan",
+    "Apellido": "P\u00E9rez",
+    "FechaNacimiento": "15/05/1995",
+    "Mail": "juan.perez@email.com",
+    "Telefono": "11-5555-5555",
+    "Contrase\u00F1a": "hashed_password_1"
+  },
+  {
+    "DNI": "23456789",
+    "Edad": 11,
+    "IdUser": 2,
+    "Nombre": "Mar\u00EDa",
+    "Apellido": "Gonz\u00E1lez",
+    "FechaNacimiento": "22/08/1998",
+    "Mail": "maria.gonzalez@email.com",
+    "Telefono": "11-5555-5556",
+    "Contrase\u00F1a": "hashed_password_2"
+  },
+  {
+    "DNI": "34567890",
+    "Edad": 9,
+    "IdUser": 3,
+    "Nombre": "Carlos",
+    "Apellido": "Rodr\u00EDguez",
+    "FechaNacimiento": "10/03/1997",
+    "Mail": "carlos.rodriguez@email.com",
+    "Telefono": "11-5555-5557",
+    "Contrase\u00F1a": "hashed_password_3"
+  },
+  {
+    "DNI": "45678901",
+    "Edad": 12,
+    "IdUser": 4,
+    "Nombre": "Ana",
+    "Apellido": "Mart\u00EDnez",
+    "FechaNacimiento": "30/11/1996",
+    "Mail": "ana.martinez@email.com",
+    "Telefono": "11-5555-5558",
+    "Contrase\u00F1a": "hashed_password_4"
+  },
+  {
+    "DNI": "56789012",
+    "Edad": 8,
+    "IdUser": 5,
+    "Nombre": "Luis",
+    "Apellido": "S\u00E1nchez",
+    "FechaNacimiento": "18/07/1999",
+    "Mail": "luis.sanchez@email.com",
+    "Telefono": "11-5555-5559",
+    "Contrase\u00F1a": "hashed_password_5"
+  },
+  {
+    "DNI": "67890123",
+    "Edad": 13,
+    "IdUser": 6,
+    "Nombre": "Laura",
+    "Apellido": "D\u00EDaz",
+    "FechaNacimiento": "05/12/1994",
+    "Mail": "laura.diaz@email.com",
+    "Telefono": "11-5555-5560",
+    "Contrase\u00F1a": "hashed_password_6"
+  },
+  {
+    "DNI": "78901234",
+    "Edad": 10,
+    "IdUser": 7,
+    "Nombre": "Diego",
+    "Apellido": "Fern\u00E1ndez",
+    "FechaNacimiento": "25/04/1998",
+    "Mail": "diego.fernandez@email.com",
+    "Telefono": "11-5555-5561",
+    "Contrase\u00F1a": "hashed_password_7"
+  },
+  {
+    "DNI": "89012345",
+    "Edad": 11,
+    "IdUser": 8,
+    "Nombre": "Sof\u00EDa",
+    "Apellido": "L\u00F3pez",
+    "FechaNacimiento": "12/09/1997",
+    "Mail": "sofia.lopez@email.com",
+    "Telefono": "11-5555-5562",
+    "Contrase\u00F1a": "hashed_password_8"
+  },
+  {
+    "DNI": "90123456",
+    "Edad": 9,
+    "IdUser": 9,
+    "Nombre": "Mart\u00EDn",
+    "Apellido": "G\u00F3mez",
+    "FechaNacimiento": "28/06/1996",
+    "Mail": "martin.gomez@email.com",
+    "Telefono": "11-5555-5563",
+    "Contrase\u00F1a": "hashed_password_9"
+  },
+  {
+    "DNI": "01234567",
+    "Edad": 12,
+    "IdUser": 10,
+    "Nombre": "Valentina",
+    "Apellido": "Torres",
+    "FechaNacimiento": "14/02/1999",
+    "Mail": "valentina.torres@email.com",
+    "Telefono": "11-5555-5564",
+    "Contrase\u00F1a": "hashed_password_10"
+  },
+  {
+    "DNI": "12345670",
+    "Edad": 11,
+    "IdUser": 11,
+    "Nombre": "Juan",
+    "Apellido": "P\u00E9rez",
+    "FechaNacimiento": "27/08/2004",
+    "Mail": "juan.pere@email.com",
+    "Telefono": "11-5555-5555",
+    "Contrase\u00F1a": "hashed_password_1"
+  },
+  {
+    "DNI": "12345671",
+    "Edad": 10,
+    "IdUser": 12,
+    "Nombre": "Denis",
+    "Apellido": "Wu",
+    "FechaNacimiento": "27/08/2004",
+    "Mail": "wudenis0827@gmail.com",
+    "Telefono": "11-5835-8659",
+    "Contrase\u00F1a": "Password123"
+  }
+]

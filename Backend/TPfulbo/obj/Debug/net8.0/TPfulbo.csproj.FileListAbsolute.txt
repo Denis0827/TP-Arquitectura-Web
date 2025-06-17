@@ -293,3 +293,10 @@ C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\obj\Debug\net8.0\r
 C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\obj\Debug\net8.0\TPfulbo.pdb
 C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\obj\Debug\net8.0\TPfulbo.genruntimeconfig.cache
 C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\obj\Debug\net8.0\ref\TPfulbo.dll
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\categories.json
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\coaches.json
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\fields.json
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\matchesConfirmed.json
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\matchesTentative.json
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\players.json
+C:\Users\Denis Wu\Desktop\TP-Arquitectura-Web\Backend\TPfulbo\bin\Debug\net8.0\Data\teams.json
