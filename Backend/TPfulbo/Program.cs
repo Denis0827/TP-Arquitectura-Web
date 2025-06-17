@@ -58,11 +58,9 @@ builder.Services.AddSingleton<MatchConfirmedManager>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 // Use CORS
 app.UseCors("AllowAngularDevServer");
