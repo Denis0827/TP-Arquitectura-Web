@@ -18,8 +18,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Copy the Data folder from the project root
-COPY ../../Data/ Data/
+# Copy the Data folder from the project root (relative to build context)
+COPY Data/ Data/
 
 # Expose the port your app runs on
 EXPOSE 80
