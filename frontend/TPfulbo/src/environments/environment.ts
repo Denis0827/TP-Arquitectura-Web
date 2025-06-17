@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5088/' // URL base de tu API .NET
+  apiUrl: 'https://tp-fulbo-backend.onrender.com/' // URL base de tu API .NET
 }; 
