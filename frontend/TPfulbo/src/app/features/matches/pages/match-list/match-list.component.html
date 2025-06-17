@@ -52,5 +52,15 @@
       </div>
     }
   </div>
+
+  @if (loading) {
+    <div class="no-matches">
+      <p>Cargando partidos...</p>
+    </div>
+  } @else if (matches.length === 0) {
+    <div class="no-matches">
+      <p>No hay partidos confirmados para mostrar.</p>
+    </div>
+  }
 </div>
 
