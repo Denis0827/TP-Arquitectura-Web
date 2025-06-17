@@ -1,6 +1,6 @@
 <div class="matches-container">
   <div class="matches-header">
-    <h2 class="text-center">Mis Partidos</h2>
+    <h2 class="text-center">Partidos Confirmados</h2>
   </div>
   <div class="row g-3">
     @for (match of matches; track match.idMatch) {
@@ -12,8 +12,7 @@
               <span class="match-category" *ngIf="match.category">Cat. {{ match.category.anio }} - {{ match.category.genero }}</span>
             </div>
             <div class="match-date">
-              <i class="bi bi-calendar3"></i>
-              {{ match.fecha | date:'longDate' }} - {{ match.fecha | date:'shortTime' }}
+              {{ match.fecha | date:'dd/MM/yyyy hh:mm a' }}
             </div>
           </div>
           
@@ -45,12 +44,13 @@
               Entrenador: {{ match.coachName }}
             </div>
             <div class="match-detail" *ngIf="match.field">
-              <i class="bi bi-geo-alt"></i>
-              {{ match.field.calle }} {{ match.field.altura }} - {{ match.field.botines ? 'Con botines' : 'Sin botines' }}
+              📍 {{ match.field.calle }} {{ match.field.altura }} - {{ match.field.botines ? 'Botines: ' + match.field.botines : 'Sin botines' }}
             </div>
           </div>
+
         </div>
       </div>
     }
   </div>
 </div>
+

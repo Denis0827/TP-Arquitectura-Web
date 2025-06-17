@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatchTentative } from '../../../../models/matchTentative.model';
@@ -12,11 +12,17 @@ import { Category } from '../../../../models/category.model';
   templateUrl: './matchTentative-list-coach-card.component.html',
   styleUrls: ['./matchTentative-list-coach-card.component.scss']
 })
-export class MatchTentativeListCoachCardComponent {
+export class MatchTentativeListCoachCardComponent implements OnInit {
   @Input() match!: MatchTentative;
   @Input() displayIndex!: number;
   @Input() field?: Field;
   @Input() category?: Category;
+
+  ngOnInit() {
+    console.log('Match:', this.match);
+    console.log('Field:', this.field);
+    console.log('Category:', this.category);
+  }
 
   getFormattedDate(): string {
     if (!this.match.fecha) return '';
@@ -41,5 +47,4 @@ export class MatchTentativeListCoachCardComponent {
   getPlayersCount(): number {
     return this.match.idPlayers?.length || 0;
   }
-
 }

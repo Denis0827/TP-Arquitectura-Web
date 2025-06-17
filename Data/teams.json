@@ -2,18 +2,27 @@
   {
     "IdTeam": 1,
     "IdPlayers": [
-      1,
+      12,
       2,
-      3,
-      4,
-      5,
-      12
+      6,
+      3
     ]
   },
   {
     "IdTeam": 2,
     "IdPlayers": [
-      6,
+      1,
+      4,
+      5,
+      10,
+      7
+    ]
+  },
+  {
+    "IdTeam": 3,
+    "IdPlayers": [
+      1,
+      5,
       7,
       8,
       9,
@@ -21,92 +30,68 @@
     ]
   },
   {
-    "IdTeam": 3,
-    "IdPlayers": [
-      1,
-      2,
-      3,
-      5
-    ]
-  },
-  {
     "IdTeam": 4,
     "IdPlayers": [
-      6,
-      7,
-      8,
-      4
+      12,
+      2,
+      3,
+      4,
+      6
     ]
   },
   {
     "IdTeam": 5,
     "IdPlayers": [
-      7,
-      8,
-      9,
-      10,
       12,
-      1
+      4,
+      10,
+      1,
+      7
     ]
   },
   {
     "IdTeam": 6,
     "IdPlayers": [
       2,
-      3,
-      4,
-      5,
-      6
+      6,
+      8,
+      3
     ]
   },
   {
     "IdTeam": 7,
     "IdPlayers": [
-      2,
+      1,
       8,
-      9,
       10,
-      12
+      5
     ]
   },
   {
     "IdTeam": 8,
     "IdPlayers": [
+      2,
+      3,
       4,
-      5,
-      6,
-      7
+      9
     ]
   },
   {
     "IdTeam": 9,
     "IdPlayers": [
-      12
+      1,
+      6,
+      9,
+      10
     ]
   },
   {
     "IdTeam": 10,
     "IdPlayers": [
-      1
-    ]
-  },
-  {
-    "IdTeam": 11,
-    "IdPlayers": [
-      7,
-      8,
-      9,
-      10,
-      12
-    ]
-  },
-  {
-    "IdTeam": 12,
-    "IdPlayers": [
       2,
-      3,
       5,
-      6
+      8,
+      4
     ]
   }
 ]

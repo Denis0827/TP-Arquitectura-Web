@@ -15,17 +15,20 @@ namespace TPfulbo.Managers
         private readonly IMatchTentativeRepository _matchTentativeRepository;
         private readonly MatchConfirmedValidator _matchConfirmedValidator;
         private readonly TeamManager _teamManager;
+        private readonly MatchTentativeManager _matchTentativeManager;
 
         public MatchConfirmedManager(
             IMatchConfirmedRepository matchConfirmedRepository,
             IMatchTentativeRepository matchTentativeRepository,
             MatchConfirmedValidator matchConfirmedValidator,
-            TeamManager teamManager)
+            TeamManager teamManager,
+            MatchTentativeManager matchTentativeManager)
         {
             _matchConfirmedRepository = matchConfirmedRepository;
             _matchTentativeRepository = matchTentativeRepository;
             _matchConfirmedValidator = matchConfirmedValidator;
             _teamManager = teamManager;
+            _matchTentativeManager = matchTentativeManager;
         }
 
         public async Task<(bool success, string message, MatchConfirmed match)> CreateMatchConfirmed(int idCoach, int idMatchTentative, List<int> idPlayersTeamA, List<int> idPlayersTeamB)
@@ -106,11 +109,11 @@ namespace TPfulbo.Managers
                 teamB.IdTeam
             );
 
-            // Eliminar el partido tentativo
-            var deleted = await _matchTentativeRepository.DeleteMatchTentative(idMatchTentative);
+            // Eliminar el partido tentativo usando MatchTentativeManager
+            var (deleted, deleteMessage) = await _matchTentativeManager.DeleteMatchTentative(idMatchTentative);
             if (!deleted)
             {
-                return (false, "Error al eliminar el partido tentativo", null);
+                return (false, deleteMessage, null);
             }
 
             return (true, "Partido confirmado creado exitosamente", match as MatchConfirmed);

@@ -21,8 +21,8 @@
         </svg>
         Volver
       </button>
-      <h2>Partido {{ displayIndex !== null ? displayIndex : match?.idMatch }}</h2>
-      <button class="back-button create-match-button" [routerLink]="['/matches/new', match?.idMatch]" *ngIf="isCoach">
+      <h2>Fecha {{ displayIndex !== null ? displayIndex : match.idMatch }}</h2>
+      <button class="back-button create-match-button" [routerLink]="['/matches/new', match.idMatch]" *ngIf="isCoach">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 5v14M5 12h14"/>
         </svg>
@@ -40,7 +40,7 @@
         <span class="text">{{ getFormattedTime() }}</span>
       </div>
       <div class="info-item" *ngIf="field">
-        <span class="icon">🏟️</span>
+        <span class="icon">📍</span>
         <span class="text">{{ field.calle }} {{ field.altura }} - {{ field.botines ? 'Con botines' : 'Sin botines' }} (Capacidad: {{ field.capacidad }})</span>
       </div>
       <div class="info-item" *ngIf="category">

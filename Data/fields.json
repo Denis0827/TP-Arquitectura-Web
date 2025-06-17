@@ -4,7 +4,7 @@
     "Calle": "Av. Rivadavia",
     "Altura": 1234,
     "Capacidad": 50,
-    "Botines": "Pasto_natural",
+    "Botines": "Pasto natural",
     "TieneEstacionamiento": true
   },
   {
@@ -12,7 +12,7 @@
     "Calle": "Av. Corrientes",
     "Altura": 5678,
     "Capacidad": 30,
-    "Botines": "Pasto_sintetico",
+    "Botines": "Pasto sintetico",
     "TieneEstacionamiento": false
   },
   {
@@ -20,7 +20,7 @@
     "Calle": "Av. Figueroa Alcorta",
     "Altura": 6600,
     "Capacidad": 300,
-    "Botines": "Pasto_sintetico",
+    "Botines": "Pasto sintetico",
     "TieneEstacionamiento": true
   }
 ] 

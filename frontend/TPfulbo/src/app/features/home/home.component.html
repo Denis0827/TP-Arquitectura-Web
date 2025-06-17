@@ -1,5 +1,150 @@
 <div class="container">
-  <h1>Bienvenido a TP Fulbo</h1>
-  <h2>Partidos: </h2>
-  
+  <div class="welcome-section">
+    <h1>Bienvenido a TP Fulbo</h1>
+  </div>
+
+  <div class="dashboard">
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2>Próximos Partidos</h2>
+        <button class="btn-link" routerLink="/matches">Ver todos</button>
+      </div>
+      
+      <div class="matches-grid">
+        <div *ngFor="let match of confirmedMatches.slice(0, 3)" class="match-card">
+          <div class="match-header">
+            <div class="match-date">
+              📅 {{ match.fecha | date:'dd/MM/yyyy' }}
+            </div>
+            <div class="match-time">
+              🕒 {{ match.fecha | date:'hh:mm a' }}
+            </div>
+          </div>
+
+          <div class="match-content">
+            <div class="field-info">
+              📍 <span>{{ match.field?.calle }} {{ match.field?.altura }}</span>
+            </div>
+            <div class="category-info">
+              <i class="fas fa-users"></i>
+              <span>{{ match.category?.anio }} - {{ match.category?.genero }}</span>
+            </div>
+            <div class="boot-type-info" *ngIf="match.field?.botines">
+              👟 <span>Botines: {{ match.field?.botines }}</span>
+            </div>
+          </div>
+
+          <div class="match-footer">
+            <div class="match-status">
+              <i class="fas fa-check-circle"></i>
+              Confirmado
+            </div>
+            <button class="btn-action" [routerLink]="['/matches']">
+              Ver detalles
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="confirmedMatches.length === 0" class="no-matches">
+        No hay partidos confirmados próximos
+      </div>
+    </div>
+
+    <div class="dashboard-section confirm-section" *ngIf="isPlayer">
+      <div class="section-header">
+        <h2>Confirmar Partidos tentativos</h2>
+        <button class="btn-link" routerLink="/matchesTentative">Ver todos</button>
+      </div>
+      
+      <div class="matches-grid">
+        <div *ngFor="let match of unconfirmedTentativeMatches.slice(0, 3)" class="match-card">
+          <div class="match-header">
+            <div class="match-date">
+              📅 {{ match.fecha | date:'dd/MM/yyyy' }}
+            </div>
+            <div class="match-time">
+              🕒 {{ match.fecha | date:'hh:mm a' }}
+            </div>
+          </div>
+
+          <div class="match-content">
+            <div class="field-info">
+              📍 <span>{{ match.field?.calle }} {{ match.field?.altura }}</span>
+            </div>
+            <div class="category-info">
+              <i class="fas fa-users"></i>
+              <span>{{ match.category?.anio }} - {{ match.category?.genero }}</span>
+            </div>
+            <div class="players-confirmed-info">
+              <i class="fas fa-user-group"></i>
+              <span>{{ match.idPlayers.length || 0 }} jugadores confirmados</span>
+            </div>
+          </div>
+
+          <div class="match-footer">
+            <div class="match-status tentative">
+              <i class="fas fa-hourglass-half"></i>
+              Pendiente
+            </div>
+            <button class="btn-action" [routerLink]="['/matchesTentative']">
+              Ir a confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="unconfirmedTentativeMatches.length === 0" class="no-matches">
+        No hay partidos tentativos para confirmar
+      </div>
+    </div>
+
+    <!-- Sección para coaches -->
+    <div class="dashboard-section confirm-section" *ngIf="isCoach">
+      <div class="section-header">
+        <h2>Partidos Tentativos Creados</h2>
+        <button class="btn-link" routerLink="/matchesTentative">Ver todos</button>
+      </div>
+
+      <div class="matches-grid">
+        <div *ngFor="let match of coachTentativeMatches.slice(0, 3)" class="match-card">
+          <div class="match-header">
+            <div class="match-date">
+              📅 {{ match.fecha | date:'dd/MM/yyyy' }}
+            </div>
+            <div class="match-time">
+              🕒 {{ match.fecha | date:'hh:mm a' }}
+            </div>
+          </div>
+
+          <div class="match-content">
+            <div class="field-info">
+              📍 <span>{{ match.field?.calle }} {{ match.field?.altura }}</span>
+            </div>
+            <div class="category-info">
+              <i class="fas fa-users"></i>
+              <span>{{ match.category?.anio }} - {{ match.category?.genero }}</span>
+            </div>
+            <div class="players-confirmed-info">
+              <i class="fas fa-user-group"></i>
+              <span>{{ match.idPlayers.length || 0 }} jugadores confirmados</span>
+            </div>
+          </div>
+          <div class="match-footer">
+            <div class="match-status tentative">
+              <i class="fas fa-hourglass-half"></i>
+              Pendiente
+            </div>
+            <button class="btn-action" [routerLink]="['/matchesTentative']">
+              Ir a confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="coachTentativeMatches.length === 0" class="no-matches">
+        No hay partidos tentativos creados por ti
+      </div>
+    </div>
+  </div>
 </div>
+
